@@ -144,9 +144,9 @@ interface KBOClubEntry {
 |---|---|---|---|---|---|
 | `suwon-kt` | KT Wiz (KT 위즈) | Suwon kt wiz Park | `[37.2997, 127.0097]` | `#EC1C24` | `images/logos/emblem_KT.png` |
 | `daegu-samsung` | Samsung Lions (삼성 라이온즈) | Daegu Samsung Lions Park | `[35.8411, 128.6815]` | `#074CA1` | `images/logos/emblem_SS.png` |
-| `seoul-jamsil-lg` | LG Twins (LG 트윈스) | Jamsil Baseball Stadium | `[37.5122, 127.0719]` | `#C30037` | `images/logos/emblem_LG.png` |
+| `seoul-jamsil-lg` | LG Twins (LG 트윈스) | Jamsil Stadium (3rd Base Side / 3루측) | `[37.5126, 127.0711]` | `#C30037` | `images/logos/emblem_LG.png` |
 | `gwangju-kia` | KIA Tigers (KIA 타이거즈) | Gwangju-Kia Champions Field | `[35.1682, 126.8891]` | `#C70125` | `images/logos/emblem_HT.png` |
-| `seoul-jamsil-doosan` | Doosan Bears (두산 베어스) | Jamsil Baseball Stadium | `[37.5122, 127.0719]` | `#131230` | `images/logos/emblem_OB.png` |
+| `seoul-jamsil-doosan` | Doosan Bears (두산 베어스) | Jamsil Stadium (1st Base Side / 1루측) | `[37.5118, 127.0727]` | `#131230` | `images/logos/emblem_OB.png` |
 | `changwon-nc` | NC Dinos (NC 다이노스) | Changwon NC Park | `[35.2225, 128.5824]` | `#071D49` | `images/logos/emblem_NC.png` |
 | `daejeon-hanwha` | Hanwha Eagles (한화 이글스) | Hanwha Life Eagles Park | `[36.3171, 127.4291]` | `#F37321` | `images/logos/emblem_HH.png` |
 | `busan-lotte` | Lotte Giants (롯데 자이언츠) | Sajik Baseball Stadium | `[35.1940, 129.0615]` | `#002955` | `images/logos/emblem_LT.png` |

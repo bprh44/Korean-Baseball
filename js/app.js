@@ -495,9 +495,11 @@
     Object.keys(markers).forEach((key) => {
       const markerEl = markers[key].getElement();
       if (markerEl) markerEl.classList.remove("active");
+      if (markers[key].setZIndexOffset) markers[key].setZIndexOffset(0);
     });
     const currentMarkerEl = markers[id].getElement();
     if (currentMarkerEl) currentMarkerEl.classList.add("active");
+    if (markers[id].setZIndexOffset) markers[id].setZIndexOffset(1000);
 
     // Fly map smoothly to location with close stadium zoom
     const entry = KBO_DATA.entries[id];
