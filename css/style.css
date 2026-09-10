@@ -1,0 +1,1007 @@
+/* ==========================================================================
+   KBO — A Way Into Korea (한국으로 들어가는 길)
+   Design System & Editorial Stylesheet
+   ========================================================================== */
+
+:root {
+  /* Editorial Warm Paper Palette */
+  --bg-paper: #f8f6f0;
+  --bg-panel: #ffffff;
+  --bg-subtle: #f2ece0;
+  --bg-card: #faf8f4;
+  --border-soft: #e3dcce;
+  --border-strong: #c8bfad;
+
+  /* Inks & Text */
+  --ink-primary: #1e1e1e;
+  --ink-secondary: #4a4740;
+  --ink-muted: #736f66;
+  --ink-faint: #9c978b;
+
+  /* Accents */
+  --accent-navy: #1b2a4a;
+  --accent-crimson: #9e2a2b;
+  --accent-amber: #b07d3b;
+  --accent-forest: #2d5a3f;
+
+  /* Rail Line Palette */
+  --rail-gyeongbu: #9e2a2b;
+  --rail-suseo: #9e2a2b;
+  --rail-honam: #2a4a7b;
+  --rail-gyeongjeon: #3f6e4a;
+
+  /* Typography */
+  --font-serif: "Noto Serif KR", "Times New Roman", serif;
+  --font-sans: "Noto Sans KR", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  /* Transitions */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --trans-fast: 0.2s ease;
+  --trans-medium: 0.35s var(--ease-out);
+}
+
+/* Base & Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  background-color: var(--bg-paper);
+  color: var(--ink-primary);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow: hidden;
+}
+
+/* Subtle Paper Texture Background */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background-image: radial-gradient(rgba(0, 0, 0, 0.02) 1px, transparent 0);
+  background-size: 24px 24px;
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* ==========================================================================
+   Language Visibility Switcher (Instant CSS toggle)
+   ========================================================================== */
+html[data-lang="ko"] .lang-en {
+  display: none !important;
+}
+
+html[data-lang="en"] .lang-ko {
+  display: none !important;
+}
+
+/* ==========================================================================
+   Header & Masthead
+   ========================================================================== */
+header.masthead {
+  height: 64px;
+  background: var(--bg-paper);
+  border-bottom: 1px solid var(--border-soft);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1.8rem;
+  position: relative;
+  z-index: 100;
+}
+
+.brand-wrapper {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+}
+
+.brand-title {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--accent-navy);
+  letter-spacing: -0.02em;
+}
+
+.brand-tagline {
+  font-size: 0.82rem;
+  color: var(--ink-muted);
+  font-weight: 400;
+}
+
+.header-controls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Language Toggle Button */
+.lang-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  background: var(--bg-subtle);
+  border: 1px solid var(--border-strong);
+  border-radius: 20px;
+  padding: 3px;
+  cursor: pointer;
+  transition: all var(--trans-fast);
+  user-select: none;
+}
+
+.lang-toggle-btn span {
+  padding: 4px 10px;
+  font-size: 0.76rem;
+  font-weight: 600;
+  border-radius: 14px;
+  color: var(--ink-muted);
+  transition: all var(--trans-fast);
+}
+
+html[data-lang="en"] .lang-toggle-btn .opt-en,
+html[data-lang="ko"] .lang-toggle-btn .opt-ko {
+  background: var(--accent-navy);
+  color: #ffffff;
+  box-shadow: 0 2px 5px rgba(27, 42, 74, 0.2);
+}
+
+/* ==========================================================================
+   Top Navigation: Club & City Strip
+   ========================================================================== */
+nav.club-strip {
+  background: #ede7da;
+  border-bottom: 1px solid var(--border-soft);
+  padding: 0.45rem 1.2rem;
+  display: flex;
+  gap: 0.45rem;
+  overflow-x: auto;
+  white-space: nowrap;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-strong) transparent;
+  position: relative;
+  z-index: 90;
+}
+
+nav.club-strip::-webkit-scrollbar {
+  height: 4px;
+}
+nav.club-strip::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: 4px;
+}
+
+.club-chip {
+  background: var(--bg-paper);
+  border: 1px solid var(--border-strong);
+  padding: 0.32rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.77rem;
+  font-weight: 500;
+  color: var(--ink-secondary);
+  cursor: pointer;
+  transition: all var(--trans-fast);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  flex-shrink: 0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  user-select: none;
+}
+
+.club-chip:hover {
+  background: #ffffff;
+  border-color: var(--team-pri, var(--accent-navy));
+  transform: translateY(-1px);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+}
+
+.club-chip.active {
+  background: #ffffff;
+  border-color: var(--team-pri, var(--accent-navy));
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08), 0 0 0 2px var(--team-pri, var(--accent-navy));
+}
+
+.club-chip .chip-rank {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 17px;
+  height: 17px;
+  background: var(--bg-subtle);
+  border: 1px solid var(--border-soft);
+  border-radius: 50%;
+  font-size: 0.65rem;
+  font-weight: 800;
+  color: var(--ink-secondary);
+  line-height: 1;
+}
+
+.club-chip.active .chip-rank {
+  background: var(--team-pri, var(--accent-navy));
+  color: #ffffff;
+  border-color: var(--team-pri, var(--accent-navy));
+}
+
+.club-chip .chip-logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 0;
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+}
+
+.club-chip .chip-logo svg {
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+}
+
+.club-chip .chip-logo .chip-emblem-img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.18));
+  transition: transform var(--trans-fast);
+}
+
+.club-chip:hover .chip-emblem-img {
+  transform: scale(1.15);
+}
+
+.club-chip .chip-sep {
+  color: var(--ink-faint);
+  font-size: 0.72rem;
+  opacity: 0.55;
+  margin: 0 1px;
+}
+
+.club-chip .chip-team {
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.club-chip .chip-city {
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+/* ==========================================================================
+   Main Application Viewport (Split View)
+   ========================================================================== */
+.app-viewport {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  height: calc(100vh - 108px);
+  position: relative;
+  overflow: hidden;
+}
+
+/* ==========================================================================
+   Map Canvas & Cartography
+   ========================================================================== */
+.map-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background: #f1ede3;
+}
+
+#korea-map {
+  width: 100%;
+  height: 100%;
+  background: #f1ede3;
+  filter: sepia(12%) contrast(94%) brightness(99%);
+}
+
+/* Floating Map Controls */
+.map-controls-floating {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  z-index: 800;
+  pointer-events: auto;
+}
+
+.map-reset-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(248, 246, 240, 0.94);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--border-strong);
+  color: var(--accent-navy);
+  font-family: var(--font-sans);
+  font-size: 0.76rem;
+  font-weight: 600;
+  padding: 6px 13px;
+  border-radius: 20px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: all var(--trans-fast);
+  user-select: none;
+}
+
+.map-reset-btn .reset-icon {
+  font-size: 0.85rem;
+}
+
+.map-reset-btn:hover {
+  background: #ffffff;
+  border-color: var(--accent-navy);
+  color: var(--accent-crimson);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(27, 42, 74, 0.15);
+}
+
+/* Custom Leaflet Zoom Control Styling */
+.leaflet-control-zoom {
+  border: 1px solid var(--border-strong) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08) !important;
+  border-radius: 8px !important;
+  overflow: hidden;
+}
+
+.leaflet-control-zoom-in, .leaflet-control-zoom-out {
+  background: rgba(248, 246, 240, 0.94) !important;
+  color: var(--ink-primary) !important;
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border-soft) !important;
+}
+
+.leaflet-control-zoom-in:hover, .leaflet-control-zoom-out:hover {
+  background: #ffffff !important;
+  color: var(--accent-crimson) !important;
+}
+
+/* Map Rail Legend Floating Widget */
+.map-rail-legend {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  background: rgba(248, 246, 240, 0.92);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--border-soft);
+  border-radius: 6px;
+  padding: 0.7rem 0.9rem;
+  z-index: 800;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  font-size: 0.72rem;
+  pointer-events: auto;
+}
+
+.leaflet-control-attribution {
+  background: rgba(248, 246, 240, 0.88) !important;
+  color: var(--ink-faint) !important;
+  font-size: 0.68rem !important;
+  font-family: var(--font-sans);
+  border-radius: 4px 0 0 0;
+  backdrop-filter: blur(6px);
+  padding: 2px 8px !important;
+}
+
+.leaflet-control-attribution a {
+  color: var(--ink-muted) !important;
+  text-decoration: none;
+}
+.leaflet-control-attribution a:hover {
+  text-decoration: underline;
+}
+
+.legend-title {
+  font-weight: 700;
+  color: var(--ink-secondary);
+  margin-bottom: 0.4rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-bottom: 0.25rem;
+  color: var(--ink-muted);
+}
+
+.legend-line {
+  width: 18px;
+  height: 3px;
+  border-radius: 2px;
+}
+
+/* Custom Leaflet Ballpark Marker */
+.ballpark-marker {
+  background: none;
+  border: none;
+}
+
+.marker-pin {
+  width: 28px;
+  height: 28px;
+  background: #ffffff;
+  border: 2px solid var(--team-pri, var(--accent-navy));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(27, 42, 74, 0.28);
+  cursor: pointer;
+  transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+  position: relative;
+  padding: 2px;
+  box-sizing: border-box;
+}
+
+.marker-inner-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--accent-navy);
+  border-radius: 50%;
+  transition: background 0.25s ease, transform 0.25s ease;
+}
+
+.marker-emblem-icon {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.ballpark-marker:hover .marker-pin {
+  transform: scale(1.25);
+  border-color: var(--accent-crimson);
+  box-shadow: 0 4px 12px rgba(158, 42, 43, 0.35);
+  z-index: 1000;
+}
+
+.ballpark-marker:hover .marker-inner-dot {
+  background: var(--accent-crimson);
+}
+
+.ballpark-marker.active .marker-pin {
+  background: #ffffff;
+  border-color: var(--accent-crimson);
+  transform: scale(1.35);
+  box-shadow: 0 0 0 4px rgba(158, 42, 43, 0.35), 0 5px 15px rgba(0, 0, 0, 0.25);
+  z-index: 1001;
+}
+
+.ballpark-marker.active .marker-inner-dot {
+  background: #ffffff;
+  transform: scale(1.1);
+}
+
+/* Tooltip on Marker */
+.leaflet-tooltip.ballpark-tooltip {
+  background: var(--accent-navy);
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  padding: 4px 8px;
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+}
+.leaflet-tooltip-top:before {
+  border-top-color: var(--accent-navy);
+}
+
+/* ==========================================================
+   Editorial Journal Panel ("The Heart")
+   ========================================================== */
+main.editorial-panel {
+  overflow-y: auto;
+  background: var(--bg-panel);
+  padding: 2.5rem 2.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2.2rem;
+  box-shadow: -10px 0 30px rgba(0, 0, 0, 0.03);
+  position: relative;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-soft) transparent;
+}
+
+main.editorial-panel::-webkit-scrollbar {
+  width: 6px;
+}
+main.editorial-panel::-webkit-scrollbar-thumb {
+  background: var(--border-soft);
+  border-radius: 4px;
+}
+
+/* Meta Category Eyebrow */
+.meta-eyebrow {
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent-crimson);
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.meta-eyebrow::after {
+  content: "";
+  height: 1px;
+  flex: 1;
+  background: var(--border-soft);
+}
+
+/* City & Ballpark Discovery Header */
+.entry-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.city-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.city-title-group {
+  display: flex;
+  align-items: baseline;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+
+.editorial-team-emblem-wrap {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  padding: 6px;
+  border-radius: 12px;
+  border: 1px solid var(--border-soft);
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.06);
+}
+
+.editorial-team-emblem {
+  width: 52px;
+  height: 52px;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.12));
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.editorial-team-emblem:hover {
+  transform: scale(1.1) rotate(4deg);
+}
+
+.city-main-title {
+  font-family: var(--font-serif);
+  font-size: 2.3rem;
+  font-weight: 700;
+  color: var(--ink-primary);
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+}
+
+.city-hanja-tag {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  color: var(--ink-faint);
+  font-weight: 400;
+}
+
+.neighborhood-subtitle {
+  font-size: 0.88rem;
+  color: var(--ink-muted);
+  font-weight: 500;
+}
+
+/* Subtle Ballpark Anchor Quote */
+.ballpark-anchor-card {
+  background: var(--bg-card);
+  border-left: 3px solid var(--accent-crimson);
+  border-radius: 0 4px 4px 0;
+  padding: 0.9rem 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.ballpark-anchor-header {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.ballpark-anchor-emblem {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+  flex-shrink: 0;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.12));
+}
+
+.ballpark-name-badge {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--accent-navy);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.ballpark-civic-note {
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--ink-secondary);
+}
+
+/* Photo Triptych (3-Photo Magazine Layout) */
+.photo-triptych {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.8rem;
+}
+
+.photo-card {
+  aspect-ratio: 4 / 5;
+  position: relative;
+  background: var(--bg-subtle);
+  border: 1px solid var(--border-soft);
+  border-radius: 3px;
+  overflow: hidden;
+  cursor: zoom-in;
+  transition: transform var(--trans-fast), box-shadow var(--trans-fast);
+}
+
+.photo-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+.photo-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: contrast(96%) brightness(98%);
+  transition: transform 0.4s var(--ease-out);
+}
+
+.photo-card:hover img {
+  transform: scale(1.04);
+}
+
+.photo-card .photo-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1.2rem 0.6rem 0.5rem;
+  background: linear-gradient(to top, rgba(15, 15, 15, 0.82) 0%, rgba(15, 15, 15, 0) 100%);
+  font-size: 0.68rem;
+  color: #ffffff;
+  line-height: 1.35;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Personal Travel Story Section */
+.story-section {
+  position: relative;
+}
+
+.story-body {
+  font-family: var(--font-serif);
+  font-size: 1.08rem;
+  line-height: 1.85;
+  color: #242424;
+  word-break: keep-all;
+  border-left: 1px solid var(--border-soft);
+  padding-left: 1.2rem;
+  margin-top: 0.6rem;
+}
+
+.story-body p {
+  margin-bottom: 0.8rem;
+}
+.story-body p:last-child {
+  margin-bottom: 0;
+}
+
+/* Signature Ballpark Anthem Card */
+.anthem-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-soft);
+  border-radius: 4px;
+  padding: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.anthem-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.anthem-title-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.anthem-badge {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--accent-navy);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.anthem-name {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--accent-navy);
+}
+
+.anthem-origin {
+  font-size: 0.74rem;
+  color: var(--ink-muted);
+}
+
+.anthem-note {
+  font-size: 0.82rem;
+  color: var(--ink-secondary);
+  line-height: 1.5;
+}
+
+.anthem-player {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  max-height: 220px;
+  border-radius: 4px;
+  overflow: hidden;
+  background: #000;
+}
+
+.anthem-player iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* "Hear the City" (도시의 말씨와 억양) Section */
+.audio-section {
+  border-top: 1px solid var(--border-soft);
+  padding-top: 1.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.phrase-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.phrase-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.85rem 1.1rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-soft);
+  border-radius: 4px;
+  transition: all var(--trans-fast);
+}
+
+.phrase-card:hover {
+  border-color: var(--accent-navy);
+  background: #ffffff;
+}
+
+.phrase-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.phrase-korean {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--ink-primary);
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.phrase-romaja {
+  font-size: 0.76rem;
+  font-weight: 400;
+  color: var(--ink-faint);
+  font-style: italic;
+}
+
+.phrase-meaning {
+  font-size: 0.82rem;
+  color: var(--ink-muted);
+}
+
+.phrase-meaning strong {
+  color: var(--accent-navy);
+  font-weight: 600;
+}
+
+/* Play Button with Micro-Animation */
+.play-speech-btn {
+  background: #ffffff;
+  border: 1px solid var(--border-strong);
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  color: var(--accent-navy);
+  font-size: 0.82rem;
+  transition: all var(--trans-fast);
+  flex-shrink: 0;
+  position: relative;
+}
+
+.play-speech-btn:hover {
+  background: var(--accent-navy);
+  color: #ffffff;
+  border-color: var(--accent-navy);
+  transform: scale(1.08);
+}
+
+.play-speech-btn.playing {
+  background: var(--accent-crimson);
+  color: #ffffff;
+  border-color: var(--accent-crimson);
+  animation: pulse-ring 1.2s infinite;
+}
+
+@keyframes pulse-ring {
+  0% { box-shadow: 0 0 0 0 rgba(158, 42, 43, 0.4); }
+  70% { box-shadow: 0 0 0 8px rgba(158, 42, 43, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(158, 42, 43, 0); }
+}
+
+/* ==========================================================================
+   Photo Lightbox Modal
+   ========================================================================== */
+.lightbox-modal {
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(15, 15, 15, 0.92);
+  backdrop-filter: blur(8px);
+  z-index: 2000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  cursor: zoom-out;
+}
+
+.lightbox-modal.active {
+  display: flex;
+}
+
+.lightbox-content {
+  max-width: 90vw;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+  cursor: default;
+}
+
+.lightbox-content img {
+  max-width: 100%;
+  max-height: 75vh;
+  object-fit: contain;
+  border-radius: 4px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+}
+
+.lightbox-caption {
+  color: #ffffff;
+  font-family: var(--font-serif);
+  font-size: 0.95rem;
+  text-align: center;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 24px;
+  right: 28px;
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 2rem;
+  cursor: pointer;
+  opacity: 0.8;
+  transition: opacity 0.2s;
+}
+
+.lightbox-close:hover {
+  opacity: 1;
+}
+
+/* ==========================================================================
+   Responsive Breakpoints
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .app-viewport {
+    grid-template-columns: 1fr;
+    grid-template-rows: 420px 1fr;
+    height: calc(100vh - 108px);
+    overflow-y: auto;
+  }
+
+  .map-container {
+    height: 420px;
+  }
+
+  main.editorial-panel {
+    padding: 2rem 1.5rem;
+    box-shadow: none;
+    overflow-y: visible;
+  }
+}
+
+@media (max-width: 640px) {
+  header.masthead {
+    padding: 0 1rem;
+    height: auto;
+    padding-top: 0.6rem;
+    padding-bottom: 0.6rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .brand-tagline {
+    display: none;
+  }
+
+  .photo-triptych {
+    grid-template-columns: 1fr;
+    gap: 0.6rem;
+  }
+
+  .photo-card {
+    aspect-ratio: 16 / 9;
+  }
+
+  .city-main-title {
+    font-size: 1.8rem;
+  }
+
+  .app-viewport {
+    grid-template-rows: 320px 1fr;
+    height: calc(100vh - 120px);
+  }
+
+  .map-container {
+    height: 320px;
+  }
+}

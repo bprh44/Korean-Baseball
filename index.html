@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ko" data-lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KBO — A Way Into Korea | 한국으로 들어가는 길</title>
+  <meta name="description" content="An interactive travel and storytelling journal that uses KBO baseball as the thread connecting Korean cities, culture, food, and people." />
+
+  <!-- Disable Browser Caching for Instant Updates -->
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+
+  <!-- Google Fonts: Noto Serif KR & Noto Sans KR -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Serif+KR:wght@400;600;700;900&display=swap" rel="stylesheet">
+
+  <!-- Leaflet GIS Map CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+
+  <!-- Custom Editorial Stylesheet (Timestamped) -->
+  <link rel="stylesheet" href="css/style.css" id="main-stylesheet" />
+  <script>
+    document.getElementById('main-stylesheet').href = 'css/style.css?t=' + Date.now();
+  </script>
+</head>
+<body>
+
+  <!-- Masthead Header -->
+  <header class="masthead">
+    <div class="brand-wrapper">
+      <h1 class="brand-title">
+        <span class="lang-en">KBO — A Way Into Korea</span>
+        <span class="lang-ko">KBO — 한국으로 들어가는 길</span>
+      </h1>
+      <span class="brand-tagline">
+        <span class="lang-en">Discovering cities, alleyways, food & people through baseball</span>
+        <span class="lang-ko">야구라는 실을 따라 걷는 한국의 도시, 음식, 그리고 골목의 기억</span>
+      </span>
+    </div>
+
+    <!-- Header Controls: Instant Bilingual Toggle -->
+    <div class="header-controls">
+      <button type="button" class="lang-toggle-btn" id="lang-toggle-btn" aria-label="Toggle English and Korean">
+        <span class="opt-ko">한국어</span>
+        <span class="opt-en">ENG</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Top Horizontal Navigation Strip: 10 Clubs & Ballparks -->
+  <nav class="club-strip" id="club-strip-container" aria-label="City and Club Navigation"></nav>
+
+  <!-- Main Viewport: Cartographic Map & Editorial Slide Panel -->
+  <div class="app-viewport">
+    
+    <!-- Leaflet Topographical Map & KTX Rail Layer -->
+    <div class="map-container">
+      <div class="map-controls-floating">
+        <button type="button" class="map-reset-btn" id="map-reset-btn" aria-label="Fit Full South Korea Map">
+          <span class="reset-icon">🗺️</span>
+          <span class="lang-en">National View</span>
+          <span class="lang-ko">전국 지도</span>
+        </button>
+      </div>
+      <div id="korea-map" aria-label="Interactive Map of Korea"></div>
+    </div>
+
+    <!-- Right Side Editorial Journal Panel ("The Heart") -->
+    <main class="editorial-panel" id="panel-content" aria-live="polite">
+      <!-- Dynamic Editorial Content Injected by app.js -->
+    </main>
+
+  </div>
+
+  <!-- Photo Lightbox Modal for High-Resolution Inspection -->
+  <div class="lightbox-modal" id="lightbox-modal" role="dialog" aria-modal="true" aria-label="Photo Lightbox">
+    <button type="button" class="lightbox-close" id="lightbox-close" aria-label="Close Lightbox">&times;</button>
+    <div class="lightbox-content">
+      <img id="lightbox-img" src="" alt="Enlarged Photograph" />
+      <p class="lightbox-caption" id="lightbox-caption"></p>
+    </div>
+  </div>
+
+  <!-- Leaflet GIS Map Library -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+  <!-- Dynamic Cache-Busted Script Loader -->
+  <script>
+    (function() {
+      const timestamp = Date.now();
+      
+      const scriptRail = document.createElement('script');
+      scriptRail.src = 'js/railways.js?t=' + timestamp;
+
+      const scriptData = document.createElement('script');
+      scriptData.src = 'js/data.js?t=' + timestamp;
+      
+      scriptRail.onload = function() {
+        document.body.appendChild(scriptData);
+      };
+
+      scriptData.onload = function() {
+        const scriptApp = document.createElement('script');
+        scriptApp.src = 'js/app.js?t=' + timestamp;
+        document.body.appendChild(scriptApp);
+      };
+      
+      document.body.appendChild(scriptRail);
+    })();
+  </script>
+</body>
+</html>
