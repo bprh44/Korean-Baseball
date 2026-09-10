@@ -18,8 +18,8 @@ const KBO_DATA = {
   // Configuration & API Keys
   // --------------------------------------------------------------------------
   config: {
-    // Open public basemap (leave as "" for safe open-source deployment on GitHub)
-    cartoApiKey: "",
+    // CARTO Basemaps API Key (Removes the "API key required" watermark)
+    cartoApiKey: "cb1_3fzc_1_e47177e320e1c761d456a149",
     
     // Default initial city/team view (Rank #1 KT Wiz)
     defaultHeroEntry: "suwon-kt"

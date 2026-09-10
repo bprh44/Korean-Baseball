@@ -8,9 +8,14 @@
 (function () {
   "use strict";
 
-  // State
-  let currentLang = localStorage.getItem("kbo_lang") || "ko";
-  let activeEntryId = KBO_DATA.config?.defaultHeroEntry || "busan-lotte";
+  // State (Protected with try-catch for strict browser/iframe privacy settings)
+  let currentLang = "ko";
+  try {
+    currentLang = localStorage.getItem("kbo_lang") || "ko";
+  } catch (e) {
+    currentLang = "ko";
+  }
+  let activeEntryId = (typeof KBO_DATA !== "undefined" && KBO_DATA.config?.defaultHeroEntry) || "suwon-kt";
   let map = null;
   const markers = {};
   const railwayLayers = [];
@@ -41,7 +46,9 @@
       langToggleBtn.addEventListener("click", () => {
         currentLang = currentLang === "en" ? "ko" : "en";
         htmlRoot.setAttribute("data-lang", currentLang);
-        localStorage.setItem("kbo_lang", currentLang);
+        try {
+          localStorage.setItem("kbo_lang", currentLang);
+        } catch (e) {}
       });
     }
   }
@@ -101,8 +108,9 @@
       });
     }
 
-    // Carto Basemaps API Key handling (Carto expects ?key=YOUR_KEY)
-    const apiKey = KBO_DATA.config?.cartoApiKey?.trim();
+    // Carto Basemaps API Key handling (Reads from config, window, or URL ?cartoKey=...)
+    const urlParams = new URLSearchParams(window.location.search);
+    const apiKey = (urlParams.get("cartoKey") || window.CARTO_API_KEY || KBO_DATA.config?.cartoApiKey || "").trim();
     const apiKeyParam = apiKey ? `?key=${encodeURIComponent(apiKey)}` : "";
 
     if (apiKey) {
@@ -154,10 +162,13 @@
         smoothFactor: 1
       }).addTo(map);
 
+      const displayNameEn = rail.nameEn || rail.nameKo || "KTX Rail Line";
+      const displayNameKo = rail.nameKo || rail.nameEn || "KTX 고속철도 노선";
+
       line.bindTooltip(`
         <div style="font-size: 0.76rem; font-weight: 700; color: #fff;">
-          <span class="lang-en">${rail.nameEn}</span>
-          <span class="lang-ko">${rail.nameKo}</span>
+          <span class="lang-en">${displayNameEn}</span>
+          <span class="lang-ko">${displayNameKo}</span>
         </div>
       `, { sticky: true, className: "ballpark-tooltip" });
 
@@ -505,6 +516,13 @@
     renderEditorial(id);
   }
 
+  // Preload speech voices for smooth pronunciation playback
+  if (typeof window !== "undefined" && "speechSynthesis" in window && window.speechSynthesis.onvoiceschanged !== undefined) {
+    window.speechSynthesis.onvoiceschanged = () => {
+      try { window.speechSynthesis.getVoices(); } catch (e) {}
+    };
+  }
+
   /**
    * 6. Speech Synthesis for Dialects
    */
@@ -593,6 +611,11 @@
     } else {
       fitSouthKoreaOverview(false);
     }
+
+    // Force Leaflet tile geometry calculation after layout paints
+    setTimeout(() => {
+      if (map) map.invalidateSize();
+    }, 200);
   }
 
   // Run on DOM ready
