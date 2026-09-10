@@ -1,0 +1,77 @@
+{
+  "_comment": "KBO Journey Entry Template. Copy this block to add or customize any team/city entry in js/data.js",
+  "id": "city-team-slug",
+  "rank": 1,
+  "primaryColor": "#1B2A4A",
+  "secondaryColor": "#9E2A2B",
+  "shortCityEn": "City Name",
+  "shortCityKo": "도시 이름",
+  "emblemImg": "images/logos/emblem_XX.png",
+  "logoSvg": "<svg width=\"20\" height=\"20\" viewBox=\"0 0 32 32\"><rect width=\"32\" height=\"32\" rx=\"7\" fill=\"#1B2A4A\"/><text x=\"16\" y=\"22\" font-family=\"sans-serif\" font-size=\"14\" font-weight=\"900\" text-anchor=\"middle\" fill=\"#FFFFFF\">TEAM</text></svg>",
+  "cityKey": "city-key",
+  "cityNameEn": "City Name (English)",
+  "cityNameKo": "도시 이름 (한국어)",
+  "cityHanja": "漢字 (Traditional Characters)",
+  "neighborhoodEn": "District · Neighborhood & Landmark",
+  "neighborhoodKo": "구 · 동 및 주요 랜드마크",
+  "teamNameEn": "Team Name (English)",
+  "teamNameKo": "구단 이름 (한국어)",
+  "stadiumEn": "Stadium Name (English)",
+  "stadiumKo": "경기장 이름 (한국어)",
+  "coords": [37.1234, 127.1234],
+  "zoomLevel": 15.6,
+  "civicAnchorEn": "1-2 sentences explaining the relationship between the city, neighborhood, and ballpark.",
+  "civicAnchorKo": "도시와 야구장 이야기 1~2문장 (TOPIK 1 초급 레벨: ~에 있어요, ~이/가 유명해요).",
+  "storyEn": "Your personal travel story in English. What did you see, eat, and feel in this city and stadium?",
+  "storyKo": "쉬운 한국어 여행 이야기 (TOPIK 1 초급 문법: ~았/었어요, ~에 가서 ~을 먹었어요, ~고 싶어요).",
+  "photos": [
+    {
+      "src": "images/cities/your-city-folder/1_place.jpg",
+      "labelEn": "Place · Landscape, skyline, or historic site",
+      "labelKo": "장소 · 도시 풍경이나 유명한 곳"
+    },
+    {
+      "src": "images/cities/your-city-folder/2_street.jpg",
+      "labelEn": "Street · Alleyways, markets, or local people",
+      "labelKo": "거리 · 골목길이나 시장 풍경"
+    },
+    {
+      "src": "images/cities/your-city-folder/3_food.jpg",
+      "labelEn": "Food · Regional dish, market snack, or ballpark food",
+      "labelKo": "음식 · 맛있는 음식이나 야구장 간식"
+    }
+  ],
+  "anthem": {
+    "titleEn": "Song Title (English)",
+    "titleKo": "노래 / 응원가 제목 (한국어)",
+    "originEn": "Original artist / background context",
+    "originKo": "노래를 부른 가수와 쉬운 설명",
+    "noteEn": "When and how the stadium crowd sings this together.",
+    "noteKo": "야구장에서 다 함께 노래를 부르는 방법 설명",
+    "youtubeId": "YOUTUBE_VIDEO_ID_HERE",
+    "timestamp": 10
+  },
+  "phrases": [
+    {
+      "ko": "사투리 / 현지 표현 1",
+      "romaja": "Romanization of phrase 1",
+      "meaningEn": "English meaning of phrase 1",
+      "descKo": "한국어 표현 설명",
+      "noteEn": "Cultural context or nuance note"
+    },
+    {
+      "ko": "사투리 / 현지 표현 2",
+      "romaja": "Romanization of phrase 2",
+      "meaningEn": "English meaning of phrase 2",
+      "descKo": "한국어 표현 설명",
+      "noteEn": "Cultural context or nuance note"
+    },
+    {
+      "ko": "구장 응원 구호 3",
+      "romaja": "Romanization of cheer 3",
+      "meaningEn": "English meaning of cheer 3",
+      "descKo": "응원 구호 설명",
+      "noteEn": "Stadium rallying cry context"
+    }
+  ]
+}

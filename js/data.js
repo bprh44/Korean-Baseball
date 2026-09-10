@@ -258,33 +258,33 @@ const KBO_DATA = {
       coords: [37.5126, 127.0711],
       zoomLevel: 16.5,
       civicAnchorEn: "Headquartered on the financial island of Yeouido and the tech campus of Magok, LG’s urban identity converges here at the open-air riverfront of Jamsil. Sharing this cathedral of Seoul baseball since 1990, the club carries the stylish, cosmopolitan pulse of the modern metropolis.",
-      civicAnchorKo: "여의도 쌍둥이 빌딩과 마곡 R&D 캠퍼스에 뿌리를 둔 LG의 도심적 감각이 한강변 잠실에서 교차합니다. 1990년부터 서울의 심장부를 지켜온 구단으로, 세련된 수도 서울의 자부심과 도시민의 퇴근길 열정을 대변합니다.",
+      civicAnchorKo: "서울 잠실야구장은 한강 옆에 있는 큰 야구장이에요. LG 트윈스는 1990년부터 서울 팬들과 함께 즐겁게 야구를 하고 있어요.",
       storyEn: "On summer evenings in Jamsil, the humid breeze drifts in off the Han River just as hundred-car subway trains empty out at Sports Complex Station. Workers loosen their neckties over cold draft beer and fried chicken on concrete steps, leaving the glass skyscrapers of Gangnam behind. There is a breezy, almost cinematic grace to watching the twilight turn lilac above the stadium lights while twenty thousand voices chant the names of outfielders against the rhythm of drumbeats.",
-      storyKo: "여름날 해질녘 잠실에서는 한강에서 불어오는 미지근한 강바람과 종합운동장역을 빠져나오는 퇴근길 인파가 하나로 뒤섞입니다. 강남의 빌딩 숲을 뒤로하고 콘크리트 관중석에 걸터앉아 시원한 생맥주와 치킨을 나누는 순간, 서울 특유의 도시적 세련미와 소박한 정취가 교차합니다. 조명탑 너머로 보랏빛 노을이 내려앉고 수만 명이 외야수의 이름을 연호할 때, 이 거대한 수도가 하나의 따스한 마을처럼 느껴집니다.",
+      storyKo: "퇴근 시간에 전철을 타고 종합운동장역 3루 쪽으로 갔어요. 한강에서 시원한 바람이 불어왔어요. 회사원들과 학생들이 야구장에 모여서 시원한 맥주와 치킨을 먹었어요. 밤하늘 아래에서 수많은 사람들이 외야수의 이름을 불렀어요. 서울의 밤은 바쁘지만, 잠실야구장에 오면 모두 친구가 되어서 기분이 참 좋아요.",
       photos: [
         {
           src: "https://images.unsplash.com/photo-1546874177-9e664107314e?w=800&q=80",
           labelEn: "Place · Han River Twilight & Lotte World Tower",
-          labelKo: "장소 · 한강의 해질녘과 잠실 스카이라인"
+          labelKo: "장소 · 한강과 높은 롯데월드타워"
         },
         {
           src: "https://images.unsplash.com/photo-1538669715315-155098f0fb1d?w=800&q=80",
           labelEn: "Street · Sincheon (Jamsil-saenae) Alleyways",
-          labelKo: "거리 · 잠실새내 먹자골목의 불빛"
+          labelKo: "거리 · 맛있는 식당이 많은 잠실새내 먹자골목"
         },
         {
           src: "https://images.unsplash.com/photo-1569058242253-92a9c755a0ec?w=800&q=80",
           labelEn: "Food · Chimaek & Spicy Cold Noodles",
-          labelKo: "음식 · 잠실 명물 3루 야구장 치맥과 비빔냉면"
+          labelKo: "음식 · 야구장에서 먹는 시원한 맥주와 치킨"
         }
       ],
       anthem: {
         titleEn: "Seoul’s LG Twins (Seoul Hymn)",
         titleKo: "서울의 찬가 / 사랑한다 LG",
         originEn: "Patty Kim classic reimagined · Jamsil Signature",
-        originKo: "패티김 원곡 · 잠실의 대표 응원가",
+        originKo: "패티김 원곡 노래 · 서울의 찬가",
         noteEn: "Sung passionately during late-inning rallies as twilight settles over the Olympic stadium complex.",
-        noteKo: "경기 종반 승부처마다 잠실 밤하늘을 수놓는 서울의 대표적인 떼창 응원가.",
+        noteKo: "경기가 끝날 때 온 관중이 큰 소리로 함께 노래해요.",
         youtubeId: "J2M5s_h1TjQ",
         timestamp: 12
       },
@@ -293,21 +293,21 @@ const KBO_DATA = {
           ko: "안녕하세요! 어디 가세요?",
           romaja: "Annyeonghaseyo! Eodi gaseyo?",
           meaningEn: "Hello! Where are you headed?",
-          descKo: "표준어의 단정하고 부드러운 인사",
+          descKo: "서울에서 정중하고 친절하게 건네는 인사예요.",
           noteEn: "Clean, polite Seoul cadence spoken in bustling transit hubs."
         },
         {
           ko: "식사는 하셨어요?",
           romaja: "Siksaneun hasyeosseoyo?",
           meaningEn: "Have you eaten yet?",
-          descKo: "배려가 담긴 정중한 서울식 안부",
+          descKo: "상대방을 걱정하며 따뜻하게 묻는 말이에요.",
           noteEn: "The polite, respectful question of care in the capital."
         },
         {
           ko: "무적 LG!",
           romaja: "Mujeok LG!",
           meaningEn: "Invincible LG!",
-          descKo: "잠실벌을 뒤흔드는 승리의 외침",
+          descKo: "승리를 응원하며 크게 외치는 구호예요.",
           noteEn: "The iconic slogan roaring through Jamsil’s 3rd base concourse."
         }
       ]
@@ -335,33 +335,33 @@ const KBO_DATA = {
       coords: [37.5118, 127.0727],
       zoomLevel: 16.5,
       civicAnchorEn: "The original champion of KBO’s inaugural 1982 season, the Bears trace their lineage from old Dongdaemun Stadium straight into Jamsil. Carrying the heritage of Korea’s oldest modern enterprise, Doosan embodies hard-nosed hustle, relentless stamina, and gritty hustle-doo spirit.",
-      civicAnchorKo: "1982년 프로야구 원년 우승을 일궈낸 베어스는 옛 동대문운동장의 흙먼지에서 잠실로 이어지는 깊은 역사를 품고 있습니다. 120년 전통 기업의 뚝심과 끝까지 물고 늘어지는 '허슬두'의 끈기가 구단의 정체성입니다.",
+      civicAnchorKo: "두산 베어스는 1982년 프로야구 첫 해에 우승한 역사 깊은 팀이에요. 끝까지 포기하지 않는 '허슬두' 정신이 유명해요.",
       storyEn: "Walking through the old markets around Dongdaemun and down into Jamsil, you meet grandmothers and street vendors who still remember the opening pitch of 1982. Seoul is often praised for its sleek futuristic shine, but underneath is an immense tenacity built by generations who worked twelve-hour shifts and found catharsis in nine innings of stubborn, defensive baseball. The Bears reflect that patient, unyielding spine of the city.",
-      storyKo: "동대문의 오래된 평화시장 뒷골목부터 잠실 구장에 이르기까지, 서울의 골목 곳곳에는 1982년 프로야구 원년의 함성을 생생히 기억하는 이들이 살아갑니다. 첨단과 속도의 도시로 불리는 서울이지만, 그 이면에는 묵묵히 땀 흘려 오늘을 일군 서민들의 단단한 끈기가 흐르고 있습니다. 베어스의 야구는 쉬이 물러서지 않는 서울의 우직한 자부심을 닮았습니다.",
+      storyKo: "동대문 광장시장에서 고소한 녹두 빈대떡을 먹고, 전철 2호선을 타고 잠실야구장 1루 쪽으로 갔어요. 두산 베어스 팬들은 하얀 수건을 높이 들고 힘차게 응원했어요. 경기가 어려워도 선수들이 몸을 날려 공을 잡아서 팬들이 큰 박수를 쳤어요. 땀 흘려 일하고 야구를 보며 힘을 내는 서울 사람들의 따뜻한 마음을 느낄 수 있었어요.",
       photos: [
         {
           src: "https://images.unsplash.com/photo-1517154421773-0529f29ea451?w=800&q=80",
           labelEn: "Place · Dongdaemun Design Plaza & Ancient City Wall",
-          labelKo: "장소 · 동대문 성곽과 DDP의 공존"
+          labelKo: "장소 · 동대문 성곽과 DDP 건물"
         },
         {
           src: "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=800&q=80",
           labelEn: "Street · Gwangjang Market Bindaetteok Alley",
-          labelKo: "거리 · 광장시장 먹거리 골목의 온기"
+          labelKo: "거리 · 맛있는 음식이 많은 광장시장"
         },
         {
           src: "https://images.unsplash.com/photo-1582878826629-29b7ad1cdc43?w=800&q=80",
           labelEn: "Food · Mung Bean Pancakes & Steaming Broth",
-          labelKo: "음식 · 고소한 녹두 빈대떡과 막걸리"
+          labelKo: "음식 · 바삭하고 고소한 녹두 빈대떡"
         }
       ],
       anthem: {
         titleEn: "Song of the Bears (Hustle Doo)",
         titleKo: "승리의 두산 / 베어스 찬가",
         originEn: "Original Doosan rally anthem",
-        originKo: "두산 베어스 승리의 찬가",
+        originKo: "두산 베어스 승리의 노래",
         noteEn: "Echoes through the 1st base side with rhythmic towel waves and collective clapping.",
-        noteKo: "1루 응원석을 하얗게 뒤덮는 타월 응원과 절도 있는 박수로 울려 퍼지는 찬가.",
+        noteKo: "1루 관중석에서 하얀 수건을 흔들며 다 같이 박수를 쳐요.",
         youtubeId: "Wv0c_v0V0_U",
         timestamp: 5
       },
@@ -370,21 +370,21 @@ const KBO_DATA = {
           ko: "수고 많으셨습니다",
           romaja: "Sugo maneusyeossseumnida",
           meaningEn: "Thank you for your hard work",
-          descKo: "하루의 땀과 노고를 보듬는 인사",
+          descKo: "하루 일을 마치고 서로에게 감사하는 인사예요.",
           noteEn: "The essential daily phrase of mutual respect after a long day."
         },
         {
           ko: "식사 든든히 챙겨 드세요",
           romaja: "Siksa deundeunhi chaenggyeo deuseyo",
           meaningEn: "Make sure you eat a hearty meal",
-          descKo: "건강과 힘을 북돋는 다정한 염려",
+          descKo: "건강을 위해 밥을 잘 먹으라고 격려하는 말이에요.",
           noteEn: "Expressing genuine care for someone's vitality and stamina."
         },
         {
           ko: "허슬두! (Hustle Doo)",
           romaja: "Heoseuldu!",
           meaningEn: "Never give up / Relentless effort",
-          descKo: "두산 베어스의 불굴의 팀 컬러",
+          descKo: "끝까지 최선을 다하자는 두산의 응원 구호예요.",
           noteEn: "The iconic motto capturing the grit and tenacity of the club."
         }
       ]
@@ -412,33 +412,33 @@ const KBO_DATA = {
       coords: [37.4982, 126.8671],
       zoomLevel: 15.8,
       civicAnchorEn: "Set amidst the industrial workshops and burgeoning IT valleys of southwestern Seoul along Line 1, Gocheok Sky Dome is Korea’s only indoor baseball arena. The Heroes represent the resilient underdog spirit—an independently operated club without a corporate parent chaebol.",
-      civicAnchorKo: "구로공단에서 디지털 밸리로 변모한 서남권의 역동적인 기운과 안양천변에 자리한 대한민국 유일의 돔구장입니다. 대기업 모기업 없이 순수 네이밍 스폰서십으로 자생하는 키움 히어로즈는 끝없는 도전과 청년 정신을 상징합니다.",
+      civicAnchorKo: "서울 고척스카이돔은 비가 와도 야구를 볼 수 있는 한국 유일의 돔구장이에요. 키움 히어로즈는 젊고 열정적인 팀이에요.",
       storyEn: "Southwestern Seoul carries a rhythmic percussion all its own: the metallic clatter of hardware workshops in Mullae-dong blending into the hum of startup lofts and high-frequency subway switches at Guro Station. Inside Gocheok Dome, the air is climate-controlled and insulated from monsoon downpours, but the energy feels fierce and youthful. Young fans gather under the silver roof to cheer on an underdog that continuously produces world-class talent against all odds.",
-      storyKo: "문래동 철공소 골목의 쇳소리와 구로디지털단지의 분주한 키보드 소리가 공존하는 서울 서남부는 끊임없이 탈바꿈하는 도시의 실험실입니다. 빗줄기가 쏟아지는 장마철에도 은빛 지붕 아래에서 야구를 즐길 수 있는 고척돔은 젊고 도전적인 열기로 가득합니다. 거대 자본에 기대지 않고 독자적으로 세계적 선수들을 키워내는 히어로즈의 모습은 오늘을 살아가는 청년들의 도전과 닮았습니다.",
+      storyKo: "구로역 근처 문래동 예술 골목을 걸었어요. 예전에는 쇠를 만드는 공장이 많았는데 지금은 예쁜 카페와 그림이 많아서 사진을 많이 찍었어요. 점심에는 따뜻한 순댓국을 먹었어요. 고척스카이돔에 들어가니 에어컨 바람이 시원해서 날씨가 더워도 아주 쾌적했어요. 지붕 아래에서 팬들이 록 음악에 맞춰 신나게 응원했어요. 젊은 에너지가 가득한 멋진 야구장이었어요.",
       photos: [
         {
           src: "https://images.unsplash.com/photo-1542051841857-5f90071e7989?w=800&q=80",
           labelEn: "Place · Gocheok Sky Dome & Anyangcheon Stream",
-          labelKo: "장소 · 안양천변의 은빛 고척스카이돔"
+          labelKo: "장소 · 안양천 옆의 은빛 고척스카이돔"
         },
         {
           src: "https://images.unsplash.com/photo-1514924013411-cbf25faa35bb?w=800&q=80",
           labelEn: "Street · Mullae Creative Art & Iron Alley",
-          labelKo: "거리 · 문래동 예술창작촌과 철공소 골목"
+          labelKo: "거리 · 예술 그림과 카페가 있는 문래동 골목"
         },
         {
           src: "https://images.unsplash.com/photo-1590301157890-4810ed352733?w=800&q=80",
           labelEn: "Food · Guro Sundae-guk & Craft Beer",
-          labelKo: "음식 · 구로 골목의 진한 순댓국과 수제맥주"
+          labelKo: "음식 · 따끈한 순댓국과 시원한 음료수"
         }
       ],
       anthem: {
         titleEn: "Heroes Anthem (Dream on Heroes)",
         titleKo: "영웅출정가 / 꿈이 있기에",
         originEn: "Kiwoom Heroes Official Theme",
-        originKo: "키움 히어로즈 공식 출정가",
+        originKo: "키움 히어로즈 응원가 · 영웅출정가",
         noteEn: "Features a modern rock rhythm echoing off the acoustic dome ceiling.",
-        noteKo: "돔구장의 독특한 음향을 울리는 웅장한 록 비트의 대표 테마곡.",
+        noteKo: "신나는 록 음악 소리에 맞춰 돔구장이 울리도록 힘차게 불러요.",
         youtubeId: "vBqJd8Z0q8g",
         timestamp: 15
       },
@@ -447,21 +447,21 @@ const KBO_DATA = {
           ko: "오늘 하루도 파이팅!",
           romaja: "Oneul harudo paiting!",
           meaningEn: "Let's do our best today!",
-          descKo: "아침 출근길과 경기 시작 전 나누는 응원",
+          descKo: "오늘도 힘내서 열심히 하자고 응원하는 말이에요.",
           noteEn: "The ubiquitous Korean energetic cheer for daily perseverance."
         },
         {
           ko: "밥 먹고 힘내자!",
           romaja: "Bap meokgo himnaeja!",
           meaningEn: "Let’s eat well and gather our strength!",
-          descKo: "소박한 식사 한 끼에 담긴 격려",
+          descKo: "식사를 든든하게 하고 힘을 내자는 따뜻한 말이에요.",
           noteEn: "Fueling up for challenging work or an intense match."
         },
         {
           ko: "영웅 군단!",
           romaja: "Yeongung gundan!",
           meaningEn: "The Legion of Heroes!",
-          descKo: "고척돔을 메우는 자부심의 호칭",
+          descKo: "키움 히어로즈 팀을 자랑스럽게 부르는 이름이에요.",
           noteEn: "Affectionate rallying cry used by the passionate fan base."
         }
       ]
@@ -489,33 +489,33 @@ const KBO_DATA = {
       coords: [37.4370, 126.6933],
       zoomLevel: 15.6,
       civicAnchorEn: "Korea’s historic gateway to the sea, where Western baseball first landed through the port of Jemulpo in the late 19th century. From the SK Wyverns dynasty to Shinsegae’s SSG Landers, baseball in Incheon is deeply intertwined with coastal trade, port markets, and red-brick history.",
-      civicAnchorKo: "19세기 말 제물포 개항을 통해 서양 야구가 한반도에 첫발을 디딘 역사적인 항구도시입니다. SK 와이번스의 왕조 시절을 거쳐 신세계 SSG 랜더스에 이르기까지, 인천 야구는 서해 갯벌의 짠바람과 개항장의 붉은 벽돌 골목 속에 살아 숨 쉽니다.",
+      civicAnchorKo: "인천은 서양 야구가 한국에 처음 들어온 역사적인 항구도시예요. SSG 랜더스필드는 바비큐존과 스타벅스가 있는 재미있는 야구장이에요.",
       storyEn: "Incheon smells of low-tide sea breeze, roasted coffee beans from vintage port cafes, and simmering black bean paste in Chinatown. Walking up Jayu Park past nineteenth-century consulates, the vista opens over massive container cranes swinging against yellow sunsets. Incheon fans have a maritime openness—blunt spoken, deeply loyal, and quick to welcome strangers to share barbecue skewers right on the ballpark outfield lawn.",
-      storyKo: "인천의 골목에는 썰물 때 밀려오는 바다 냄새와 개항장 목조 카페의 볶은 원두 향, 차이나타운의 자장 볶는 고소한 냄새가 겹겹이 쌓여 있습니다. 자유공원에 올라서면 거대한 컨테이너 크레인이 붉은 서해 노을을 배경으로 분주히 움직이는 장관이 펼쳐집니다. 항구도시 특유의 호탕함과 따스함을 지닌 인천 사람들은 외지인을 스스럼없이 외야 바비큐존으로 초대해 고기를 건넵니다.",
+      storyKo: "지하철 1호선을 타고 인천역 차이나타운에 갔어요. 맛있는 자장면을 먹고, 신포시장에 가서 달콤하고 바삭한 닭강정을 샀어요. 랜더스필드 야구장은 잔디밭에서 고기를 구워 먹으며 야구를 볼 수 있어서 아주 신기했어요. 저녁 8회가 되자 야구장 조명이 어두워지고 붉은 불빛과 함께 '연안부두' 노래가 울려 퍼졌어요. 시원한 서해 바닷바람과 함께한 즐거운 시간이었어요.",
       photos: [
         {
           src: "https://images.unsplash.com/photo-1578637387939-43c525550085?w=800&q=80",
           labelEn: "Place · Incheon Open Port Heritage Street & Red Brick Mansions",
-          labelKo: "장소 · 개항장 근대건축거리와 조계지 계단"
+          labelKo: "장소 · 인천 개항장의 붉은 벽돌 건물들"
         },
         {
           src: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80",
           labelEn: "Street · Sinpo International Market Dakgangjeong Alley",
-          labelKo: "거리 · 신포국제시장 닭강정 골목"
+          labelKo: "거리 · 닭강정 냄새가 솔솔 나는 신포국제시장"
         },
         {
           src: "https://images.unsplash.com/photo-1563245372-f21724e3856d?w=800&q=80",
           labelEn: "Food · Crispy Sweet Fried Chicken & Jajangmyeon",
-          labelKo: "음식 · 가마솥에 튀겨낸 신포 닭강정과 원조 자장면"
+          labelKo: "음식 · 달콤한 닭강정과 원조 자장면"
         }
       ],
       anthem: {
         titleEn: "Yeonan Pier (Yeonan Bodu)",
         titleKo: "연안부두",
         originEn: "Kim Trio 1979 classic · Anthem of Incheon",
-        originKo: "김트리오 원곡 · 인천 야구의 영원한 찬가",
+        originKo: "김트리오 원곡 노래 · 연안부두",
         noteEn: "When the 8th inning arrives, the entire stadium sings together holding red flashlights aloft.",
-        noteKo: "8회 초가 끝나면 랜더스필드 전체가 붉은 조명을 켜고 파도치듯 부르는 애창곡.",
+        noteKo: "8회에 랜더스필드의 붉은 불빛을 켜고 파도타기를 하며 불러요.",
         youtubeId: "D8eGk-eD4rQ",
         timestamp: 8
       },
@@ -524,21 +524,21 @@ const KBO_DATA = {
           ko: "어서 오십쇼, 인천입니다!",
           romaja: "Eoseo osipsyo, Incheonimnida!",
           meaningEn: "Welcome to Incheon, the gateway port!",
-          descKo: "바닷바람처럼 시원시원한 항구의 환영 인사",
+          descKo: "항구도시 인천에 오신 것을 환영하는 인사예요.",
           noteEn: "Broad, welcoming tone of the coastal gateway city."
         },
         {
           ko: "밥은 든든하게 잡쉈어?",
           romaja: "Babeun deundeunhage japswasseo?",
           meaningEn: "Did you get a hearty meal?",
-          descKo: "경기도·인천 특유의 푸근한 말투",
+          descKo: "밥을 잘 챙겨 먹었는지 정답게 물어봐요.",
           noteEn: "Everyday warm inquiry heard in Sinpo market stalls."
         },
         {
           ko: "연안부두로 가자!",
           romaja: "Yeonanboduro gaja!",
           meaningEn: "Let's head down to Yeonan Pier!",
-          descKo: "바다와 야구의 정취를 부르는 외침",
+          descKo: "인천 바다와 야구를 즐기러 가자는 활기찬 외침이에요.",
           noteEn: "Symbol of Incheon identity and stadium singalong spirit."
         }
       ]
@@ -566,33 +566,33 @@ const KBO_DATA = {
       coords: [37.2997, 127.0097],
       zoomLevel: 15.6,
       civicAnchorEn: "Surrounded by King Jeongjo’s 18th-century UNESCO World Heritage fortress walls and modern global semiconductor campuses, Suwon is a city of ingenious design. kt wiz, the youngest franchise to claim a Korean Series title, embodies this blend of royal heritage, wizardly tech, and festive community.",
-      civicAnchorKo: "정조대왕의 철학과 축성술이 담긴 유네스코 세계유산 수원화성과 최첨단 IT 기술이 어우러진 계획도시입니다. 막내 구단에서 출발해 창단 첫 통합우승의 기적을 쓴 kt wiz는 성곽 도시의 자부심과 마법 같은 활기를 발산합니다.",
+      civicAnchorKo: "수원에는 아름다운 유네스코 세계유산 수원화성이 있어요. 그리고 KT 위즈 야구장도 아주 유명해요.",
       storyEn: "Walking atop the crenellated stonework of Hwaseong Fortress at sunset, you look down upon tile-roof pavilions side-by-side with bustling rows of whole-chicken fryers on Suwon Chicken Street. The aroma of sesame oil and crisp batter floats through the evening breeze. At kt wiz Park, drone light shows illuminate the night sky while families sit at tabletop picnic seats sharing cauldron-fried chicken. Suwon has mastered the art of balancing ancient majesty with neighborly comfort.",
-      storyKo: "해질녘 수원화성의 성곽길을 따라 걸으면, 고풍스러운 누각 아래로 가마솥 기름 냄새가 고소하게 번지는 남수동 통닭거리가 내려다보입니다. 야구장 관중석에 삼삼오오 둘러앉아 바삭한 통닭을 뜯으며 드론 라이트쇼를 감상하는 풍경은 수원만의 여유이자 즐거움입니다. 정조의 효심과 실학정신이 깃든 이 도시는 유서 깊은 성벽의 무게감 속에서도 이웃 간의 넉넉한 웃음을 잃지 않습니다.",
+      storyKo: "서울에서 기차를 타고 수원에 갔어요. 수원화성 성곽길을 친구와 같이 걸었어요. 저녁에는 남수동 통닭거리에 가서 가마솥 통닭을 먹었는데, 정말 바삭하고 맛있었어요! 밤에는 KT 위즈파크에 가서 야구를 보았어요. 사람들이 가족과 함께 치킨을 먹으면서 응원했어요. 수원 사람들은 친절하고 따뜻했어요. 여러분도 수원에 꼭 가 보세요!",
       photos: [
         {
           src: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=800&q=80",
           labelEn: "Place · UNESCO Hwaseong Fortress Secret Sluice Gate",
-          labelKo: "장소 · 유네스코 수원화성 화홍문과 방화수류정"
+          labelKo: "장소 · 예쁜 수원화성과 연못"
         },
         {
           src: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=800&q=80",
           labelEn: "Street · Suwon Fried Chicken Street in Namsu-dong",
-          labelKo: "거리 · 남수동 가마솥 통닭거리의 활기"
+          labelKo: "거리 · 유명한 수원 통닭거리"
         },
         {
           src: "https://images.unsplash.com/photo-1583032015879-c5c5896a40c9?w=800&q=80",
           labelEn: "Food · Golden Crispy Whole Fried Chicken (Jinmi)",
-          labelKo: "음식 · 가마솥에 튀겨낸 바삭한 왕갈비통닭"
+          labelKo: "음식 · 맛있고 바삭한 통닭"
         }
       ],
       anthem: {
         titleEn: "Magical kt wiz (We Are the Wiz)",
         titleKo: "승리의 마법사 / 마법의 성",
         originEn: "kt wiz Championship Theme",
-        originKo: "kt wiz 승리의 테마송",
+        originKo: "KT 위즈 승리의 노래",
         noteEn: "Sung with red-and-black light batons swinging in rhythm against the fortress sky.",
-        noteKo: "성곽 도시의 밤하늘을 수놓는 붉은 응원봉의 물결과 함께 불리는 희망의 노래.",
+        noteKo: "야구장에서 빨간색 응원봉을 흔들면서 다 같이 노래해요.",
         youtubeId: "l89TqRzK_jM",
         timestamp: 10
       },
@@ -601,21 +601,21 @@ const KBO_DATA = {
           ko: "화성의 고장, 수원에 잘 오셨습니다!",
           romaja: "Hwaseong-ui gojang, Suwone jal osyeossseumnida!",
           meaningEn: "Welcome to Suwon, the fortress capital!",
-          descKo: "역사와 문화가 깃든 품격 있는 환영",
+          descKo: "수원에 온 손님을 반갑게 맞이하는 인사예요.",
           noteEn: "Proud greeting referencing the historic royal foundation."
         },
         {
           ko: "통닭 한 마리 뜯고 가유~",
           romaja: "Tongdak han mari tteutgo gayu~",
           meaningEn: "Stop by and grab a fried chicken with us~",
-          descKo: "경기 남부 특유의 나긋나긋하고 정겨운 어조",
+          descKo: "맛있는 통닭을 같이 먹자고 다정하게 말해요.",
           noteEn: "Friendly local invite to share Suwon’s iconic cauldron food."
         },
         {
           ko: "마법 같은 승리!",
           romaja: "Mabeop gateun seungni!",
           meaningEn: "A magical victory!",
-          descKo: "기적을 일구는 위즈의 상징 구호",
+          descKo: "경기에서 이겼을 때 기쁘게 외치는 말이에요.",
           noteEn: "Celebratory shout of the youngest champion club."
         }
       ]
@@ -643,33 +643,33 @@ const KBO_DATA = {
       coords: [36.3171, 127.4291],
       zoomLevel: 15.6,
       civicAnchorEn: "The geographic heart and historic railroad junction of the Korean peninsula. Renowned for its patient ‘bodhisattva’ fans who love their team unconditionally through decades of heartbreak, Daejeon mirrors the calm, gentle warmth and understated humor of the Chungcheong region.",
-      civicAnchorKo: "한반도의 허리이자 경부선·호남선이 갈라지는 철도의 요충지입니다. 기나긴 패배의 터널 속에서도 보살 같은 미소로 한결같은 응원을 보내온 '보살 팬' 문화는 느긋하지만 속 깊은 충청도의 인정과 유머를 대변합니다.",
+      civicAnchorKo: "대전은 한국의 중심에 있는 교통의 도시예요. 한화 이글스 팬들은 팀이 져도 늘 웃으며 응원하는 '보살 팬'으로 유명해요.",
       storyEn: "Daejeon is often described by fast-paced Seoulites as quiet and unhurried, but to me it felt like the deep breath Korea takes between journeys. Stepping off the KTX train, the sweet scent of freshly baked fried soboro bread from Sungsimdang Bakery fills the morning air. People speak with elongated vowels, ending sentences with a soothing ‘-yu’. In the stands at Eagles Park, even a strikeout is met with gentle laughter and orange balloon cheers—a rare, heartwarming reminder that community matters far more than the final score.",
-      storyKo: "대전은 분주한 수도권 사람들에게 종종 조용한 도시로 불리지만, 제게는 한국이 잠시 깊은 숨을 들이쉬는 평화로운 쉼표처럼 느껴졌습니다. 대전역에 내리면 성심당에서 갓 구워낸 튀김소보로의 달콤한 향기가 코끝을 스치고, 골목길 어르신들은 말끝을 부드럽게 늘어뜨리며 ‘-유’로 인사를 건넵니다. 이글스파크 관중석에서 마주한 오렌지빛 물결은 승패를 넘어 사람과 사람이 나누는 따스한 유대감의 진정한 의미를 가르쳐주었습니다.",
+      storyKo: "KTX 대전역에 내리자마자 유명한 성심당 빵집에 갔어요. 바삭한 튀김소보로 빵을 한 입 먹었는데, 달콤하고 정말 맛있었어요! 점심에는 얼큰한 칼국수도 먹었어요. 이글스파크에 가니 온 관중이 주황색 풍선을 흔들고 있었어요. 점수가 뒤지고 있어도 사람들이 다 같이 웃으면서 '나는 행복합니다' 노래를 불렀어요. 승리보다 함께하는 시간이 더 소중하다는 것을 배웠어요.",
       photos: [
         {
           src: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80",
           labelEn: "Place · Gapcheon River Greenways & Expo Bridge",
-          labelKo: "장소 · 갑천 물줄기와 엑스포다리의 노을"
+          labelKo: "장소 · 대전 엑스포다리와 갑천 강변"
         },
         {
           src: "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=800&q=80",
           labelEn: "Street · Sungsimdang Bakery & Euneungjeongi Street",
-          labelKo: "거리 · 으능정이 문화의 거리와 성심당 본점"
+          labelKo: "거리 · 빵 냄새가 향긋한 성심당 앞거리"
         },
         {
           src: "https://images.unsplash.com/photo-1569058242253-92a9c755a0ec?w=800&q=80",
           labelEn: "Food · Spicy Kalguksu Noodles & Fried Soboro",
-          labelKo: "음식 · 얼큰한 공주칼국수와 바삭한 튀김소보로"
+          labelKo: "음식 · 따뜻한 칼국수와 달콤한 튀김소보로"
         }
       ],
       anthem: {
         titleEn: "I Am Happy (Naneun Haengbokhamnida)",
         titleKo: "나는 행복합니다",
         originEn: "Hanwha Eagles Signature Anthem",
-        originKo: "한화 이글스 불후의 시그니처 찬가",
+        originKo: "한화 이글스 대표 응원가 · 나는 행복합니다",
         noteEn: "Sung with beaming smiles regardless of whether the Eagles are winning or trailing by ten runs.",
-        noteKo: "점수 차에 상관없이 온 관중이 주황빛 손수건을 흔들며 부르는 가장 행복한 야구 노래.",
+        noteKo: "팀이 이기거나 져도 주황색 손수건을 흔들며 행복하게 불러요.",
         youtubeId: "zC0T9FvR8Qc",
         timestamp: 10
       },
@@ -678,21 +678,21 @@ const KBO_DATA = {
           ko: "괜찮아유~ 다 잘 될 거유",
           romaja: "Gwaenchannayu~ Da jal doel geoyu",
           meaningEn: "It's all right~ Everything will turn out fine",
-          descKo: "조급함을 씻어내는 충청도의 너그러운 위로",
+          descKo: "천천히 걱정하지 말라고 달래주는 충청도 말이에요.",
           noteEn: "The quintessential slow, comforting Chungcheong dialect cadence."
         },
         {
           ko: "진지 잡수셨슈?",
           romaja: "Jinji japsusyeoss-syu?",
           meaningEn: "Have you had your meal yet?",
-          descKo: "어르신께 올리는 온화하고 구수한 안부",
+          descKo: "식사를 맛있게 하셨는지 어르신께 묻는 인사예요.",
           noteEn: "Polite regional meal greeting with the warm signature '-syu' ending."
         },
         {
           ko: "이따 봐유!",
           romaja: "Itta bwayu!",
           meaningEn: "See you in a bit!",
-          descKo: "서두르지 않고 여운을 남기는 작별 인사",
+          descKo: "조금 뒤에 다시 만나자고 다정하게 인사해요.",
           noteEn: "Affectionate farewell reflecting unhurried hospitality."
         }
       ]
@@ -720,33 +720,33 @@ const KBO_DATA = {
       coords: [35.8411, 128.6815],
       zoomLevel: 15.6,
       civicAnchorEn: "Surrounded by a dramatic ring of mountains, the high-temperature basin of Daegu is the cradle of Korea’s textile and modern industrial rise. The Samsung Lions—the only franchise to retain its name and corporate home since 1982—stand as a proud monument to blue-blooded consistency and championship poise.",
-      civicAnchorKo: "팔공산과 비슬산이 병풍처럼 둘러싼 뜨거운 분지 도시 대구는 근대 섬유산업과 삼성상회의 발원지입니다. 1982년 원년부터 팀 이름과 모기업을 한 번도 바꾸지 않은 푸른 피의 삼성 라이온즈는 대구 시민들의 흔들리지 않는 긍지입니다.",
+      civicAnchorKo: "대구는 주변에 산이 많고 여름에 아주 더운 도시예요. 파란색 삼성 라이온즈는 1982년부터 지금까지 대구 사람들의 큰 자랑이에요.",
       storyEn: "Daegu teaches you what stillness feels like inside a furnace. When the midsummer heat of ‘Daefrica’ presses down, residents seek the shade of Apsan mountain or gather under the fans of Anjirang Gopchang Alley. Speech here is clipped, consonants are hard-edged, and people do not waste unnecessary words. Yet beneath that stoic exterior lies an intense warmth and loyalty: at the octagonal Lions Park, when twenty-five thousand people cross their arms in unison to sing ‘El Dorado’, the blue stadium vibrates like thunder across the basin.",
-      storyKo: "대구는 가마솥 같은 분지 속에서의 단단한 고요가 무엇인지를 알려줍니다. 한여름 '대프리카'의 뜨거운 열기가 아스팔트를 달구면 사람들은 안지랑 골목의 연탄불 앞으로 모여들어 짧고 굵은 악센트로 서로의 안부를 묻습니다. 말수는 적고 감정 표현은 투박하지만, 한번 맺은 인연에 대한 의리는 누구보다 깊습니다. 팔각 다이아몬드 라이온즈파크에서 온 관중이 두 팔을 교차하며 '엘도라도'를 합창할 때 푸른 사자들의 심장박동이 온 분지를 흔듭니다.",
+      storyKo: "KTX를 타고 동대구역에 도착했어요. 대구의 여름은 정말 더웠지만, 안지랑 골목의 막창구이는 아주 고소하고 맛있었어요. 저녁에 팔각형 모양의 라이온즈파크에 갔어요. 파란색 유니폼을 입은 2만 명의 팬들이 두 팔을 들고 '엘도라도' 노래를 불렀어요. 목소리가 정말 크고 멋있었어요. 대구 사람들은 말이 조금 짧지만 정이 아주 많아요.",
       photos: [
         {
           src: "https://images.unsplash.com/photo-1538669715315-155098f0fb1d?w=800&q=80",
           labelEn: "Place · Palgongsan Mountain Crest & Basin Sunset",
-          labelKo: "장소 · 팔공산 갓바위 능선과 대구 분지의 노을"
+          labelKo: "장소 · 높은 팔공산과 대구 풍경"
         },
         {
           src: "https://images.unsplash.com/photo-1517154421773-0529f29ea451?w=800&q=80",
           labelEn: "Street · Dongseong-ro & Kim Kwang-seok Memorial Art Road",
-          labelKo: "거리 · 김광석 다시그리기길과 동성로 뒷골목"
+          labelKo: "거리 · 노래가 들리는 김광석 다시그리기길"
         },
         {
           src: "https://images.unsplash.com/photo-1563245372-f21724e3856d?w=800&q=80",
           labelEn: "Food · Sizzling Briquette Grilled Tripe (Gopchang)",
-          labelKo: "음식 · 안지랑 골목의 노릇노릇한 연탄 막창구이"
+          labelKo: "음식 · 고소하고 맛있는 연탄 막창구이"
         }
       ],
       anthem: {
         titleEn: "El Dorado",
         titleKo: "엘도라도 (El Dorado)",
         originEn: "Goombay Dance Band classic · Soul of Lions",
-        originKo: "Goombay Dance Band 원곡 · 푸른 피의 영혼가",
+        originKo: "삼성 라이온즈 대표 응원가 · 엘도라도",
         noteEn: "Sung at the start of the 8th inning with arms crossed overhead, swaying like a blue ocean.",
-        noteKo: "8회 말 공격 직전, 2만 4천 명의 관중이 두 팔을 교차하며 부르는 라이온즈의 신화적인 찬가.",
+        noteKo: "8회에 온 관중이 두 팔을 올리고 파란 바다처럼 흔들며 불러요.",
         youtubeId: "5jGq5v_V6W0",
         timestamp: 10
       },
@@ -755,21 +755,21 @@ const KBO_DATA = {
           ko: "맞나? 진짜가!",
           romaja: "Manna? Jinjjaga!",
           meaningEn: "Is that so? Really?!",
-          descKo: "상승조 억양으로 놀라움과 맞장구를 치는 대구의 만능 리액션",
+          descKo: "정말인지 신기해서 물어보는 대구 사투리예요.",
           noteEn: "Universal Daegu conversation hook with a sharp rising tone."
         },
         {
           ko: "밥 묵었나?",
           romaja: "Bap mugeonna?",
           meaningEn: "Have you eaten?",
-          descKo: "‘묵’ 자에 강한 강세를 두는 투박하지만 속 깊은 안부",
+          descKo: "밥을 먹었는지 따뜻하게 물어보는 안부예요.",
           noteEn: "Distinctive strong stress on the middle syllable."
         },
         {
           ko: "치아라, 마!",
           romaja: "Chiara, ma!",
           meaningEn: "Forget it / Clean it up!",
-          descKo: "단호하지만 뒤끝 없는 경상도 특유의 종결 표현",
+          descKo: "친한 친구에게 그만하라고 편하게 말해요.",
           noteEn: "Blunt, affectionate dismissal among close friends."
         }
       ]
@@ -797,33 +797,33 @@ const KBO_DATA = {
       coords: [35.1940, 129.0615],
       zoomLevel: 15.6,
       civicAnchorEn: "Korea’s maritime capital and greatest port. Often hailed as the ‘Mecca of Korean Baseball’, Sajik Stadium transforms into the world’s biggest open-air karaoke arena, where orange trash bag hats, shredded newspaper batons, and unfiltered sea breezes ignite a collective cultural catharsis.",
-      civicAnchorKo: "대한민국 제1의 무역항이자 야구의 수도라 불리는 해양도시입니다. ‘사직 노래방’이라 불리는 사직구장은 주황색 비닐봉지 리본과 신문지 응원봉, 짠 바닷바람이 어우러져 세상에서 가장 뜨거운 공동체적 카타르시스를 뿜어냅니다.",
+      civicAnchorKo: "부산은 한국에서 제일 큰 항구도시예요. 사직야구장은 '세상에서 가장 큰 노래방'이라고 불릴 만큼 응원 열기가 대단해요.",
       storyEn: "Busan has the highest volume of hospitality in all of Korea. When the fishwives at Jagalchi Market toss mackerel onto crushed ice while shouting greetings three stalls over, you realize this city does not whisper—it pulls you straight into its tidal currents. Winding up the Sanbok-doro hillside roads on rickety buses, colorful homes cling to steep cliffs overlooking the blue Pacific. At Sajik, when twenty-five thousand people tie orange plastic bags around their ears and sing ‘Busan Seagulls’, you are no longer a visitor—you belong to the sea.",
-      storyKo: "부산은 환대의 볼륨이 가장 큰 도시입니다. 자갈치 시장의 아주머니들이 얼음 위로 싱싱한 고등어를 툭 던지며 세 집 건너편 상인에게 호탕하게 소리를 지를 때, 이 도시는 귓속말을 하지 않고 방문자를 단숨에 거친 조류 속으로 끌어당긴다는 사실을 깨닫게 됩니다. 산복도로의 가파른 비탈길을 오르는 시내버스 창밖으로 푸른 영도 앞바다가 펼쳐지고, 사직구장에서 주황색 비닐봉지를 머리에 묶은 2만 5천 명이 ‘부산 갈매기’를 떼창할 때 외지인은 비로소 부산의 식구가 됩니다.",
+      storyKo: "부산역에서 버스를 타고 산복도로에 올라갔어요. 창밖으로 파란 바다가 한눈에 보여서 정말 아름다웠어요. 자갈치 시장에서 따뜻한 돼지국밥을 먹고 사직야구장으로 갔어요. 7회가 끝나자 2만 5천 명의 관중이 주황색 비닐봉지를 머리에 묶고 '부산 갈매기'를 다 함께 불렀어요. 바닷바람을 맞으며 목청껏 소리 지르니 스트레스가 다 풀렸어요. 부산의 열정은 정말 최고예요!",
       photos: [
         {
           src: "https://images.unsplash.com/photo-1578637387939-43c525550085?w=800&q=80",
           labelEn: "Place · Sanbok-doro Hillside Road & Port Horizon",
-          labelKo: "장소 · 영도 산복도로에서 바라본 부산항 파노라마"
+          labelKo: "장소 · 높은 산복도로에서 본 푸른 부산 바다"
         },
         {
           src: "https://images.unsplash.com/photo-1546874177-9e664107314e?w=800&q=80",
           labelEn: "Street · Jagalchi Seafood Market & Nampo-dong",
-          labelKo: "거리 · 자갈치 어시장과 남포동 포장마차 골목"
+          labelKo: "거리 · 활기 넘치는 자갈치 어시장"
         },
         {
           src: "https://images.unsplash.com/photo-1590301157890-4810ed352733?w=800&q=80",
           labelEn: "Food · Steaming Pork Rice Soup (Dwaeji-gukbap)",
-          labelKo: "음식 · 부추와 다대기를 듬뿍 넣은 뜨끈한 돼지국밥"
+          labelKo: "음식 · 고기가 듬뿍 들어간 따끈한 돼지국밥"
         }
       ],
       anthem: {
         titleEn: "Busan Seagulls (Busan Galmaegi)",
         titleKo: "부산 갈매기",
         originEn: "Moon Sung-jae 1982 classic · Anthem of Busan",
-        originKo: "문성재 원곡 · 부산 시민의 애국가",
+        originKo: "문성재 원곡 노래 · 부산 갈매기",
         noteEn: "The undisputed supreme anthem of Korean sports, echoing across the harbor when night falls on Sajik.",
-        noteKo: "7회 말 끝남과 동시에 온 사직구장을 거대한 노래방으로 바꾸는 부산의 영혼가.",
+        noteKo: "7회에 주황색 봉지를 머리에 쓰고 온 관중이 합창해요.",
         youtubeId: "r2Yn-M7K-d4",
         timestamp: 15
       },
@@ -832,21 +832,21 @@ const KBO_DATA = {
           ko: "마, 부산 아이가!",
           romaja: "Ma, Busan aiga!",
           meaningEn: "Hey, this is Busan after all!",
-          descKo: "사직 관중석과 포장마차 어디서나 울려 퍼지는 자부심",
+          descKo: "우리는 당당한 부산 사람이라고 자랑하는 외침이에요.",
           noteEn: "The iconic Busan proclamation of local grit and confidence."
         },
         {
           ko: "안녕하이소~ 밥 뭇나?",
           romaja: "Annyeonghaiso~ Bap munna?",
           meaningEn: "Hello there~ Have you eaten?",
-          descKo: "해안가 특유의 빠르고 억센 억양 속에 배어 있는 정",
+          descKo: "바다 상인들이 반갑게 인사를 건네며 밥을 챙겨요.",
           noteEn: "Combined greeting and meal check heard in seaside fish stalls."
         },
         {
           ko: "아~주라! (Ah-jura!)",
           romaja: "Ah-jura!",
           meaningEn: "Give it to the child!",
-          descKo: "파울볼을 잡은 어른에게 아이에게 건네라고 외치는 사직의 명물 전통",
+          descKo: "파울볼을 잡은 어른에게 아이에게 주라고 외쳐요.",
           noteEn: "Crowd chant urging adults who catch foul balls to give them to nearby kids."
         }
       ]
@@ -874,33 +874,33 @@ const KBO_DATA = {
       coords: [35.1682, 126.8891],
       zoomLevel: 15.6,
       civicAnchorEn: "The cultural bedrock of the southwestern Honam plains. Carrying the historic 11-championship legacy of Haitai and KIA, Tigers baseball has long served as a cathartic voice of pride, endurance, and democratic spirit for the people of Gwangju.",
-      civicAnchorKo: "호남 곡창지대의 문화적 구심점이자 한국 민주주의의 성지입니다. 해태 시절부터 이어진 불멸의 11회 한국시리즈 불패 신화는 굴곡진 현대사를 견뎌온 광주 시민들에게 가장 큰 위로이자 꺾이지 않는 자존심이었습니다.",
+      civicAnchorKo: "광주는 맛있는 음식이 아주 많은 남도의 중심 도시예요. KIA 타이거즈는 한국시리즈에서 11번 넘게 우승한 전통의 강팀이에요.",
       storyEn: "My memory of Gwangju is inseparable from the boundless generosity of its dinner tables. In the quiet brick alleyways of Yangnim-dong, an elderly cook serves a humble table where more than twenty side dishes crowd the surface before the simmering duck soup even arrives. The local accent flows with a melodic, rhythmic cadence that feels like song. Inside Champions Field, when red balloons float up against the silhouette of Mount Mudeung and the crowd belts out ‘Southbound Train’, you witness a deep communal grace forged through history.",
-      storyKo: "광주에서 마주한 호남의 기억은 밥상의 넉넉함과 떼려야 뗄 수 없었습니다. 양림동의 고즈넉한 골목길 허름한 식당에서 들깨 오리탕이 나오기도 전에 상을 가득 채우는 스무 가지가 넘는 정갈한 반찬들, 그리고 말끝마다 판소리처럼 리듬을 타는 다정한 억양 속에는 질곡의 시대를 품위 있게 견뎌낸 이들의 깊은 정이 서려 있었습니다. 무등산 능선 아래 챔피언스 필드에서 붉은 물결이 ‘남행열차’를 부를 때 터져 나오는 환희는 승리를 넘어선 삶의 찬가였습니다.",
+      storyKo: "KTX를 타고 광주송정역에 내렸어요. 양림동 골목 식당에 갔는데, 반찬이 스무 가지나 나와서 깜짝 놀랐어요! 따뜻한 들깨 오리탕도 정말 맛있었어요. 챔피언스필드 야구장은 무등산 아래에 있어서 풍경이 참 예뻤어요. 팬들이 빨간 풍선을 흔들면서 '남행열차'를 불렀는데, 춤도 추고 노래도 불러서 정말 신났어요. 광주는 인심이 아주 넉넉한 도시예요.",
       photos: [
         {
           src: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=800&q=80",
           labelEn: "Place · Mudeungsan Columnar Joint Peaks (Jusangjeolli)",
-          labelKo: "장소 · 무등산 서석대 주상절리와 억새 능선"
+          labelKo: "장소 · 아름다운 무등산 서석대"
         },
         {
           src: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=800&q=80",
           labelEn: "Street · Yangnim-dong Modern History & Penguin Village",
-          labelKo: "거리 · 양림동 역사문화마을과 펭귄마골 골목"
+          labelKo: "거리 · 양림동 역사마을과 펭귄마을"
         },
         {
           src: "https://images.unsplash.com/photo-1583032015879-c5c5896a40c9?w=800&q=80",
           labelEn: "Food · Perilla Seed Duck Soup & Bountiful Namdo Table",
-          labelKo: "음식 · 고소한 들깨 오리탕과 푸짐한 남도 한정식"
+          labelKo: "음식 · 푸짐한 남도 밥상과 들깨 오리탕"
         }
       ],
       anthem: {
         titleEn: "Southbound Train (Namhaeng Yeolcha)",
         titleKo: "남행열차",
         originEn: "Kim Soo-hee classic · Immortal Tiger Anthem",
-        originKo: "김수희 원곡 · 호남 야구의 영원한 찬가",
+        originKo: "김수희 원곡 노래 · 남행열차",
         noteEn: "The unmistakable brass melody triggers an explosive singalong on the 3rd base concourse.",
-        noteKo: "비 내리는 호남선의 애절한 선율이 승리의 환호성으로 바뀌는 타이거즈의 상징 응원가.",
+        noteKo: "비 내리는 호남선 노래에 맞춰 신나게 춤추며 불러요.",
         youtubeId: "rVv3V8wZ5R0",
         timestamp: 12
       },
@@ -909,21 +909,21 @@ const KBO_DATA = {
           ko: "워매~ 반갑소잉!",
           romaja: "Womae~ Bangapsoing!",
           meaningEn: "Oh goodness~ Wonderful to see you!",
-          descKo: "모든 감정을 품어내는 호남 특유의 정겨운 감탄사",
+          descKo: "친구를 만나서 정말 반가울 때 쓰는 전라도 말이에요.",
           noteEn: "Warm exclamation of surprise and delighted hospitality."
         },
         {
           ko: "밥은 자셨소?",
           romaja: "Babeun jasyeosso?",
           meaningEn: "Have you had your meal, dear?",
-          descKo: "상대방을 극진히 아끼는 남도식 다정한 문안",
+          descKo: "어르신께 진지를 드셨는지 공손하게 묻는 인사예요.",
           noteEn: "Rich, tender southern Korean inquiry of well-being."
         },
         {
           ko: "싸게싸게 오소!",
           romaja: "Ssage-ssage oso!",
           meaningEn: "Come on over quickly!",
-          descKo: "재촉 속에서도 밥 한 끼 더 먹이고픈 인정",
+          descKo: "빨리 와서 같이 밥을 먹자고 재촉하는 말이에요.",
           noteEn: "Classic southern phrase meaning 'hurry over to join us'."
         }
       ]
@@ -951,33 +951,33 @@ const KBO_DATA = {
       coords: [35.2225, 128.5824],
       zoomLevel: 15.6,
       civicAnchorEn: "Built upon the sacred grounds of old Masan Stadium, Changwon NC Park unites the rugged, fierce baseball heritage of old Masan Port with the sleek precision of a modern planned industrial capital and high-tech software innovator (NCSoft).",
-      civicAnchorKo: "구 마산종합운동장의 거친 흙먼지 위에 세워진 대한민국 최초의 메이저리그식 개방형 구장입니다. 1970~80년대 마산 야구의 뜨거운 야성과 계획도시 창원의 정밀한 기계공업, IT 소프트웨어의 혁신이 공존합니다.",
+      civicAnchorKo: "창원은 계획도시의 넓은 길과 마산의 오래된 바다가 함께 있는 곳이에요. NC 다이노스는 멋진 야구장에서 새로운 야구를 보여줘요.",
       storyEn: "Changwon lives with two distinct pulses. Walking down the broad, tree-lined boulevards of planned central Changwon feels orderly and calm, but crossing over into old Masan plunges you straight into winding fish-market alleys where the scent of dried pollack and fiery monkfish stew (Agujjim) hangs in the air. Decades before the NC Dinos existed, Masan fans were legendary for their fierce, unapologetic passion for the game. Today at the state-of-the-art open concourse of NC Park, that old port grit lives on under the spirited banner of ‘Dandi Haera’—do it right, do it solid.",
-      storyKo: "창원은 서로 다른 두 개의 호흡을 품고 있습니다. 기계공업과 계획도시 특유의 반듯하고 정돈된 대로를 지나 마산으로 넘어가면, 비탈진 언덕길과 건어물 비린내, 그리고 수십 년간 타오른 야구에 대한 거친 집착이 그대로 살아있는 옛 골목이 펼쳐집니다. NC 다이노스가 창단되기 훨씬 전부터 마산의 야구팬들은 소주병을 들고 철조망을 흔들던 전설적인 야성을 지니고 있었습니다. 오늘날 메이저리그급 최신식 NC파크의 개방형 콘코스 위에서도 '단디 해라'라는 묵직한 구호 속에 그 항구의 혼이 그대로 살아 숨 쉽니다.",
+      storyKo: "기차를 타고 마산역에 도착했어요. 어시장에 가니 맛있는 생선 냄새와 매콤한 아구찜 냄새가 났어요. 창원NC파크는 야구장이 아주 현대적이고 깨끗했어요. 잔디밭에 앉아서 친구와 같이 야구를 볼 수 있어서 참 편했어요. 팬들이 '단디 해라!'라고 크게 외쳤는데, 무슨 일이든 똑똑하고 확실하게 잘하라는 경상도 말이에요. 바다 냄새와 함께한 멋진 하루였어요.",
       photos: [
         {
           src: "https://images.unsplash.com/photo-1542051841857-5f90071e7989?w=800&q=80",
           labelEn: "Place · Masan Port & Dotseom Golden Pig Island",
-          labelKo: "장소 · 마산항 앞바다와 돝섬 해상유원지"
+          labelKo: "장소 · 푸른 마산항 바다와 섬"
         },
         {
           src: "https://images.unsplash.com/photo-1514924013411-cbf25faa35bb?w=800&q=80",
           labelEn: "Street · Odong-dong Agujjim & Tongsul Alley",
-          labelKo: "거리 · 오동동 아구찜거리와 통술집 골목"
+          labelKo: "거리 · 매콤한 냄새가 나는 아구찜 골목"
         },
         {
           src: "https://images.unsplash.com/photo-1582878826629-29b7ad1cdc43?w=800&q=80",
           labelEn: "Food · Sun-Dried Spicy Monkfish Stew (Agujjim)",
-          labelKo: "음식 · 바람에 말린 쫄깃한 원조 마산 건아구찜"
+          labelKo: "음식 · 쫄깃하고 매운 원조 마산 아구찜"
         }
       ],
       anthem: {
         titleEn: "Come Back to Masan Port (Dorawayo Masan-hang-e)",
         titleKo: "돌아와요 마산항에",
         originEn: "Cho Yong-pil classic adapted · Masan Baseball Soul",
-        originKo: "조용필 원곡 개사 · 마산 야구의 상징가",
+        originKo: "조용필 원곡 노래 · 돌아와요 마산항에",
         noteEn: "Carries the rugged, briny sea spray and blue-collar longing of the southern coast.",
-        noteKo: "NC 창단 전부터 옛 마산야구장을 채우던 항구도시 특유의 깊은 바다 냄새가 밴 응원곡.",
+        noteKo: "마산 바다의 정취를 느끼며 팬들이 함께 부르는 노래예요.",
         youtubeId: "b3B09V7N_B8",
         timestamp: 10
       },
@@ -986,21 +986,21 @@ const KBO_DATA = {
           ko: "단디 해라!",
           romaja: "Dandi haera!",
           meaningEn: "Do it thoroughly and solidly!",
-          descKo: "NC 다이노스의 공식 슬로건이자 경남의 대표적 격려",
+          descKo: "실수 없이 똑똑하게 잘하라는 경상도 격려예요.",
           noteEn: "The definitive Gyeongnam motto for focused, resolute execution."
         },
         {
           ko: "반갑십니더~ 밥 뭇나?",
           romaja: "Bangapsimnideo~ Bap munna?",
           meaningEn: "Pleasure to meet you~ Have you eaten?",
-          descKo: "마산·창원 특유의 단단하고 낮은 인사말",
+          descKo: "만나서 반갑고 밥은 먹었는지 묻는 정다운 인사예요.",
           noteEn: "Deep, sturdy southern coastal greeting."
         },
         {
           ko: "마산 야구 살아있네!",
           romaja: "Masan yagu sarainne!",
           meaningEn: "Masan baseball is alive and kickin’!",
-          descKo: "거친 항구 야구의 자부심을 드러내는 찬사",
+          descKo: "야구가 정말 재미있고 멋지다고 칭찬하는 말이에요.",
           noteEn: "Pride in the historic baseball hotbed of southeastern Korea."
         }
       ]

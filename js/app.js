@@ -303,7 +303,7 @@
       <article class="entry-header">
         <div class="meta-eyebrow">
           <span class="lang-en">Travel Chapter · ${data.cityNameEn}</span>
-          <span class="lang-ko">도시의 숨결과 골목의 기억 · ${data.cityNameKo}</span>
+          <span class="lang-ko">도시 여행 이야기 · ${data.cityNameKo}</span>
         </div>
 
         <div class="city-title-row">
@@ -359,7 +359,7 @@
       <section class="story-section">
         <div class="meta-eyebrow">
           <span class="lang-en">Personal Journal Entry</span>
-          <span class="lang-ko">여행자의 기록</span>
+          <span class="lang-ko">여행자의 일기</span>
         </div>
         <div class="story-body">
           <p class="lang-en">${data.storyEn}</p>
@@ -373,7 +373,7 @@
           <div class="anthem-title-group">
             <span class="anthem-badge">
               <span class="lang-en">Stadium Anthem & Rally Song</span>
-              <span class="lang-ko">구장 시그니처 찬가</span>
+              <span class="lang-ko">야구장 대표 응원가</span>
             </span>
             <div class="anthem-name">
               <span class="lang-en">${data.anthem.titleEn}</span>
@@ -402,11 +402,11 @@
         </div>
       </section>
 
-      <!-- "Hear the City" (도시의 말씨와 억양) -->
+      <!-- Local Dialect & Regional Expressions (도시의 말씨와 표현) -->
       <section class="audio-section">
         <div class="meta-eyebrow">
-          <span class="lang-en">Hear the City · Local Dialect & Speech</span>
-          <span class="lang-ko">도시의 말씨와 억양 · Hear the City</span>
+          <span class="lang-en">Local Dialect & Expressions</span>
+          <span class="lang-ko">도시의 말씨와 정겨운 표현</span>
         </div>
 
         <div class="phrase-grid">
@@ -422,14 +422,6 @@
                   <span class="lang-ko">${phrase.descKo}</span>
                 </div>
               </div>
-              <button 
-                type="button"
-                class="play-speech-btn" 
-                data-speech-text="${phrase.ko}" 
-                aria-label="Listen to pronunciation"
-                title="Play pronunciation">
-                ▶
-              </button>
             </div>
           `).join("")}
         </div>
@@ -444,15 +436,6 @@
         if (photo) {
           openLightbox(photo);
         }
-      });
-    });
-
-    // Attach Speech Synthesis
-    panelContent.querySelectorAll(".play-speech-btn").forEach((btn) => {
-      btn.addEventListener("click", (e) => {
-        e.stopPropagation();
-        const text = btn.getAttribute("data-speech-text");
-        playDialectVoice(text, btn);
       });
     });
 
@@ -518,47 +501,8 @@
     renderEditorial(id);
   }
 
-  // Preload speech voices for smooth pronunciation playback
-  if (typeof window !== "undefined" && "speechSynthesis" in window && window.speechSynthesis.onvoiceschanged !== undefined) {
-    window.speechSynthesis.onvoiceschanged = () => {
-      try { window.speechSynthesis.getVoices(); } catch (e) {}
-    };
-  }
-
   /**
-   * 6. Speech Synthesis for Dialects
-   */
-  function playDialectVoice(text, buttonElement) {
-    if (!("speechSynthesis" in window)) {
-      alert("Speech synthesis is not supported in this browser.");
-      return;
-    }
-
-    window.speechSynthesis.cancel();
-
-    const utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = "ko-KR";
-    utterance.rate = 0.82; // slightly slower for melodic regional cadence
-    utterance.pitch = 0.95;
-
-    // Try to find a natural Korean voice if available
-    const voices = window.speechSynthesis.getVoices();
-    const koreanVoice = voices.find((v) => v.lang.includes("ko") || v.lang.includes("KR"));
-    if (koreanVoice) {
-      utterance.voice = koreanVoice;
-    }
-
-    if (buttonElement) {
-      buttonElement.classList.add("playing");
-      utterance.onend = () => buttonElement.classList.remove("playing");
-      utterance.onerror = () => buttonElement.classList.remove("playing");
-    }
-
-    window.speechSynthesis.speak(utterance);
-  }
-
-  /**
-   * 7. Lightbox Modal Controller
+   * 6. Lightbox Modal Controller
    */
   function openLightbox(photo) {
     if (!lightboxModal || !lightboxImg) return;
@@ -620,10 +564,42 @@
     }, 200);
   }
 
-  // Run on DOM ready
+  // ---------------------------------------------------------------------------
+  // Async bootstrap: load data.json (editable text file) then start the app.
+  // Falls back to the built-in KBO_DATA.entries when running as file:// or
+  // if data.json is missing.
+  // ---------------------------------------------------------------------------
+  function bootstrap() {
+    // Only attempt fetch over http(s) — file:// protocol blocks fetch
+    if (!window.location.protocol.startsWith("http")) {
+      init();
+      return;
+    }
+
+    fetch("data.json?t=" + Date.now())
+      .then(function (res) {
+        if (!res.ok) throw new Error("data.json not found");
+        return res.json();
+      })
+      .then(function (json) {
+        // Merge every entry from data.json into KBO_DATA.entries,
+        // preserving logoSvg and any fields not in the JSON.
+        Object.keys(json).forEach(function (id) {
+          if (KBO_DATA.entries[id]) {
+            Object.assign(KBO_DATA.entries[id], json[id]);
+          }
+        });
+        init();
+      })
+      .catch(function () {
+        // Couldn't load data.json — run with the built-in data
+        init();
+      });
+  }
+
   if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", init);
+    document.addEventListener("DOMContentLoaded", bootstrap);
   } else {
-    init();
+    bootstrap();
   }
 })();
