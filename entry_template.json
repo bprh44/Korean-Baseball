@@ -12,33 +12,60 @@
   "cityNameEn": "City Name (English)",
   "cityNameKo": "도시 이름 (한국어)",
   "cityHanja": "漢字 (Traditional Characters)",
-  "neighborhoodEn": "District · Neighborhood & Landmark",
-  "neighborhoodKo": "구 · 동 및 주요 랜드마크",
   "teamNameEn": "Team Name (English)",
   "teamNameKo": "구단 이름 (한국어)",
   "stadiumEn": "Stadium Name (English)",
   "stadiumKo": "경기장 이름 (한국어)",
   "coords": [37.1234, 127.1234],
   "zoomLevel": 15.6,
-  "civicAnchorEn": "1-2 sentences explaining the relationship between the city, neighborhood, and ballpark.",
-  "civicAnchorKo": "도시와 야구장 이야기 1~2문장 (TOPIK 1 초급 레벨: ~에 있어요, ~이/가 유명해요).",
-  "storyEn": "Your personal travel story in English. What did you see, eat, and feel in this city and stadium?",
-  "storyKo": "쉬운 한국어 여행 이야기 (TOPIK 1 초급 문법: ~았/었어요, ~에 가서 ~을 먹었어요, ~고 싶어요).",
+  "civicAnchorEn": "• Owning Conglomerate: Group Name\n• Founded: Year\n• Main Industries: Key sectors\n• Assessed Value / Assets: Valuation in KRW",
+  "civicAnchorKo": "• 소유 모기업: 그룹명\n• 창립 및 모태: 연도\n• 핵심 주력산업: 주력 산업군\n• 자산 및 기업가치: 원화 기준 자산 규모",
   "photos": [
     {
-      "src": "images/cities/your-city-folder/1_place.jpg",
-      "labelEn": "Place · Landscape, skyline, or historic site",
-      "labelKo": "장소 · 도시 풍경이나 유명한 곳"
+      "src": "images/cities/your-city-folder/1_stadium.jpg",
+      "labelEn": "Place · Ballpark PR image or stadium landscape",
+      "labelKo": "장소 · 야구장 전경 및 풍경"
     },
     {
-      "src": "images/cities/your-city-folder/2_street.jpg",
-      "labelEn": "Street · Alleyways, markets, or local people",
-      "labelKo": "거리 · 골목길이나 시장 풍경"
+      "src": "images/cities/your-city-folder/2_landmark.jpg",
+      "labelEn": "Street · City landmark or iconic destination",
+      "labelKo": "거리 · 도시 대표 랜드마크 및 명소"
     },
     {
-      "src": "images/cities/your-city-folder/3_food.jpg",
-      "labelEn": "Food · Regional dish, market snack, or ballpark food",
-      "labelKo": "음식 · 맛있는 음식이나 야구장 간식"
+      "src": "images/cities/your-city-folder/3_dish.jpg",
+      "labelEn": "Food · Regional dish, market snack, or culinary specialty",
+      "labelKo": "음식 · 지역 대표 미식 및 향토 음식"
+    }
+  ],
+  "phrases": [
+    {
+      "ko": "사투리 인사",
+      "romaja": "Romanization of regional hello",
+      "meaningEn": "Hello! (Regional dialect)",
+      "descKo": "사투리 인사말 설명",
+      "noteEn": "Regional dialect greeting note"
+    },
+    {
+      "ko": "밥 묵었나? / 식사하셨어요?",
+      "romaja": "Romanization of have you eaten?",
+      "meaningEn": "Have you eaten? (Regional meal inquiry)",
+      "descKo": "식사 여부를 묻는 정겨운 안부 인사 설명",
+      "noteEn": "Regional dining greeting nuance"
+    },
+    {
+      "ko": "지역 고유 관용구",
+      "romaja": "Romanization of unique regional phrase",
+      "meaningEn": "Unique regional expression",
+      "descKo": "지역 대표 명물 표현 및 문화 설명",
+      "noteEn": "Unique cultural/idiomatic context"
+    },
+    {
+      "ko": "구장 견제/응원 구호",
+      "romaja": "Romanization of baseball chant",
+      "meaningEn": "Stadium cheer / pickoff chant",
+      "descKo": "야구장 시그니처 구호 설명",
+      "noteEn": "Stadium rallying cry nuance",
+      "youtubeUrl": "https://www.youtube.com/watch?v=..."
     }
   ],
   "anthem": {
@@ -50,28 +77,5 @@
     "noteKo": "야구장에서 다 함께 노래를 부르는 방법 설명",
     "youtubeId": "YOUTUBE_VIDEO_ID_HERE",
     "timestamp": 10
-  },
-  "phrases": [
-    {
-      "ko": "사투리 / 현지 표현 1",
-      "romaja": "Romanization of phrase 1",
-      "meaningEn": "English meaning of phrase 1",
-      "descKo": "한국어 표현 설명",
-      "noteEn": "Cultural context or nuance note"
-    },
-    {
-      "ko": "사투리 / 현지 표현 2",
-      "romaja": "Romanization of phrase 2",
-      "meaningEn": "English meaning of phrase 2",
-      "descKo": "한국어 표현 설명",
-      "noteEn": "Cultural context or nuance note"
-    },
-    {
-      "ko": "구장 응원 구호 3",
-      "romaja": "Romanization of cheer 3",
-      "meaningEn": "English meaning of cheer 3",
-      "descKo": "응원 구호 설명",
-      "noteEn": "Stadium rallying cry context"
-    }
-  ]
+  }
 }

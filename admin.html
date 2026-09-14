@@ -1,0 +1,1412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KBO Journey · Data Editor</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg-base:       #0d0f14;
+      --bg-surface:    #151820;
+      --bg-card:       #1c2030;
+      --bg-input:      #111420;
+      --border:        #2a2f45;
+      --border-focus:  #4f6ef7;
+      --accent:        #4f6ef7;
+      --accent-soft:   rgba(79,110,247,.12);
+      --accent-glow:   rgba(79,110,247,.35);
+      --success:       #22c55e;
+      --danger:        #ef4444;
+      --text-primary:  #e8eaf6;
+      --text-secondary:#8b93b8;
+      --text-muted:    #4b5280;
+      --tag-bg:        #1e2640;
+      --sidebar-w:     268px;
+      --header-h:      58px;
+      --radius:        10px;
+      --radius-sm:     6px;
+      --transition:    .18s cubic-bezier(.4,0,.2,1);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg-base);
+      color: var(--text-primary);
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    /* HEADER */
+    header {
+      height: var(--header-h);
+      background: var(--bg-surface);
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center;
+      padding: 0 20px; gap: 14px;
+      flex-shrink: 0; z-index: 100;
+    }
+    .logo-badge {
+      background: linear-gradient(135deg,#4f6ef7,#a855f7);
+      border-radius: 8px; width: 34px; height: 34px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 17px; flex-shrink: 0;
+    }
+    header h1 { font-size: 14px; font-weight: 600; }
+    .header-right { margin-left: auto; display: flex; gap: 8px; align-items: center; }
+    /* AUTOSAVE BADGE */
+    .autosave-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 12px;
+      padding: 5px 12px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      color: var(--text-secondary);
+      font-weight: 500;
+      transition: var(--transition);
+      cursor: default;
+      user-select: none;
+    }
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--text-muted);
+      transition: background 0.25s ease, box-shadow 0.25s ease;
+    }
+    .autosave-badge.connected .status-dot {
+      background: var(--success);
+      box-shadow: 0 0 8px rgba(34,197,94,0.65);
+    }
+    .autosave-badge.saving .status-dot {
+      background: #f59e0b;
+      box-shadow: 0 0 8px rgba(245,158,11,0.65);
+    }
+    .autosave-badge.error .status-dot {
+      background: var(--danger);
+      box-shadow: 0 0 8px rgba(239,68,68,0.65);
+    }
+    .autosave-badge.saved {
+      border-color: rgba(34,197,94,0.4);
+    }
+    /* BUTTONS */
+    .btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 7px 13px; border-radius: var(--radius-sm);
+      font-size: 13px; font-weight: 500; font-family: inherit;
+      cursor: pointer; border: none; transition: var(--transition); white-space: nowrap;
+    }
+    .btn-primary { background: var(--accent); color: #fff; }
+    .btn-primary:hover { background: #3d5be0; box-shadow: 0 0 14px var(--accent-glow); }
+    .btn-secondary { background: var(--bg-card); color: var(--text-secondary); border: 1px solid var(--border); }
+    .btn-secondary:hover { border-color: var(--accent); color: var(--text-primary); }
+    .btn-danger { background: rgba(239,68,68,.15); color: var(--danger); border: 1px solid rgba(239,68,68,.3); }
+    .btn-danger:hover { background: rgba(239,68,68,.25); }
+    .btn-success { background: rgba(34,197,94,.15); color: var(--success); border: 1px solid rgba(34,197,94,.3); }
+    .btn-success:hover { background: rgba(34,197,94,.25); }
+    .btn-sm { padding: 4px 9px; font-size: 12px; }
+    /* LAYOUT */
+    .app-body { display: flex; flex: 1; overflow: hidden; }
+    /* SIDEBAR */
+    .sidebar {
+      width: var(--sidebar-w); background: var(--bg-surface);
+      border-right: 1px solid var(--border);
+      display: flex; flex-direction: column; flex-shrink: 0; overflow: hidden;
+    }
+    .sidebar-search { padding: 10px; border-bottom: 1px solid var(--border); }
+    .search-wrap { position: relative; }
+    .search-icon { position: absolute; left: 9px; top: 50%; transform: translateY(-50%); color: var(--text-muted); font-size: 12px; pointer-events: none; }
+    .search-input {
+      width: 100%; background: var(--bg-input);
+      border: 1px solid var(--border); border-radius: var(--radius-sm);
+      padding: 7px 10px 7px 28px; font-size: 13px; color: var(--text-primary);
+      font-family: inherit; outline: none; transition: var(--transition);
+    }
+    .search-input:focus { border-color: var(--border-focus); }
+    .sidebar-list { flex: 1; overflow-y: auto; padding: 6px; }
+    .sidebar-list::-webkit-scrollbar { width: 4px; }
+    .sidebar-list::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+    .team-item {
+      display: flex; align-items: center; gap: 9px;
+      padding: 9px 10px; border-radius: var(--radius-sm);
+      cursor: pointer; transition: var(--transition); margin-bottom: 2px;
+      border: 1px solid transparent;
+    }
+    .team-item:hover { background: var(--bg-card); }
+    .team-item.active { background: var(--accent-soft); border-color: rgba(79,110,247,.25); }
+    .team-color-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+    .team-item-info { flex: 1; min-width: 0; }
+    .team-item-name { font-size: 13px; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .team-item-city { font-size: 11px; color: var(--text-muted); margin-top: 1px; }
+    .team-rank { font-size: 11px; color: var(--text-muted); font-weight: 600; background: var(--bg-input); border-radius: 4px; padding: 2px 5px; flex-shrink: 0; }
+    .sidebar-footer { padding: 10px; border-top: 1px solid var(--border); }
+    /* EDITOR AREA */
+    .editor-area { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+    .editor-tabs {
+      display: flex; padding: 0 16px;
+      background: var(--bg-surface); border-bottom: 1px solid var(--border);
+      flex-shrink: 0; overflow-x: auto;
+    }
+    .editor-tabs::-webkit-scrollbar { height: 3px; }
+    .editor-tabs::-webkit-scrollbar-thumb { background: var(--border); }
+    .tab-btn {
+      padding: 13px 16px; font-size: 13px; font-weight: 500;
+      color: var(--text-muted); cursor: pointer; border: none; background: none;
+      font-family: inherit; border-bottom: 2px solid transparent;
+      transition: var(--transition); white-space: nowrap;
+    }
+    .tab-btn:hover { color: var(--text-primary); }
+    .tab-btn.active { color: var(--accent); border-bottom-color: var(--accent); }
+    .editor-content { flex: 1; overflow-y: auto; padding: 22px; }
+    .editor-content::-webkit-scrollbar { width: 5px; }
+    .editor-content::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+    /* PANELS */
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+    /* CARDS / FORM */
+    .section-card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 18px; margin-bottom: 14px;
+    }
+    .section-title {
+      font-size: 11px; font-weight: 600; letter-spacing: .08em;
+      text-transform: uppercase; color: var(--text-muted);
+      margin-bottom: 14px; display: flex; align-items: center; gap: 8px;
+    }
+    .section-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+    .form-row { display: grid; gap: 12px; margin-bottom: 12px; }
+    .form-row.cols-2 { grid-template-columns: 1fr 1fr; }
+    .form-row.cols-3 { grid-template-columns: 1fr 1fr 1fr; }
+    .form-row.cols-1 { grid-template-columns: 1fr; }
+    .form-row:last-child { margin-bottom: 0; }
+    .field { display: flex; flex-direction: column; gap: 5px; }
+    .field-label { font-size: 12px; font-weight: 500; color: var(--text-secondary); display: flex; align-items: center; gap: 6px; }
+    .lang-tag { font-size: 10px; background: var(--tag-bg); color: var(--text-muted); padding: 1px 5px; border-radius: 3px; font-weight: 400; }
+    .field input[type="text"],
+    .field input[type="number"],
+    .field textarea,
+    .field select {
+      background: var(--bg-input); border: 1px solid var(--border);
+      border-radius: var(--radius-sm); padding: 8px 11px;
+      color: var(--text-primary); font-size: 13px; font-family: inherit;
+      outline: none; transition: var(--transition); width: 100%; resize: vertical;
+    }
+    .field input:focus, .field textarea:focus { border-color: var(--border-focus); box-shadow: 0 0 0 3px var(--accent-soft); }
+    .field textarea { min-height: 76px; line-height: 1.5; }
+    .field textarea.tall { min-height: 110px; }
+    .field-hint { font-size: 11px; color: var(--text-muted); }
+    /* Color */
+    .color-field { display: flex; align-items: center; gap: 9px; }
+    .color-field input[type="color"] { width: 38px; height: 36px; padding: 2px; border-radius: var(--radius-sm); border: 1px solid var(--border); background: var(--bg-input); cursor: pointer; }
+    .color-field input[type="text"] { flex: 1; font-family: 'JetBrains Mono', monospace; }
+    /* Sub-cards */
+    .photo-card, .phrase-card {
+      background: var(--bg-surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 14px; margin-bottom: 10px;
+    }
+    .card-header { display: flex; align-items: center; gap: 9px; margin-bottom: 12px; }
+    .card-num { background: var(--accent-soft); color: var(--accent); font-size: 12px; font-weight: 700; padding: 3px 8px; border-radius: 5px; flex-shrink: 0; }
+    .photo-preview { width: 60px; height: 44px; border-radius: var(--radius-sm); object-fit: cover; background: var(--bg-input); border: 1px solid var(--border); flex-shrink: 0; }
+    .photo-preview-placeholder { width: 60px; height: 44px; border-radius: var(--radius-sm); background: var(--bg-input); border: 1px dashed var(--border); display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+    /* JSON */
+    .json-area {
+      background: var(--bg-input); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 14px;
+      font-family: 'JetBrains Mono', monospace; font-size: 12px;
+      color: #a5f3fc; line-height: 1.6; overflow: auto;
+      white-space: pre; min-height: 360px; max-height: 560px;
+    }
+    /* EMPTY */
+    .empty-state {
+      display: flex; flex-direction: column; align-items: center;
+      justify-content: center; gap: 14px; height: 380px;
+      color: var(--text-muted); text-align: center;
+    }
+    .empty-state .icon { font-size: 52px; }
+    .empty-state h2 { font-size: 17px; color: var(--text-secondary); }
+    .empty-state p { font-size: 13px; max-width: 260px; line-height: 1.5; }
+    /* TOAST */
+    .toast-container { position: fixed; bottom: 22px; right: 22px; z-index: 9999; display: flex; flex-direction: column; gap: 8px; }
+    .toast {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 11px 14px;
+      font-size: 13px; color: var(--text-primary);
+      box-shadow: 0 8px 28px rgba(0,0,0,.4);
+      display: flex; align-items: center; gap: 9px;
+      animation: toastIn .2s ease; min-width: 220px;
+    }
+    .toast.success { border-color: rgba(34,197,94,.4); }
+    .toast.error   { border-color: rgba(239,68,68,.4); }
+    @keyframes toastIn { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:none; } }
+    /* MODAL */
+    .modal-backdrop {
+      position: fixed; inset: 0; background: rgba(0,0,0,.7);
+      backdrop-filter: blur(4px); z-index: 500;
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none; transition: var(--transition);
+    }
+    .modal-backdrop.open { opacity: 1; pointer-events: all; }
+    .modal {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 14px; padding: 26px; width: 440px; max-width: 90vw;
+      transform: scale(.95); transition: var(--transition);
+    }
+    .modal-backdrop.open .modal { transform: scale(1); }
+    .modal h2 { font-size: 16px; margin-bottom: 6px; }
+    .modal p { font-size: 13px; color: var(--text-secondary); margin-bottom: 18px; }
+    .modal-actions { display: flex; justify-content: flex-end; gap: 9px; margin-top: 18px; }
+    .modal .field input {
+      background: var(--bg-input); border: 1px solid var(--border);
+      border-radius: var(--radius-sm); padding: 8px 11px;
+      color: var(--text-primary); font-size: 13px; font-family: inherit;
+      outline: none; transition: var(--transition); width: 100%;
+    }
+    .modal .field input:focus { border-color: var(--border-focus); box-shadow: 0 0 0 3px var(--accent-soft); }
+    .badge { display: inline-flex; align-items: center; font-size: 11px; font-weight: 600; padding: 2px 7px; border-radius: 20px; }
+    .badge-blue { background: rgba(79,110,247,.15); color: var(--accent); }
+    * { scrollbar-width: thin; scrollbar-color: var(--border) transparent; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo-badge">⚾</div>
+  <div><h1>KBO Journey <span>· Data Editor</span></h1></div>
+  <div class="header-right">
+    <div id="autosave-badge" class="autosave-badge" title="Live Auto-Save Status">
+      <span class="status-dot"></span>
+      <span id="autosave-text">Ready</span>
+    </div>
+    <button id="btn-link-file" class="btn btn-primary" onclick="openAutosaveModal()" title="Connect data.json or project folder for instant in-browser auto-saving">
+      ⚡ Direct Auto-Save
+    </button>
+    <label class="btn btn-secondary" for="file-input">📂 Load JSON</label>
+    <input type="file" id="file-input" accept=".json" style="display:none" />
+    <button class="btn btn-secondary" onclick="exportJSON()">💾 Export JSON</button>
+  </div>
+</header>
+
+<div class="app-body">
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-search">
+      <div class="search-wrap">
+        <span class="search-icon">🔍</span>
+        <input class="search-input" id="search-input" type="text" placeholder="Search teams…" oninput="renderSidebar()" />
+      </div>
+    </div>
+    <div class="sidebar-list" id="sidebar-list"></div>
+  </aside>
+
+  <!-- EDITOR -->
+  <main class="editor-area">
+    <div class="editor-tabs">
+      <button class="tab-btn active"  onclick="switchTab('basic')">🏙 Basic</button>
+      <button class="tab-btn"         onclick="switchTab('colors')">🎨 Colors</button>
+      <button class="tab-btn"         onclick="switchTab('chaebol')">🏢 Chaebol Owner</button>
+      <button class="tab-btn"         onclick="switchTab('photos')">📸 Photos</button>
+      <button class="tab-btn"         onclick="switchTab('phrases')">💬 Phrases</button>
+      <button class="tab-btn"         onclick="switchTab('anthem')">🎵 Anthem</button>
+      <button class="tab-btn"         onclick="switchTab('json')">{ } JSON</button>
+    </div>
+
+    <div class="editor-content">
+      <!-- EMPTY -->
+      <div class="empty-state" id="empty-state">
+        <div class="icon">⚾</div>
+        <h2>No Team Selected</h2>
+        <p>Load your <strong>data.json</strong> or pick a team from the sidebar.</p>
+        <label class="btn btn-primary" for="file-input">📂 Load data.json</label>
+      </div>
+
+      <!-- BASIC -->
+      <div class="tab-panel" id="panel-basic">
+        <div class="section-card">
+          <div class="section-title">Identity</div>
+          <div class="form-row cols-2">
+            <div class="field">
+              <label class="field-label">Entry ID (slug)</label>
+              <input type="text" id="f-id" placeholder="city-team-slug" oninput="syncField('id')" />
+              <span class="field-hint">Unique key in the JSON object</span>
+            </div>
+            <div class="field">
+              <label class="field-label">Rank <span class="lang-tag">1–10</span></label>
+              <input type="number" id="f-rank" min="1" max="10" oninput="syncField('rank',true)" />
+            </div>
+          </div>
+          <div class="form-row cols-2">
+            <div class="field">
+              <label class="field-label">Team Name <span class="lang-tag">EN</span></label>
+              <input type="text" id="f-teamNameEn" placeholder="KT Wiz" oninput="syncField('teamNameEn')" />
+            </div>
+            <div class="field">
+              <label class="field-label">Team Name <span class="lang-tag">KO</span></label>
+              <input type="text" id="f-teamNameKo" placeholder="KT 위즈" oninput="syncField('teamNameKo')" />
+            </div>
+          </div>
+        </div>
+
+        <div class="section-card">
+          <div class="section-title">City</div>
+          <div class="form-row cols-3">
+            <div class="field">
+              <label class="field-label">City Key</label>
+              <input type="text" id="f-cityKey" placeholder="suwon" oninput="syncField('cityKey')" />
+            </div>
+            <div class="field">
+              <label class="field-label">City Name <span class="lang-tag">EN</span></label>
+              <input type="text" id="f-cityNameEn" oninput="syncField('cityNameEn')" />
+            </div>
+            <div class="field">
+              <label class="field-label">City Name <span class="lang-tag">KO</span></label>
+              <input type="text" id="f-cityNameKo" oninput="syncField('cityNameKo')" />
+            </div>
+          </div>
+          <div class="form-row cols-3">
+            <div class="field">
+              <label class="field-label">Short City <span class="lang-tag">EN</span></label>
+              <input type="text" id="f-shortCityEn" oninput="syncField('shortCityEn')" />
+            </div>
+            <div class="field">
+              <label class="field-label">Short City <span class="lang-tag">KO</span></label>
+              <input type="text" id="f-shortCityKo" oninput="syncField('shortCityKo')" />
+            </div>
+            <div class="field">
+              <label class="field-label">Hanja <span class="lang-tag">漢字</span></label>
+              <input type="text" id="f-cityHanja" oninput="syncField('cityHanja')" />
+            </div>
+          </div>
+        </div>
+
+        <div class="section-card">
+          <div class="section-title">Stadium &amp; Map</div>
+          <div class="form-row cols-2">
+            <div class="field">
+              <label class="field-label">Stadium <span class="lang-tag">EN</span></label>
+              <input type="text" id="f-stadiumEn" oninput="syncField('stadiumEn')" />
+            </div>
+            <div class="field">
+              <label class="field-label">Stadium <span class="lang-tag">KO</span></label>
+              <input type="text" id="f-stadiumKo" oninput="syncField('stadiumKo')" />
+            </div>
+          </div>
+          <div class="form-row cols-3">
+            <div class="field">
+              <label class="field-label">Latitude</label>
+              <input type="number" id="f-lat" step="0.0001" placeholder="37.2997" oninput="syncCoords()" />
+            </div>
+            <div class="field">
+              <label class="field-label">Longitude</label>
+              <input type="number" id="f-lng" step="0.0001" placeholder="127.0097" oninput="syncCoords()" />
+            </div>
+            <div class="field">
+              <label class="field-label">Zoom Level</label>
+              <input type="number" id="f-zoomLevel" step="0.1" placeholder="15.6" oninput="syncField('zoomLevel',true)" />
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex;justify-content:flex-end;margin-top:4px;">
+          <button class="btn btn-danger btn-sm" id="btn-delete-team" onclick="requestDelete()">🗑 Delete This Team</button>
+        </div>
+      </div><!-- /panel-basic -->
+
+      <!-- COLORS -->
+      <div class="tab-panel" id="panel-colors">
+        <div class="section-card">
+          <div class="section-title">Team Colors</div>
+          <div class="form-row cols-2">
+            <div class="field">
+              <label class="field-label">Primary Color</label>
+              <div class="color-field">
+                <input type="color" id="f-primaryColorPicker" oninput="syncColorFromPicker('primaryColor')" />
+                <input type="text" id="f-primaryColor" placeholder="#EC1C24" oninput="syncColorFromText('primaryColor')" />
+              </div>
+            </div>
+            <div class="field">
+              <label class="field-label">Secondary Color</label>
+              <div class="color-field">
+                <input type="color" id="f-secondaryColorPicker" oninput="syncColorFromPicker('secondaryColor')" />
+                <input type="text" id="f-secondaryColor" placeholder="#222222" oninput="syncColorFromText('secondaryColor')" />
+              </div>
+            </div>
+          </div>
+          <div style="display:flex;gap:12px;align-items:center;margin-top:8px;">
+            <div id="color-swatch-primary" style="width:64px;height:40px;border-radius:8px;border:1px solid var(--border);transition:.2s;"></div>
+            <div id="color-swatch-secondary" style="width:64px;height:40px;border-radius:8px;border:1px solid var(--border);transition:.2s;"></div>
+            <span style="font-size:12px;color:var(--text-muted);">Live preview</span>
+          </div>
+        </div>
+
+        <div class="section-card">
+          <div class="section-title">Assets</div>
+          <div class="form-row cols-1">
+            <div class="field">
+              <label class="field-label">Emblem Image Path</label>
+              <input type="text" id="f-emblemImg" placeholder="images/logos/emblem_KT.png" oninput="syncField('emblemImg')" />
+            </div>
+          </div>
+          <div class="form-row cols-1">
+            <div class="field">
+              <label class="field-label">Logo SVG (raw HTML)</label>
+              <textarea id="f-logoSvg" class="tall" placeholder="&lt;svg ...&gt;...&lt;/svg&gt;" oninput="syncField('logoSvg');updateSvgPreview()"></textarea>
+              <span class="field-hint">Inline SVG used as the map pin</span>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;margin-top:6px;">
+            <div id="svg-preview-box" style="width:44px;height:44px;display:flex;align-items:center;justify-content:center;background:var(--bg-input);border:1px solid var(--border);border-radius:8px;"></div>
+            <span style="font-size:12px;color:var(--text-muted);">SVG pin preview</span>
+          </div>
+        </div>
+      </div><!-- /panel-colors -->
+
+      <!-- CHAEBOL OWNER -->
+      <div class="tab-panel" id="panel-chaebol">
+        <div class="section-card">
+          <div class="section-title">Chaebol / Corporate Owner Facts</div>
+          <div class="form-row cols-1">
+            <div class="field">
+              <label class="field-label">Corporate Owner Facts (Bullet Points) <span class="lang-tag">EN</span></label>
+              <textarea id="f-civicAnchorEn" class="tall" style="min-height:140px" oninput="syncField('civicAnchorEn')" placeholder="• Owning Chaebol: ...&#10;• Founded: ...&#10;• Main Industries: ...&#10;• Assessed Value / Assets: ..."></textarea>
+              <span class="field-hint">Bullet point format: Founded year, main industries, and assessed value in KRW.</span>
+            </div>
+            <div class="field">
+              <label class="field-label">Corporate Owner Facts (Bullet Points) <span class="lang-tag">KO</span></label>
+              <textarea id="f-civicAnchorKo" class="tall" style="min-height:140px" oninput="syncField('civicAnchorKo')" placeholder="• 소유 모기업: ...&#10;• 창립 및 모태: ...&#10;• 핵심 주력산업: ...&#10;• 자산 및 기업가치: ..."></textarea>
+              <span class="field-hint">글머리 기호(•) 형식: 설립연도, 주력산업, 원화 기준 자산/기업가치.</span>
+            </div>
+          </div>
+        </div>
+      </div><!-- /panel-chaebol -->
+
+      <!-- PHOTOS -->
+      <div class="tab-panel" id="panel-photos">
+        <div id="photos-container"></div>
+      </div>
+
+      <!-- PHRASES -->
+      <div class="tab-panel" id="panel-phrases">
+        <div id="phrases-container"></div>
+        <button class="btn btn-secondary" style="margin-top:4px;" onclick="addPhrase()">＋ Add Phrase</button>
+      </div>
+
+      <!-- ANTHEM (MOVED TO LAST PORTION) -->
+      <div class="tab-panel" id="panel-anthem">
+        <div class="section-card">
+          <div class="section-title">Stadium Anthem</div>
+          <div class="form-row cols-2">
+            <div class="field">
+              <label class="field-label">Title <span class="lang-tag">EN</span></label>
+              <input type="text" id="f-anthem-titleEn" oninput="syncAnthem('titleEn')" />
+            </div>
+            <div class="field">
+              <label class="field-label">Title <span class="lang-tag">KO</span></label>
+              <input type="text" id="f-anthem-titleKo" oninput="syncAnthem('titleKo')" />
+            </div>
+          </div>
+          <div class="form-row cols-2">
+            <div class="field">
+              <label class="field-label">Origin <span class="lang-tag">EN</span></label>
+              <input type="text" id="f-anthem-originEn" oninput="syncAnthem('originEn')" />
+            </div>
+            <div class="field">
+              <label class="field-label">Origin <span class="lang-tag">KO</span></label>
+              <input type="text" id="f-anthem-originKo" oninput="syncAnthem('originKo')" />
+            </div>
+          </div>
+          <div class="form-row cols-1">
+            <div class="field">
+              <label class="field-label">Performance Note <span class="lang-tag">EN</span></label>
+              <textarea id="f-anthem-noteEn" oninput="syncAnthem('noteEn')"></textarea>
+            </div>
+            <div class="field">
+              <label class="field-label">Performance Note <span class="lang-tag">KO</span></label>
+              <textarea id="f-anthem-noteKo" oninput="syncAnthem('noteKo')"></textarea>
+            </div>
+          </div>
+          <div class="form-row cols-2">
+            <div class="field">
+              <label class="field-label">YouTube Video ID</label>
+              <input type="text" id="f-anthem-youtubeId" placeholder="dQw4w9WgXcQ" oninput="syncAnthem('youtubeId');updateYtPreview()" />
+              <span class="field-hint">Only the ID portion from the URL</span>
+            </div>
+            <div class="field">
+              <label class="field-label">Start Timestamp (seconds)</label>
+              <input type="number" id="f-anthem-timestamp" min="0" oninput="syncAnthem('timestamp',true)" />
+            </div>
+          </div>
+          <div id="yt-preview-container" style="margin-top:12px;display:none;">
+            <div style="font-size:12px;color:var(--text-muted);margin-bottom:8px;">YouTube Preview</div>
+            <iframe id="yt-preview" width="300" height="170" frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen style="border-radius:8px;border:1px solid var(--border);"></iframe>
+          </div>
+        </div>
+      </div><!-- /panel-anthem -->
+
+      <!-- JSON -->
+      <div class="tab-panel" id="panel-json">
+        <div class="section-card">
+          <div class="section-title">Current Team JSON <span class="badge badge-blue">read-only</span></div>
+          <div class="json-area" id="json-preview"></div>
+        </div>
+        <div class="section-card" style="margin-top:14px;">
+          <div class="section-title">Full data.json</div>
+          <div class="json-area" id="json-full-preview" style="max-height:280px;"></div>
+        </div>
+      </div>
+    </div><!-- /editor-content -->
+  </main>
+</div>
+
+<!-- TOASTS -->
+<div class="toast-container" id="toast-container"></div>
+
+
+<!-- DELETE MODAL -->
+<div class="modal-backdrop" id="modal-delete">
+  <div class="modal">
+    <h2>🗑 Delete Team?</h2>
+    <p id="modal-delete-msg">This removes the team from the editor. Your original file is unchanged until you export.</p>
+    <div class="modal-actions">
+      <button class="btn btn-secondary" onclick="closeModal()">Cancel</button>
+      <button class="btn btn-danger" onclick="confirmDelete()">Delete</button>
+    </div>
+  </div>
+</div>
+
+<!-- AUTOSAVE CONNECT MODAL -->
+<div class="modal-backdrop" id="modal-autosave-connect">
+  <div class="modal" style="max-width: 520px;">
+    <h2>⚡ Direct In-Browser Auto-Save</h2>
+    <p style="margin-bottom: 16px; font-size: 13px; color: var(--text-secondary); line-height: 1.5;">
+      Connect once with your browser. Every keystroke will automatically write directly to your project files on disk in real-time.
+    </p>
+
+    <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 18px;">
+      <button class="btn btn-primary" style="padding: 14px; justify-content: flex-start; text-align: left; height: auto;" onclick="connectProjectFolder()">
+        <div>
+          <div style="font-weight: 600; font-size: 14px; margin-bottom: 3px;">📁 Connect Project Folder (Recommended)</div>
+          <div style="font-size: 11.5px; opacity: 0.9; font-weight: normal; line-height: 1.4; white-space: normal;">
+            Select the <code>Korean Baseball</code> folder. Automatically keeps both <code>data.json</code> AND <code>js/data.js</code> synchronized so the map page reflects edits instantly!
+          </div>
+        </div>
+      </button>
+
+      <button class="btn btn-secondary" style="padding: 14px; justify-content: flex-start; text-align: left; height: auto;" onclick="connectDataJsonFile()">
+        <div>
+          <div style="font-weight: 600; font-size: 14px; margin-bottom: 3px;">📄 Connect data.json File Directly</div>
+          <div style="font-size: 11.5px; opacity: 0.85; font-weight: normal; line-height: 1.4; white-space: normal;">
+            Select <code>data.json</code> file. Automatically saves all data edits directly into <code>data.json</code>.
+          </div>
+        </div>
+      </button>
+    </div>
+
+    <div class="modal-actions">
+      <button class="btn btn-secondary" onclick="closeModal()">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<script src="js/data.js"></script>
+<script>
+// ─── STATE ───────────────────────────────────
+let data = {};
+let currentId = null;
+let activeTab = 'basic';
+
+// ─── FILE LOAD ────────────────────────────────
+document.getElementById('file-input').addEventListener('change', e => {
+  const file = e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = ev => {
+    try {
+      data = JSON.parse(ev.target.result);
+      currentId = null;
+      renderSidebar();
+      showEmpty();
+      toast('✅', `Loaded ${Object.keys(data).length} teams from ${file.name}`, 'success');
+    } catch(err) {
+      toast('❌', 'Invalid JSON: ' + err.message, 'error');
+    }
+  };
+  reader.readAsText(file);
+  e.target.value = '';
+});
+
+// ─── SIDEBAR ──────────────────────────────────
+function renderSidebar() {
+  const q = document.getElementById('search-input').value.toLowerCase();
+  const list = document.getElementById('sidebar-list');
+  list.innerHTML = '';
+  const entries = Object.entries(data)
+    .filter(([id, t]) => !q || id.toLowerCase().includes(q)
+      || (t.teamNameEn||'').toLowerCase().includes(q)
+      || (t.shortCityEn||'').toLowerCase().includes(q))
+    .sort((a,b) => (a[1].rank||99)-(b[1].rank||99));
+  if (!entries.length) {
+    list.innerHTML = '<div style="text-align:center;color:var(--text-muted);font-size:13px;padding:20px 0;">No teams found</div>';
+    return;
+  }
+  entries.forEach(([id, team]) => {
+    const div = document.createElement('div');
+    div.className = 'team-item' + (id === currentId ? ' active' : '');
+    div.innerHTML = `
+      <div class="team-color-dot" style="background:${team.primaryColor||'#555'}"></div>
+      <div class="team-item-info">
+        <div class="team-item-name">${team.teamNameEn || id}</div>
+        <div class="team-item-city">${team.shortCityEn || ''}</div>
+      </div>`;
+    div.onclick = () => selectTeam(id);
+    list.appendChild(div);
+  });
+}
+
+// ─── SELECT ───────────────────────────────────
+function selectTeam(id) {
+  currentId = id;
+  renderSidebar();
+  populateForm();
+  switchTab(activeTab, true);
+}
+
+function showEmpty() {
+  document.getElementById('empty-state').style.display = 'flex';
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+}
+
+// ─── POPULATE ─────────────────────────────────
+function populateForm() {
+  if (!currentId) return;
+  const t = data[currentId];
+  const sv = (id, val) => { const el = document.getElementById(id); if(el) el.value = (val !== undefined && val !== null) ? val : ''; };
+
+  sv('f-id', t.id || currentId);
+  sv('f-rank', t.rank);
+  sv('f-teamNameEn', t.teamNameEn);
+  sv('f-teamNameKo', t.teamNameKo);
+  sv('f-cityKey', t.cityKey);
+  sv('f-cityNameEn', t.cityNameEn);
+  sv('f-cityNameKo', t.cityNameKo);
+  sv('f-shortCityEn', t.shortCityEn);
+  sv('f-shortCityKo', t.shortCityKo);
+  sv('f-cityHanja', t.cityHanja);
+  sv('f-stadiumEn', t.stadiumEn);
+  sv('f-stadiumKo', t.stadiumKo);
+  sv('f-lat', t.coords ? t.coords[0] : '');
+  sv('f-lng', t.coords ? t.coords[1] : '');
+  sv('f-zoomLevel', t.zoomLevel);
+
+  const pc = t.primaryColor || '#000000';
+  const sc = t.secondaryColor || '#000000';
+  sv('f-primaryColor', pc); sv('f-primaryColorPicker', pc);
+  sv('f-secondaryColor', sc); sv('f-secondaryColorPicker', sc);
+  updateColorSwatches();
+
+  sv('f-emblemImg', t.emblemImg);
+  sv('f-logoSvg', t.logoSvg);
+  updateSvgPreview();
+
+  sv('f-civicAnchorEn', t.civicAnchorEn);
+  sv('f-civicAnchorKo', t.civicAnchorKo);
+
+  const a = t.anthem || {};
+  sv('f-anthem-titleEn', a.titleEn);
+  sv('f-anthem-titleKo', a.titleKo);
+  sv('f-anthem-originEn', a.originEn);
+  sv('f-anthem-originKo', a.originKo);
+  sv('f-anthem-noteEn', a.noteEn);
+  sv('f-anthem-noteKo', a.noteKo);
+  sv('f-anthem-youtubeId', a.youtubeId);
+  sv('f-anthem-timestamp', a.timestamp);
+  updateYtPreview();
+
+  renderPhotos();
+  renderPhrases();
+  updateJsonPreview();
+}
+
+// ─── SYNC FIELDS ──────────────────────────────
+function syncField(key, asNumber=false) {
+  if (!currentId) return;
+  const el = document.getElementById('f-' + key);
+  if (!el) return;
+  const val = asNumber ? parseFloat(el.value)||0 : el.value;
+  if (key === 'id') {
+    const newId = el.value.trim();
+    if (newId && newId !== currentId) {
+      const entry = data[currentId];
+      entry.id = newId;
+      data[newId] = entry;
+      delete data[currentId];
+      currentId = newId;
+      renderSidebar();
+    }
+    return;
+  }
+  data[currentId][key] = val;
+  if (['rank','teamNameEn','shortCityEn','primaryColor'].includes(key)) renderSidebar();
+  updateJsonPreview();
+}
+
+function syncCoords() {
+  if (!currentId) return;
+  const lat = parseFloat(document.getElementById('f-lat').value);
+  const lng = parseFloat(document.getElementById('f-lng').value);
+  data[currentId].coords = [lat||0, lng||0];
+  updateJsonPreview();
+}
+
+function syncColorFromPicker(field) {
+  const v = document.getElementById('f-'+field+'Picker').value;
+  document.getElementById('f-'+field).value = v;
+  syncColorFromText(field);
+}
+function syncColorFromText(field) {
+  if (!currentId) return;
+  const v = document.getElementById('f-'+field).value;
+  data[currentId][field] = v;
+  if (/^#[0-9a-fA-F]{6}$/.test(v)) document.getElementById('f-'+field+'Picker').value = v;
+  updateColorSwatches();
+  renderSidebar();
+  updateJsonPreview();
+}
+function updateColorSwatches() {
+  document.getElementById('color-swatch-primary').style.background = document.getElementById('f-primaryColor').value;
+  document.getElementById('color-swatch-secondary').style.background = document.getElementById('f-secondaryColor').value;
+}
+
+function syncAnthem(key, asNumber=false) {
+  if (!currentId) return;
+  if (!data[currentId].anthem) data[currentId].anthem = {};
+  const el = document.getElementById('f-anthem-'+key);
+  if (!el) return;
+  data[currentId].anthem[key] = asNumber ? parseInt(el.value)||0 : el.value;
+  updateJsonPreview();
+}
+
+function updateYtPreview() {
+  const id = document.getElementById('f-anthem-youtubeId').value.trim();
+  const ts = parseInt(document.getElementById('f-anthem-timestamp').value)||0;
+  const cont = document.getElementById('yt-preview-container');
+  const iframe = document.getElementById('yt-preview');
+  if (id) { iframe.src = `https://www.youtube.com/embed/${id}?start=${ts}`; cont.style.display='block'; }
+  else { cont.style.display='none'; }
+}
+
+function updateSvgPreview() {
+  document.getElementById('svg-preview-box').innerHTML = document.getElementById('f-logoSvg').value;
+}
+
+// ─── PHOTOS ───────────────────────────────────
+function renderPhotos() {
+  const c = document.getElementById('photos-container');
+  c.innerHTML = '';
+  if (!currentId) return;
+  const photos = data[currentId].photos || [];
+  const labels = ['⚾ Photo 1 (Left) · Stadium PR Image', '🏛️ Photo 2 (Middle) · City Landmark', '🍲 Photo 3 (Right) · Regional Dish'];
+  photos.forEach((ph, i) => {
+    const isUrl = ph.src && (ph.src.startsWith('http')||ph.src.startsWith('images'));
+    const prevHtml = isUrl
+      ? `<img class="photo-preview" src="${ph.src}" onerror="this.style.display='none'" />`
+      : `<div class="photo-preview-placeholder">🖼</div>`;
+    const card = document.createElement('div');
+    card.className = 'photo-card';
+    card.innerHTML = `
+      <div class="card-header">
+        <span class="card-num">${labels[i]||'Photo '+(i+1)}</span>
+        ${prevHtml}
+        <div style="flex:1"></div>
+        <button class="btn btn-danger btn-sm" onclick="removePhoto(${i})">✕</button>
+      </div>
+      <div class="form-row cols-1">
+        <div class="field">
+          <label class="field-label">URL or Path</label>
+          <input type="text" value="${escHtml(ph.src||'')}" placeholder="https://… or images/cities/…" onchange="updatePhoto(${i},'src',this.value)" />
+        </div>
+        <div class="field">
+          <label class="field-label">Label <span class="lang-tag">EN</span></label>
+          <input type="text" value="${escHtml(ph.labelEn||'')}" onchange="updatePhoto(${i},'labelEn',this.value)" />
+        </div>
+        <div class="field">
+          <label class="field-label">Label <span class="lang-tag">KO</span></label>
+          <input type="text" value="${escHtml(ph.labelKo||'')}" onchange="updatePhoto(${i},'labelKo',this.value)" />
+        </div>
+      </div>`;
+    c.appendChild(card);
+  });
+  if (photos.length < 3) {
+    const btn = document.createElement('button');
+    btn.className='btn btn-secondary'; btn.style.marginTop='4px';
+    btn.textContent='＋ Add Photo'; btn.onclick=addPhoto;
+    c.appendChild(btn);
+  }
+}
+function updatePhoto(i,k,v){ if(!currentId)return; data[currentId].photos[i][k]=v; renderPhotos(); updateJsonPreview(); }
+function addPhoto(){ if(!currentId)return; if(!data[currentId].photos)data[currentId].photos=[]; data[currentId].photos.push({src:'',labelEn:'',labelKo:''}); renderPhotos(); updateJsonPreview(); }
+function removePhoto(i){ if(!currentId)return; data[currentId].photos.splice(i,1); renderPhotos(); updateJsonPreview(); }
+
+// ─── PHRASES ──────────────────────────────────
+function renderPhrases() {
+  const c = document.getElementById('phrases-container');
+  c.innerHTML = '';
+  if (!currentId) return;
+  const phrases = data[currentId].phrases || [];
+  const phraseLabels = [
+    '1️⃣ Regional Greeting (사투리 첫인사)',
+    '2️⃣ Meal Inquiry (식사 여부 안부)',
+    '3️⃣ Unique Regional Expression (지역 고유 표현)',
+    '4️⃣ Stadium Cheer / Pickoff Chant (야구장 시그니처 구호)'
+  ];
+  phrases.forEach((ph,i) => {
+    const card = document.createElement('div');
+    card.className = 'phrase-card';
+    card.innerHTML = `
+      <div class="card-header">
+        <span class="card-num">${phraseLabels[i] || 'Phrase ' + (i+1)}</span>
+        <div style="flex:1"></div>
+        <button class="btn btn-danger btn-sm" onclick="removePhrase(${i})">✕</button>
+      </div>
+      <div class="form-row cols-2">
+        <div class="field"><label class="field-label">Korean <span class="lang-tag">KO</span></label>
+          <input type="text" value="${escHtml(ph.ko||'')}" onchange="updatePhrase(${i},'ko',this.value)" /></div>
+        <div class="field"><label class="field-label">Romanization</label>
+          <input type="text" value="${escHtml(ph.romaja||'')}" onchange="updatePhrase(${i},'romaja',this.value)" /></div>
+      </div>
+      <div class="form-row cols-2">
+        <div class="field"><label class="field-label">Meaning <span class="lang-tag">EN</span></label>
+          <input type="text" value="${escHtml(ph.meaningEn||'')}" onchange="updatePhrase(${i},'meaningEn',this.value)" /></div>
+        <div class="field"><label class="field-label">Description <span class="lang-tag">KO</span></label>
+          <input type="text" value="${escHtml(ph.descKo||'')}" onchange="updatePhrase(${i},'descKo',this.value)" /></div>
+      </div>
+      <div class="form-row cols-2">
+        <div class="field"><label class="field-label">Cultural Note <span class="lang-tag">EN</span></label>
+          <input type="text" value="${escHtml(ph.noteEn||'')}" onchange="updatePhrase(${i},'noteEn',this.value)" /></div>
+        <div class="field"><label class="field-label">YouTube Link (Chant video)</label>
+          <input type="text" value="${escHtml(ph.youtubeUrl||'')}" placeholder="https://www.youtube.com/watch?v=..." onchange="updatePhrase(${i},'youtubeUrl',this.value)" /></div>
+      </div>`;
+    c.appendChild(card);
+  });
+}
+function updatePhrase(i,k,v){ if(!currentId)return; data[currentId].phrases[i][k]=v; updateJsonPreview(); }
+function addPhrase(){ if(!currentId)return; if(!data[currentId].phrases)data[currentId].phrases=[]; data[currentId].phrases.push({ko:'',romaja:'',meaningEn:'',descKo:'',noteEn:''}); renderPhrases(); updateJsonPreview(); }
+function removePhrase(i){ if(!currentId)return; data[currentId].phrases.splice(i,1); renderPhrases(); updateJsonPreview(); }
+
+// ─── JSON PREVIEW & AUTOSAVE TRIGGER ─────────────
+function updateJsonPreview() {
+  if (!currentId) return;
+  const s = document.getElementById('json-preview');
+  const f = document.getElementById('json-full-preview');
+  if(s) s.textContent = JSON.stringify(data[currentId], null, 2);
+  if(f) f.textContent = JSON.stringify(data, null, 2);
+  triggerAutoSave();
+}
+
+// ─── TABS ─────────────────────────────────────
+function switchTab(tab, force=false) {
+  if (!currentId && !force) return;
+  activeTab = tab;
+  document.querySelectorAll('.tab-btn').forEach((btn,i) => {
+    btn.classList.toggle('active', ['basic','colors','chaebol','photos','phrases','anthem','json'][i] === tab);
+  });
+  document.getElementById('empty-state').style.display = 'none';
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  const panel = document.getElementById('panel-'+tab);
+  if (panel) {
+    panel.classList.add('active');
+    if (tab==='json') updateJsonPreview();
+    if (tab==='photos') renderPhotos();
+    if (tab==='phrases') renderPhrases();
+  }
+}
+
+// ─── EXPORT ───────────────────────────────────
+function exportJSON() {
+  const json = JSON.stringify(data, null, 2);
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([json], {type:'application/json'}));
+  a.download = 'data.json';
+  a.click();
+  toast('💾','data.json downloaded!','success');
+}
+
+
+// ─── DELETE ───────────────────────────────────
+function requestDelete() {
+  if (!currentId) return;
+  document.getElementById('modal-delete-msg').textContent =
+    `Remove "${data[currentId]?.teamNameEn || currentId}" from the editor?`;
+  document.getElementById('modal-delete').classList.add('open');
+}
+function confirmDelete() {
+  const name = data[currentId]?.teamNameEn || currentId;
+  delete data[currentId];
+  currentId = null;
+  closeModal();
+  renderSidebar();
+  showEmpty();
+  triggerAutoSave();
+  toast('🗑',`"${name}" removed`,'success');
+}
+
+// ─── MODALS ───────────────────────────────────
+function closeModal() {
+  document.querySelectorAll('.modal-backdrop').forEach(m => m.classList.remove('open'));
+}
+document.querySelectorAll('.modal-backdrop').forEach(m => {
+  m.addEventListener('click', e => { if(e.target===m) closeModal(); });
+});
+
+// ─── TOAST ────────────────────────────────────
+function toast(icon, msg, type='') {
+  const el = document.createElement('div');
+  el.className = 'toast ' + type;
+  el.innerHTML = `<span>${icon}</span><span>${msg}</span>`;
+  document.getElementById('toast-container').appendChild(el);
+  setTimeout(() => el.remove(), 3500);
+}
+
+// ─── HELPERS ──────────────────────────────────
+function escHtml(s) {
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+// ─── AUTOSAVE ENGINE (OPTION 1: DIRECT FILE SYSTEM API) ────
+let fileHandle = null;
+let dirHandle = null;
+let serverAutoSave = false;
+let autoSaveTimer = null;
+
+function setAutosaveStatus(state, text) {
+  const badge = document.getElementById('autosave-badge');
+  const label = document.getElementById('autosave-text');
+  if (!badge || !label) return;
+  badge.className = 'autosave-badge ' + (state || '');
+  label.textContent = text;
+}
+
+function openAutosaveModal() {
+  document.getElementById('modal-autosave-connect').classList.add('open');
+}
+
+// IndexedDB Helper for Persisting Directory / File Handle
+function openHandleDB() {
+  return new Promise((res, rej) => {
+    const req = indexedDB.open('kbo_autosave_db', 1);
+    req.onupgradeneeded = () => req.result.createObjectStore('handles');
+    req.onsuccess = () => res(req.result);
+    req.onerror = () => rej(req.error);
+  });
+}
+async function idbSave(key, val) {
+  try {
+    const db = await openHandleDB();
+    const tx = db.transaction('handles', 'readwrite');
+    tx.objectStore('handles').put(val, key);
+  } catch(e) {}
+}
+async function idbGet(key) {
+  try {
+    const db = await openHandleDB();
+    return new Promise((res) => {
+      const tx = db.transaction('handles', 'readonly');
+      const req = tx.objectStore('handles').get(key);
+      req.onsuccess = () => res(req.result || null);
+      req.onerror = () => res(null);
+    });
+  } catch(e) { return null; }
+}
+
+// Connect Project Folder (Option 1A - Best: syncs data.json & js/data.js)
+async function connectProjectFolder() {
+  closeModal();
+  if (!window.showDirectoryPicker) {
+    alert('Folder access requires Chrome, Edge, or a modern Chromium browser.');
+    return;
+  }
+  try {
+    dirHandle = await window.showDirectoryPicker({ mode: 'readwrite' });
+    
+    // Explicitly request write permissions inside this click gesture
+    const perm = await dirHandle.requestPermission({ mode: 'readwrite' });
+    if (perm !== 'granted') {
+      toast('⚠️', 'Write permission denied by browser.', 'error');
+      return;
+    }
+    await idbSave('dirHandle', dirHandle);
+
+    // Read data.json from folder
+    let foundDataJson = false;
+    try {
+      const dataFile = await dirHandle.getFileHandle('data.json', { create: false });
+      const f = await dataFile.getFile();
+      const txt = await f.text();
+      if (txt && txt.trim()) {
+        data = JSON.parse(txt);
+        renderSidebar();
+        const firstId = Object.keys(data)[0];
+        if (firstId) selectTeam(firstId);
+        foundDataJson = true;
+      }
+    } catch (e) {
+      console.warn('Could not read data.json from folder:', e);
+    }
+
+    const btn = document.getElementById('btn-link-file');
+    if (btn) {
+      btn.textContent = '🟢 Folder Auto-Save ON';
+      btn.className = 'btn btn-secondary';
+      btn.title = 'Folder connected (' + dirHandle.name + '). Edits autosave both data.json and js/data.js!';
+    }
+    setAutosaveStatus('connected', 'Auto-saving to ' + dirHandle.name);
+    
+    if (!foundDataJson) {
+      toast('⚠️', `Connected to "${dirHandle.name}", but data.json was not found. Please confirm you selected "Korean Baseball"!`, 'error');
+    } else {
+      toast('⚡', `Direct Auto-Save enabled for "${dirHandle.name}"!`, 'success');
+      triggerAutoSave();
+    }
+  } catch (err) {
+    if (err.name !== 'AbortError') {
+      toast('⚠️', 'Folder error: ' + err.message, 'error');
+    }
+  }
+}
+
+// Connect data.json File (Option 1B)
+async function connectDataJsonFile() {
+  closeModal();
+  if (!window.showOpenFilePicker) {
+    alert('Direct file writing requires Chrome, Edge, or a modern Chromium browser.');
+    return;
+  }
+  try {
+    const [handle] = await window.showOpenFilePicker({
+      types: [{
+        description: 'JSON Files',
+        accept: { 'application/json': ['.json'] }
+      }],
+      multiple: false
+    });
+    fileHandle = handle;
+    const perm = await fileHandle.requestPermission({ mode: 'readwrite' });
+    if (perm !== 'granted') {
+      toast('⚠️', 'Write permission denied by browser.', 'error');
+      return;
+    }
+    await idbSave('fileHandle', fileHandle);
+
+    const f = await fileHandle.getFile();
+    const txt = await f.text();
+    if (txt && txt.trim()) {
+      data = JSON.parse(txt);
+      renderSidebar();
+      const firstId = Object.keys(data)[0];
+      if (firstId) selectTeam(firstId);
+    }
+
+    const btn = document.getElementById('btn-link-file');
+    if (btn) {
+      btn.textContent = '🟢 ' + fileHandle.name + ' Linked';
+      btn.className = 'btn btn-secondary';
+      btn.title = 'File connected (' + fileHandle.name + '). Edits autosave to disk!';
+    }
+    setAutosaveStatus('connected', 'Auto-saving to ' + fileHandle.name);
+    toast('⚡', `Direct Auto-Save connected to ${fileHandle.name}!`, 'success');
+    triggerAutoSave();
+  } catch (err) {
+    if (err.name !== 'AbortError') {
+      toast('⚠️', 'File error: ' + err.message, 'error');
+    }
+  }
+}
+
+// Core Disk Writer
+async function writeDirectToDisk(content) {
+  let saved = false;
+
+  // 1. Folder mode: Writes data.json and updates js/data.js
+  if (dirHandle) {
+    try {
+      let perm = await dirHandle.queryPermission({ mode: 'readwrite' });
+      if (perm !== 'granted') {
+        try { perm = await dirHandle.requestPermission({ mode: 'readwrite' }); } catch(e) {}
+      }
+      if (perm !== 'granted') {
+        setAutosaveStatus('error', '⚡ Click to Grant Folder Permission');
+        const badge = document.getElementById('autosave-badge');
+        if (badge) {
+          badge.style.cursor = 'pointer';
+          badge.onclick = async () => {
+            const req = await dirHandle.requestPermission({ mode: 'readwrite' });
+            if (req === 'granted') {
+              setAutosaveStatus('connected', 'Auto-saving to ' + dirHandle.name);
+              triggerAutoSave();
+            }
+          };
+        }
+        return false;
+      }
+
+      const dataFile = await dirHandle.getFileHandle('data.json', { create: true });
+      const writable = await dataFile.createWritable();
+      await writable.write(content);
+      await writable.close();
+      saved = true;
+
+      // Sync js/data.js
+      try {
+        const jsDir = await dirHandle.getDirectoryHandle('js', { create: false });
+        const dataJsFile = await jsDir.getFileHandle('data.js', { create: false });
+        const f = await dataJsFile.getFile();
+        const currentJs = await f.text();
+        let idx = currentJs.indexOf("  entries: {");
+        if (idx === -1) {
+          const match = currentJs.match(/\n\s*entries\s*:\s*\{/);
+          if (match) idx = match.index + 1;
+        }
+        if (idx !== -1) {
+          const preamble = currentJs.substring(0, idx);
+          const lines = content.split('\n');
+          const indented = lines.map((l, i) => i === 0 ? l : '    ' + l).join('\n');
+          const newJs = preamble + '  entries: ' + indented + '\n};\n\nif (typeof module !== \'undefined\' && module.exports) {\n  module.exports = KBO_DATA;\n}\n';
+          const jsWritable = await dataJsFile.createWritable();
+          await jsWritable.write(newJs);
+          await jsWritable.close();
+        }
+      } catch (jsErr) {
+        console.warn('Could not sync js/data.js:', jsErr);
+      }
+    } catch (err) {
+      console.warn('Folder write error:', err);
+      toast('❌', 'Disk write error: ' + err.message, 'error');
+    }
+  } 
+  // 2. Single file mode: Writes data.json
+  else if (fileHandle) {
+    try {
+      let perm = await fileHandle.queryPermission({ mode: 'readwrite' });
+      if (perm !== 'granted') {
+        try { perm = await fileHandle.requestPermission({ mode: 'readwrite' }); } catch(e) {}
+      }
+      if (perm !== 'granted') {
+        setAutosaveStatus('error', '⚡ Click to Grant File Permission');
+        return false;
+      }
+
+      const writable = await fileHandle.createWritable();
+      await writable.write(content);
+      await writable.close();
+      saved = true;
+    } catch (err) {
+      console.warn('File write error:', err);
+      toast('❌', 'Disk write error: ' + err.message, 'error');
+    }
+  }
+
+  return saved;
+}
+
+function triggerAutoSave() {
+  if (!data || Object.keys(data).length === 0) return;
+
+  // Immediate localStorage draft safety backup
+  try {
+    localStorage.setItem('kbo_admin_draft', JSON.stringify(data));
+  } catch (e) {}
+
+  clearTimeout(autoSaveTimer);
+  autoSaveTimer = setTimeout(async () => {
+    const jsonStr = JSON.stringify(data, null, 2);
+    setAutosaveStatus('saving', 'Auto-saving...');
+
+    // Option 1: Direct File System Access
+    if (dirHandle || fileHandle) {
+      const ok = await writeDirectToDisk(jsonStr);
+      if (ok) {
+        const time = new Date().toLocaleTimeString([], {hour:'2-digit', minute:'2-digit', second:'2-digit'});
+        const targetName = dirHandle ? dirHandle.name : fileHandle.name;
+        setAutosaveStatus('connected saved', `Autosaved to disk (${time})`);
+        return;
+      } else {
+        setAutosaveStatus('error', 'Auto-save error');
+        return;
+      }
+    }
+
+    // Optional Server Mode (if local server is running)
+    if (serverAutoSave) {
+      try {
+        const sSaveUrl = location.origin.startsWith('http') ? '/api/save' : 'http://localhost:8000/api/save';
+        const res = await fetch(sSaveUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: jsonStr
+        });
+        if (res.ok) {
+          const resJson = await res.json();
+          const time = resJson.timestamp || new Date().toLocaleTimeString([], {hour:'2-digit', minute:'2-digit', second:'2-digit'});
+          setAutosaveStatus('connected saved', `Autosaved (${time})`);
+          return;
+        }
+      } catch (e) {}
+    }
+
+    // Fallback: Browser memory draft
+    setAutosaveStatus('', 'Draft saved in browser');
+  }, 350);
+}
+
+// ─── INITIALIZATION ───────────────────────────
+(async function initEditor() {
+  // 1. Check for previously linked directory or file handle in IndexedDB
+  try {
+    const savedDir = await idbGet('dirHandle');
+    if (savedDir) {
+      dirHandle = savedDir;
+      const perm = await dirHandle.queryPermission({ mode: 'readwrite' });
+      const btn = document.getElementById('btn-link-file');
+      if (perm === 'granted') {
+        setAutosaveStatus('connected', 'Auto-saving to ' + dirHandle.name);
+        if (btn) {
+          btn.textContent = '🟢 Folder Auto-Save ON';
+          btn.className = 'btn btn-secondary';
+        }
+      } else {
+        setAutosaveStatus('error', '⚡ Click to Reconnect Folder');
+        if (btn) {
+          btn.textContent = '⚡ Reconnect Auto-Save';
+          btn.className = 'btn btn-primary';
+          btn.onclick = async () => {
+            const req = await dirHandle.requestPermission({ mode: 'readwrite' });
+            if (req === 'granted') {
+              setAutosaveStatus('connected', 'Auto-saving to ' + dirHandle.name);
+              btn.textContent = '🟢 Folder Auto-Save ON';
+              btn.className = 'btn btn-secondary';
+              toast('⚡', 'Auto-Save reconnected!', 'success');
+              triggerAutoSave();
+            } else {
+              openAutosaveModal();
+            }
+          };
+        }
+        const badge = document.getElementById('autosave-badge');
+        if (badge) {
+          badge.style.cursor = 'pointer';
+          badge.onclick = () => btn && btn.click();
+        }
+      }
+    } else {
+      const savedFile = await idbGet('fileHandle');
+      if (savedFile) {
+        fileHandle = savedFile;
+        const perm = await fileHandle.queryPermission({ mode: 'readwrite' });
+        const btn = document.getElementById('btn-link-file');
+        if (perm === 'granted') {
+          setAutosaveStatus('connected', 'Auto-saving to ' + fileHandle.name);
+          if (btn) {
+            btn.textContent = '🟢 ' + fileHandle.name + ' Linked';
+            btn.className = 'btn btn-secondary';
+          }
+        } else {
+          setAutosaveStatus('error', '⚡ Click to Reconnect File');
+          if (btn) {
+            btn.textContent = '⚡ Reconnect Auto-Save';
+            btn.className = 'btn btn-primary';
+            btn.onclick = async () => {
+              const req = await fileHandle.requestPermission({ mode: 'readwrite' });
+              if (req === 'granted') {
+                setAutosaveStatus('connected', 'Auto-saving to ' + fileHandle.name);
+                btn.textContent = '🟢 ' + fileHandle.name + ' Linked';
+                btn.className = 'btn btn-secondary';
+                toast('⚡', 'Auto-Save reconnected!', 'success');
+                triggerAutoSave();
+              } else {
+                openAutosaveModal();
+              }
+            };
+          }
+          const badge = document.getElementById('autosave-badge');
+          if (badge) {
+            badge.style.cursor = 'pointer';
+            badge.onclick = () => btn && btn.click();
+          }
+        }
+      }
+    }
+  } catch (e) {}
+
+  // 2. Initial baseline from js/data.js (guarantees clean UTF-8 under file:// and offline)
+  if (typeof KBO_DATA !== 'undefined' && KBO_DATA.entries && Object.keys(KBO_DATA.entries).length > 0) {
+    data = JSON.parse(JSON.stringify(KBO_DATA.entries));
+    renderSidebar();
+    const firstId = Object.keys(data)[0];
+    if (firstId) selectTeam(firstId);
+  }
+
+  // 3. Clear any corrupt mojibake from previous localStorage drafts
+  try {
+    const draft = localStorage.getItem('kbo_admin_draft');
+    if (draft && (draft.includes('ìˆ') || draft.includes('ë§') || draft.includes('â€'))) {
+      localStorage.removeItem('kbo_admin_draft');
+    }
+  } catch (e) {}
+
+  // 4. Try loading data.json via fetch
+  try {
+    const res = await fetch('data.json?t=' + Date.now());
+    if (res.ok) {
+      const fetchedData = await res.json();
+      if (fetchedData && typeof fetchedData === 'object') {
+        data = fetchedData;
+        renderSidebar();
+        const firstId = Object.keys(data)[0];
+        if (firstId) selectTeam(firstId);
+        toast('✅', `Loaded ${Object.keys(data).length} teams from data.json`, 'success');
+      }
+    }
+  } catch (e) {}
+
+  // 5. Auto-detect if local server is running
+  try {
+    const sUrl = location.origin.startsWith('http') ? '/api/status' : 'http://localhost:8000/api/status';
+    const sRes = await fetch(sUrl, { method: 'GET' });
+    if (sRes.ok) {
+      serverAutoSave = true;
+      setAutosaveStatus('connected', 'Auto-saving via local server');
+      const btn = document.getElementById('btn-link-file');
+      if (btn && !dirHandle && !fileHandle) {
+        btn.textContent = '🟢 Server Auto-Save Active';
+        btn.className = 'btn btn-secondary';
+      }
+    }
+  } catch(e) {}
+
+  if (!dirHandle && !fileHandle && !serverAutoSave) {
+    setAutosaveStatus('', 'Click "⚡ Direct Auto-Save" to link disk');
+  }
+})();
+
+// Keyboard shortcut: Ctrl+S saves immediately
+document.addEventListener('keydown', e => {
+  if ((e.ctrlKey || e.metaKey) && e.key === 's') {
+    e.preventDefault();
+    if (dirHandle || fileHandle || serverAutoSave) {
+      triggerAutoSave();
+      toast('💾', 'Autosaved to disk!', 'success');
+    } else {
+      openAutosaveModal();
+    }
+  }
+  if (e.key === 'Escape') closeModal();
+});
+</script>
+</body>
+</html>

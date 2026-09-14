@@ -207,12 +207,17 @@
     // Render Ballpark Markers
     Object.entries(KBO_DATA.entries).forEach(([id, item]) => {
       const emblem = item.emblemImg;
+      const isMountain = id === "jeju-hallasan";
+      const markerPinContent = isMountain
+        ? `<span style="font-size: 16px; display: flex; align-items: center; justify-content: center; width: 100%; height: 100%;">⛰️</span>`
+        : (emblem ? `<img src="${emblem}" alt="${item.teamNameKo}" class="marker-emblem-icon" />` : `<div class="marker-inner-dot"></div>`);
+
       const icon = L.divIcon({
         className: `ballpark-marker ${id === activeEntryId ? "active" : ""}`,
         id: `marker-${id}`,
         html: `
           <div class="marker-pin" style="--team-pri: ${item.primaryColor || '#1b2a4a'};" title="${item.teamNameKo} · ${item.stadiumKo}">
-            ${emblem ? `<img src="${emblem}" alt="${item.teamNameKo}" class="marker-emblem-icon" />` : `<div class="marker-inner-dot"></div>`}
+            ${markerPinContent}
           </div>
         `,
         iconSize: [28, 28],
@@ -263,16 +268,16 @@
       chip.setAttribute("data-entry-id", id);
       chip.style.setProperty("--team-pri", item.primaryColor || "#1b2a4a");
       chip.style.setProperty("--team-sec", item.secondaryColor || "#736f66");
-
-      const rank = item.rank || "";
-      const logoContent = item.emblemImg
-        ? `<img src="${item.emblemImg}" alt="${item.teamNameEn}" class="chip-emblem-img" loading="lazy" />`
-        : (item.logoSvg || "");
+      const isMountain = id === "jeju-hallasan";
+      const logoContent = isMountain
+        ? `<span style="font-size: 15px; margin-right: 2px;">⛰️</span>`
+        : (item.emblemImg
+            ? `<img src="${item.emblemImg}" alt="${item.teamNameEn}" class="chip-emblem-img" loading="lazy" />`
+            : (item.logoSvg || ""));
       const shortCityEn = item.shortCityEn || item.cityNameEn.split(" ")[0];
       const shortCityKo = item.shortCityKo || item.cityNameKo.split(" ")[0];
 
       chip.innerHTML = `
-        <span class="chip-rank">${rank}</span>
         <span class="chip-logo">${logoContent}</span>
         <span class="chip-sep">|</span>
         <span class="chip-team" style="color: ${item.primaryColor};">
@@ -298,6 +303,38 @@
     const data = KBO_DATA.entries[id];
     if (!data) return;
 
+    const formatCivicFacts = (text) => {
+      if (!text) return "";
+      const lines = (text.includes("\n") ? text.split("\n") : text.split(" · "))
+        .map(line => line.trim())
+        .filter(Boolean);
+
+      return `
+        <div class="civic-fact-grid">
+          ${lines.map(line => {
+            const clean = line.replace(/^[•\-\*]\s*/, "");
+            const colonIdx = clean.indexOf(":");
+            if (colonIdx > 0 && colonIdx < 35) {
+              const key = clean.substring(0, colonIdx).trim();
+              const val = clean.substring(colonIdx + 1).trim();
+              return `
+                <div class="civic-fact-row">
+                  <span class="civic-fact-badge">${key}</span>
+                  <span class="civic-fact-desc">${val}</span>
+                </div>
+              `;
+            }
+            return `
+              <div class="civic-fact-row">
+                <span class="civic-fact-bullet">•</span>
+                <span class="civic-fact-desc">${clean}</span>
+              </div>
+            `;
+          }).join("")}
+        </div>
+      `;
+    };
+
     panelContent.innerHTML = `
       <!-- Discovery Eyebrow & City Heading -->
       <article class="entry-header">
@@ -320,14 +357,9 @@
             </div>
           ` : ""}
         </div>
-
-        <div class="neighborhood-subtitle">
-          <span class="lang-en">📍 ${data.neighborhoodEn}</span>
-          <span class="lang-ko">📍 ${data.neighborhoodKo}</span>
-        </div>
       </article>
 
-      <!-- Subtle Ballpark Anchor -->
+      <!-- Ballpark & Corporate Fact Sheet -->
       <section class="ballpark-anchor-card">
         <div class="ballpark-anchor-header">
           ${data.emblemImg ? `<img src="${data.emblemImg}" alt="${data.teamNameEn}" class="ballpark-anchor-emblem" />` : ""}
@@ -336,43 +368,77 @@
             <span class="lang-ko">⚾ ${data.teamNameKo} · ${data.stadiumKo}</span>
           </div>
         </div>
-        <p class="ballpark-civic-note">
-          <span class="lang-en">${data.civicAnchorEn}</span>
-          <span class="lang-ko">${data.civicAnchorKo}</span>
-        </p>
+        <div class="ballpark-civic-facts">
+          <div class="lang-en">${formatCivicFacts(data.civicAnchorEn)}</div>
+          <div class="lang-ko">${formatCivicFacts(data.civicAnchorKo)}</div>
+        </div>
       </section>
 
       <!-- Photo Triptych (Place, Street, Food) -->
       <section class="photo-triptych" aria-label="City Photography Triptych">
         ${data.photos.map((photo, index) => `
           <div class="photo-card" data-photo-idx="${index}" title="Click to enlarge">
-            <img src="${photo.src}" alt="${photo.labelEn}" loading="lazy" />
+            <img 
+              src="${photo.src}" 
+              alt="${photo.labelEn || photo.labelKo || 'City Photo'}" 
+              loading="lazy" 
+              referrerpolicy="no-referrer"
+              onerror="if (!this.dataset.fallbackTried) { this.dataset.fallbackTried = 'true'; this.src = 'images/cities/${data.id}/${index + 1}_${index === 0 ? 'stadium' : index === 1 ? 'landmark' : 'dish'}.jpg'; }"
+            />
             <div class="photo-caption">
-              <span class="lang-en">${photo.labelEn}</span>
-              <span class="lang-ko">${photo.labelKo}</span>
+              <div class="photo-caption-title">
+                <span class="lang-en">${photo.labelEn || photo.labelKo || ""}</span>
+                <span class="lang-ko">${photo.labelKo || photo.labelEn || ""}</span>
+              </div>
             </div>
           </div>
         `).join("")}
       </section>
 
-      <!-- Personal Travel Story (The Memoir) -->
-      <section class="story-section">
+      <!-- Local Expressions & Pickoff Chants (Regional Dialect, Dining, Idiom, Cheer) -->
+      <section class="audio-section">
         <div class="meta-eyebrow">
-          <span class="lang-en">Personal Journal Entry</span>
-          <span class="lang-ko">여행자의 일기</span>
+          <span class="lang-en">Local Expressions &amp; Stadium Chants</span>
+          <span class="lang-ko">지역 방언 인사 &amp; 시그니처 응원</span>
         </div>
-        <div class="story-body">
-          <p class="lang-en">${data.storyEn}</p>
-          <p class="lang-ko">${data.storyKo}</p>
+
+        <div class="phrase-grid">
+          ${data.phrases.map((phrase, idx) => {
+            const tMatch = phrase.youtubeUrl ? phrase.youtubeUrl.match(/[?&]t=(\d+)s?/) : null;
+            const timeTag = tMatch ? ` (${Math.floor(parseInt(tMatch[1], 10) / 60)}:${String(parseInt(tMatch[1], 10) % 60).padStart(2, '0')})` : '';
+            return `
+            <div class="phrase-card">
+              <div class="phrase-info">
+                <div class="phrase-korean">
+                  <span style="font-weight: 700; font-size: 1.05rem;">${phrase.ko}</span>
+                </div>
+                <div class="phrase-meaning" style="margin-top: 4px;">
+                  <span class="lang-en">${phrase.meaningEn} — <strong>${phrase.noteEn}</strong></span>
+                  <span class="lang-ko">${phrase.descKo}</span>
+                </div>
+                ${phrase.youtubeUrl ? `
+                  <div class="phrase-yt-badge" style="margin-top: 8px;">
+                    <a href="${phrase.youtubeUrl}" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 6px; font-size: 0.76rem; font-weight: 600; color: #dc2626; text-decoration: none; padding: 4px 10px; background: rgba(220, 38, 38, 0.07); border: 1px solid rgba(220, 38, 38, 0.22); border-radius: 6px; transition: background 0.15s, transform 0.15s;">
+                      <span>▶️</span>
+                      <span class="lang-en">Listen on YouTube${timeTag}</span>
+                      <span class="lang-ko">유튜브에서 견제 응원 듣기${timeTag}</span>
+                    </a>
+                  </div>
+                ` : ""}
+              </div>
+            </div>
+          `;
+          }).join("")}
         </div>
       </section>
 
-      <!-- Ballpark Anthem & Chant Card -->
-      <section class="anthem-card">
+      <!-- Ballpark Anthem & Chant Card (Final Section) -->
+      ${data.anthem && data.anthem.titleKo ? `
+      <section class="anthem-card" style="margin-top: 1.2rem;">
         <div class="anthem-header">
           <div class="anthem-title-group">
             <span class="anthem-badge">
-              <span class="lang-en">Stadium Anthem & Rally Song</span>
+              <span class="lang-en">Stadium Anthem &amp; Rally Song</span>
               <span class="lang-ko">야구장 대표 응원가</span>
             </span>
             <div class="anthem-name">
@@ -401,31 +467,7 @@
           </iframe>
         </div>
       </section>
-
-      <!-- Local Dialect & Regional Expressions (도시의 말씨와 표현) -->
-      <section class="audio-section">
-        <div class="meta-eyebrow">
-          <span class="lang-en">Local Dialect & Expressions</span>
-          <span class="lang-ko">도시의 말씨와 정겨운 표현</span>
-        </div>
-
-        <div class="phrase-grid">
-          ${data.phrases.map((phrase, idx) => `
-            <div class="phrase-card">
-              <div class="phrase-info">
-                <div class="phrase-korean">
-                  <span>${phrase.ko}</span>
-                  <span class="phrase-romaja">${phrase.romaja}</span>
-                </div>
-                <div class="phrase-meaning">
-                  <span class="lang-en">${phrase.meaningEn} — <strong>${phrase.noteEn}</strong></span>
-                  <span class="lang-ko">${phrase.descKo}</span>
-                </div>
-              </div>
-            </div>
-          `).join("")}
-        </div>
-      </section>
+      ` : ""}
     `;
 
     // Attach Photo Click -> Lightbox
@@ -506,10 +548,13 @@
    */
   function openLightbox(photo) {
     if (!lightboxModal || !lightboxImg) return;
+    lightboxImg.setAttribute("referrerpolicy", "no-referrer");
     lightboxImg.src = photo.src;
     lightboxCaption.innerHTML = `
-      <span class="lang-en">${photo.labelEn}</span>
-      <span class="lang-ko">${photo.labelKo}</span>
+      <div class="lightbox-caption-text">
+        <span class="lang-en">${photo.labelEn || photo.labelKo || ""}</span>
+        <span class="lang-ko">${photo.labelKo || photo.labelEn || ""}</span>
+      </div>
     `;
     lightboxModal.classList.add("active");
   }
@@ -570,29 +615,44 @@
   // if data.json is missing.
   // ---------------------------------------------------------------------------
   function bootstrap() {
-    // Only attempt fetch over http(s) — file:// protocol blocks fetch
-    if (!window.location.protocol.startsWith("http")) {
-      init();
-      return;
-    }
-
-    fetch("data.json?t=" + Date.now())
-      .then(function (res) {
-        if (!res.ok) throw new Error("data.json not found");
-        return res.json();
-      })
-      .then(function (json) {
-        // Merge every entry from data.json into KBO_DATA.entries,
-        // preserving logoSvg and any fields not in the JSON.
+    function applyJsonData(json) {
+      if (json && typeof json === "object") {
         Object.keys(json).forEach(function (id) {
           if (KBO_DATA.entries[id]) {
             Object.assign(KBO_DATA.entries[id], json[id]);
+          } else {
+            KBO_DATA.entries[id] = json[id];
           }
         });
+      }
+    }
+
+    // Attempt loading data.json with cache-busting timestamp
+    fetch("data.json?t=" + Date.now())
+      .then(function (res) {
+        if (!res.ok) throw new Error("data.json HTTP " + res.status);
+        return res.json();
+      })
+      .then(function (json) {
+        applyJsonData(json);
         init();
       })
-      .catch(function () {
-        // Couldn't load data.json — run with the built-in data
+      .catch(function (err) {
+        // Under file:// protocol or offline, browser blocks local fetch.
+        // Check for latest live admin draft in localStorage:
+        try {
+          const draft = localStorage.getItem("kbo_admin_draft");
+          if (draft && !draft.includes("ìˆ") && !draft.includes("ë§") && !draft.includes("â€")) {
+            const parsed = JSON.parse(draft);
+            if (parsed && typeof parsed === "object" && Object.keys(parsed).length > 0) {
+              applyJsonData(parsed);
+              console.info("Loaded live admin draft from browser memory");
+              init();
+              return;
+            }
+          }
+        } catch (e) {}
+        console.info("Using bundled data:", err ? err.message : "local");
         init();
       });
   }
