@@ -40,31 +40,19 @@
   "phrases": [
     {
       "ko": "사투리 인사",
-      "romaja": "Romanization of regional hello",
-      "meaningEn": "Hello! (Regional dialect)",
-      "descKo": "사투리 인사말 설명",
-      "noteEn": "Regional dialect greeting note"
+      "meaningEn": "Hello! (Regional dialect)"
     },
     {
       "ko": "밥 묵었나? / 식사하셨어요?",
-      "romaja": "Romanization of have you eaten?",
-      "meaningEn": "Have you eaten? (Regional meal inquiry)",
-      "descKo": "식사 여부를 묻는 정겨운 안부 인사 설명",
-      "noteEn": "Regional dining greeting nuance"
+      "meaningEn": "Have you eaten? (Regional meal inquiry)"
     },
     {
       "ko": "지역 고유 관용구",
-      "romaja": "Romanization of unique regional phrase",
-      "meaningEn": "Unique regional expression",
-      "descKo": "지역 대표 명물 표현 및 문화 설명",
-      "noteEn": "Unique cultural/idiomatic context"
+      "meaningEn": "Unique regional expression"
     },
     {
       "ko": "구장 견제/응원 구호",
-      "romaja": "Romanization of baseball chant",
       "meaningEn": "Stadium cheer / pickoff chant",
-      "descKo": "야구장 시그니처 구호 설명",
-      "noteEn": "Stadium rallying cry nuance",
       "youtubeUrl": "https://www.youtube.com/watch?v=..."
     }
   ],

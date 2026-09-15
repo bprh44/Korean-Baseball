@@ -853,6 +853,22 @@ function updatePhoto(i,k,v){ if(!currentId)return; data[currentId].photos[i][k]=
 function addPhoto(){ if(!currentId)return; if(!data[currentId].photos)data[currentId].photos=[]; data[currentId].photos.push({src:'',labelEn:'',labelKo:''}); renderPhotos(); updateJsonPreview(); }
 function removePhoto(i){ if(!currentId)return; data[currentId].photos.splice(i,1); renderPhotos(); updateJsonPreview(); }
 
+function cleanPhrasesData() {
+  if (!data) return;
+  Object.values(data).forEach(team => {
+    if (team && Array.isArray(team.phrases)) {
+      team.phrases.forEach(ph => {
+        delete ph.romaja;
+        delete ph.descKo;
+        delete ph.noteEn;
+        if (ph.ko) {
+          ph.ko = ph.ko.replace(/\s*\([A-Za-z\-!?,. '’]+\)/, '');
+        }
+      });
+    }
+  });
+}
+
 // ─── PHRASES ──────────────────────────────────
 function renderPhrases() {
   const c = document.getElementById('phrases-container');
@@ -866,6 +882,12 @@ function renderPhrases() {
     '4️⃣ Stadium Cheer / Pickoff Chant (야구장 시그니처 구호)'
   ];
   phrases.forEach((ph,i) => {
+    delete ph.romaja;
+    delete ph.descKo;
+    delete ph.noteEn;
+    if (ph.ko) {
+      ph.ko = ph.ko.replace(/\s*\([A-Za-z\-!?,. '’]+\)/, '');
+    }
     const card = document.createElement('div');
     card.className = 'phrase-card';
     card.innerHTML = `
@@ -877,18 +899,10 @@ function renderPhrases() {
       <div class="form-row cols-2">
         <div class="field"><label class="field-label">Korean <span class="lang-tag">KO</span></label>
           <input type="text" value="${escHtml(ph.ko||'')}" onchange="updatePhrase(${i},'ko',this.value)" /></div>
-        <div class="field"><label class="field-label">Romanization</label>
-          <input type="text" value="${escHtml(ph.romaja||'')}" onchange="updatePhrase(${i},'romaja',this.value)" /></div>
-      </div>
-      <div class="form-row cols-2">
         <div class="field"><label class="field-label">Meaning <span class="lang-tag">EN</span></label>
           <input type="text" value="${escHtml(ph.meaningEn||'')}" onchange="updatePhrase(${i},'meaningEn',this.value)" /></div>
-        <div class="field"><label class="field-label">Description <span class="lang-tag">KO</span></label>
-          <input type="text" value="${escHtml(ph.descKo||'')}" onchange="updatePhrase(${i},'descKo',this.value)" /></div>
       </div>
-      <div class="form-row cols-2">
-        <div class="field"><label class="field-label">Cultural Note <span class="lang-tag">EN</span></label>
-          <input type="text" value="${escHtml(ph.noteEn||'')}" onchange="updatePhrase(${i},'noteEn',this.value)" /></div>
+      <div class="form-row">
         <div class="field"><label class="field-label">YouTube Link (Chant video)</label>
           <input type="text" value="${escHtml(ph.youtubeUrl||'')}" placeholder="https://www.youtube.com/watch?v=..." onchange="updatePhrase(${i},'youtubeUrl',this.value)" /></div>
       </div>`;
@@ -896,7 +910,7 @@ function renderPhrases() {
   });
 }
 function updatePhrase(i,k,v){ if(!currentId)return; data[currentId].phrases[i][k]=v; updateJsonPreview(); }
-function addPhrase(){ if(!currentId)return; if(!data[currentId].phrases)data[currentId].phrases=[]; data[currentId].phrases.push({ko:'',romaja:'',meaningEn:'',descKo:'',noteEn:''}); renderPhrases(); updateJsonPreview(); }
+function addPhrase(){ if(!currentId)return; if(!data[currentId].phrases)data[currentId].phrases=[]; data[currentId].phrases.push({ko:'',meaningEn:''}); renderPhrases(); updateJsonPreview(); }
 function removePhrase(i){ if(!currentId)return; data[currentId].phrases.splice(i,1); renderPhrases(); updateJsonPreview(); }
 
 // ─── JSON PREVIEW & AUTOSAVE TRIGGER ─────────────
@@ -1346,6 +1360,7 @@ function triggerAutoSave() {
   // 2. Initial baseline from js/data.js (guarantees clean UTF-8 under file:// and offline)
   if (typeof KBO_DATA !== 'undefined' && KBO_DATA.entries && Object.keys(KBO_DATA.entries).length > 0) {
     data = JSON.parse(JSON.stringify(KBO_DATA.entries));
+    cleanPhrasesData();
     renderSidebar();
     const firstId = Object.keys(data)[0];
     if (firstId) selectTeam(firstId);
@@ -1366,6 +1381,7 @@ function triggerAutoSave() {
       const fetchedData = await res.json();
       if (fetchedData && typeof fetchedData === 'object') {
         data = fetchedData;
+        cleanPhrasesData();
         renderSidebar();
         const firstId = Object.keys(data)[0];
         if (firstId) selectTeam(firstId);

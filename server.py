@@ -9,8 +9,13 @@ import http.server
 import json
 import os
 import sys
-import webbrowser
 from datetime import datetime
+
+# Ensure UTF-8 output on Windows consoles
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+if hasattr(sys.stderr, "reconfigure"):
+    sys.stderr.reconfigure(encoding="utf-8", errors="replace")
 
 PORT = 8000
 DIRECTORY = os.path.dirname(os.path.abspath(__file__))

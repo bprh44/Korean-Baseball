@@ -52,33 +52,21 @@
     },
     "phrases": [
       {
-        "ko": "안녕하십니까~ 수원에 어서 오셔유!",
-        "meaningEn": "Hello! Welcome to Suwon!",
-        "descKo": "경기 남부 특유의 나지막하고 구수한 어조가 묻어나는 따뜻한 삼남길 첫인사예요.",
-        "romaja": "",
-        "noteEn": "Warm regional greeting featuring gentle southern Gyeonggi province intonation."
+        "ko": "안녕하셔유",
+        "meaningEn": "Hello"
       },
       {
-        "ko": "식사하셨어요? (밥 먹었슈?)",
-        "meaningEn": "Have you eaten? (Did you have a meal?)",
-        "descKo": "상대방의 식사와 안부를 다정하게 챙기는 정감 넘치는 식사 인사예요.",
-        "romaja": "",
-        "noteEn": "Polite Gyeonggi conversational inquiry asking after someone's meal."
+        "ko": "밥 먹은거?",
+        "meaningEn": "Did you eat?"
       },
       {
-        "ko": "수원 갈비 한 점에 통닭 한 마리 뜯고 가유~",
-        "meaningEn": "Grab a bite of Suwon ribs and a whole fried chicken with us~",
-        "descKo": "수원의 2대 명물 먹거리인 수원왕갈비와 남문 통닭거리의 정겨운 음식 문화를 상징하는 표현이에요.",
-        "romaja": "",
-        "noteEn": "Celebrated local food phrase referencing Suwon's famous King Ribs and Fried Chicken Street."
+        "ko": "뭐 하는 겨?",
+        "meaningEn": "What are you doing?"
       },
       {
-        "ko": "왓! 왓! 왓! 왓왓왓!",
-        "meaningEn": "What! What! What!",
-        "descKo": "",
-        "noteEn": "Crowd makes a deep booing sound then yells 'Throw it wild!' hoping for an errant pickoff throw.",
-        "youtubeUrl": "https://www.youtube.com/watch?v=6khJykNgUBg&t=85s",
-        "romaja": ""
+        "ko": "왓! 왓! 왓왓왓!",
+        "meaningEn": "What! What! What What What!",
+        "youtubeUrl": "https://www.youtube.com/watch?v=6khJykNgUBg&t=85s"
       }
     ]
   },
@@ -135,31 +123,20 @@
     },
     "phrases": [
       {
-        "ko": "안녕하십니꺼! 반갑습니데이!",
-        "meaningEn": "Hello! Mighty glad to see you!",
-        "descKo": "말끝을 묵직하고 활기차게 올리는 전형적인 대구·경북 영남 방언 인사예요.",
-        "romaja": "Annyeonghasimnikkeo! Bangapsumnidei!",
-        "noteEn": "Energetic Daegu Gyeongsang dialect greeting with the distinct high-pitch ending."
+        "ko": "왔는교? [왔↗ 는↗ 교↘]",
+        "meaningEn": "Did you come?"
       },
       {
-        "ko": "밥 묵었나?",
-        "meaningEn": "Have you eaten? (Gyeongsang dialect)",
-        "descKo": "무뚝뚝해 보이지만 깊은 정과 걱정이 담긴 대구 사람들의 가장 대표적인 안부 인사예요.",
-        "romaja": "Bap munna?",
-        "noteEn": "The quintessential Daegu/Gyeongsang question expressing care and warmth."
+        "ko": "밥 뭇나? [밥↗ 뭇↘ 나↘]",
+        "meaningEn": "Have you eaten?"
       },
       {
-        "ko": "단디 해라!",
-        "meaningEn": "Do it thoroughly and solidly! (Stay sharp!)",
-        "descKo": "실수 없이 든든하고 야무지게 해내라는 대구·경북 최고의 대표 관용구예요.",
-        "romaja": "Dandi haera!",
-        "noteEn": "Iconic Yeongnam idiom meaning to brace up, pay close attention, and do things right."
+        "ko": "니 와카노 [니 와↗ 카↗ 노↘]",
+        "meaningEn": "Why are you being like that?"
       },
       {
-        "ko": "뭐꼬! (Mwo-kko!)",
-        "meaningEn": "Mwo-kko! (What is this?!)",
-        "descKo": "'이게 뭐야? 뭐 하는 짓이야?'라는 뜻의 대구·경북 사투리로, 라팍(라이온즈파크) 푸른 물결이 일제히 투수를 향해 쩌렁쩌렁 외치는 단호한 견제 구호예요.",
-        "noteEn": "Gyeongsang dialect equivalent of 'What is this?' or 'What are you doing?'",
+        "ko": "뭐꼬!",
+        "meaningEn": "What is this?!",
         "youtubeUrl": "https://www.youtube.com/watch?v=6khJykNgUBg&t=31s"
       }
     ]
@@ -211,37 +188,26 @@
       "originEn": "Patty Kim classic reimagined · Jamsil Signature",
       "originKo": "패티김 원곡 노래 · 서울의 찬가",
       "noteEn": "Sung passionately during late-inning rallies as twilight settles over the Olympic stadium complex.",
-      "noteKo": "경기가 끝날 때 온 관중이 큰 소리로 함께 노래해요.",
-      "youtubeId": "J2M5s_h1TjQ",
-      "timestamp": 12
+      "noteKo": "https://youtu.be/BhwoJFjkAf8?si=cNbUCn3J-drs6AL3&t=1461",
+      "youtubeId": "https://youtu.be/BhwoJFjkAf8?si=cNbUCn3J-drs6AL3&t=1461",
+      "timestamp": 0
     },
     "phrases": [
       {
-        "ko": "안녕하세요! 반갑습니다!",
-        "meaningEn": "Hello! Wonderful to meet you!",
-        "descKo": "단정하고 깔끔한 서울 표준어 인사로 도회적이고 정중한 느낌을 줍니다.",
-        "romaja": "Annyeonghaseyo! Bangapseumnida!",
-        "noteEn": "Crisp, courteous standard Seoul capital greeting."
+        "ko": "반갑습니다",
+        "meaningEn": "Nice to meet you"
       },
       {
-        "ko": "식사는 하셨어요?",
-        "meaningEn": "Have you had a meal yet? (Seoul standard)",
-        "descKo": "일상에서 상대방을 배려하며 부드럽게 건네는 서울의 표준적인 식사 안부예요.",
-        "romaja": "Siksaneun hasyeosseoyo?",
-        "noteEn": "Standard polite Seoul conversational meal inquiry."
+        "ko": "밥 먹었어요?",
+        "meaningEn": "Have you had a meal yet?"
       },
       {
-        "ko": "불금에 한강에서 치맥 한잔 콜?",
-        "meaningEn": "Chimaek (chicken & beer) by the Han River this Friday, sound good?",
-        "descKo": "금요일 밤 한강변 둔치에서 야경을 바라보며 치킨과 맥주를 즐기는 서울 특유의 청춘 힐링 문화 표현이에요.",
-        "romaja": "Bulgeume hangang-eseo chimaek hanjan col?",
-        "noteEn": "Iconic modern Seoul urban lifestyle phrase celebrating Friday picnics along the Hangang River."
+        "ko": "아니 근데",
+        "meaningEn": "No, that's not it"
       },
       {
-        "ko": "떽! 앞으로 던져라! (Ttek! Apeu-ro deon-jyeo-ra!)",
+        "ko": "떽! 앞으로 던져라!",
         "meaningEn": "Ttek! Throw it forward!",
-        "descKo": "어르신들이 아이를 꾸짖을 때 쓰는 '떽!'에 이어 홈 플레이트 앞으로 공을 제대로 던지라고 익살맞게 호통치는 잠실 3루의 시그니처 견제 구호예요.",
-        "noteEn": "Ttek! is an onomatopoeic scolding used by elders (like 'Tut-tut!/Shame on you!'), followed by 'Throw it forward (toward home plate)!'",
         "youtubeUrl": "https://www.youtube.com/watch?v=6khJykNgUBg&t=7s"
       }
     ]
@@ -299,31 +265,23 @@
     },
     "phrases": [
       {
-        "ko": "워매~ 안녕하쇼잉! 반갑소잉!",
-        "meaningEn": "Oh my goodness~ Hello there! Great to see you!",
-        "descKo": "호남 특유의 감탄사 '워매'와 말끝을 부드럽게 감싸는 '~잉' 억양이 살아있는 구수한 전라도 인사예요.",
-        "romaja": "Womae~ annyeonghasyoing! Bangapsoing!",
-        "noteEn": "Warm, musical southwestern Jeolla dialect featuring the signature '-ing' softening affix."
+        "ko": "안녕하쇼잉",
+        "meaningEn": "Hello",
+        "youtubeUrl": "https://youtu.be/Rr4yqUzWcRE?si=vslmjJ7efZnrBVxd&t=218"
       },
       {
-        "ko": "밥은 자셨소? (밥은 묵었는가?)",
-        "meaningEn": "Have you eaten? (Jeolla dialect)",
-        "descKo": "손님에게 푸짐한 한 상을 차려주기 전 살갑게 묻는 남도의 따뜻한 정이 듬뿍 묻어나는 표현이에요.",
-        "romaja": "Babeun jasyeosso? (Babeun mugeonneunga?)",
-        "noteEn": "Heartfelt Honam inquiry reflecting the deep food hospitality of the southwestern plains."
+        "ko": "밥 먹었냐? [밥↘ 먹↘ 었↗ 냐↗]",
+        "meaningEn": "Have you eaten?",
+        "youtubeUrl": "https://youtu.be/Rr4yqUzWcRE?si=SUzCSIAlrS_i6jYO&t=818"
       },
       {
-        "ko": "싸게싸게 오소!",
-        "meaningEn": "Hurry on over quickly! (Come along!)",
-        "descKo": "'빨리빨리'를 뜻하는 가장 유명한 전라도 사투리로, 반가운 마음에 어서 오라고 재촉하는 정감 넘치는 말이에요.",
-        "romaja": "Ssage-ssage oso!",
-        "noteEn": "Quintessential Jeolla regional phrase meaning 'hurry up and come over'."
+        "ko": "아 거시 뭐시?",
+        "meaningEn": "Ah, what's that <thing>?",
+        "youtubeUrl": "https://youtu.be/Rr4yqUzWcRE?si=o2P3IL49dyUHriwM&t=1016"
       },
       {
-        "ko": "아야! 아야! 날새겄다! (A-ya! A-ya! Nal-sae-geot-da!)",
+        "ko": "아야! 아야! 날새겄다!",
         "meaningEn": "A-ya! A-ya! Nal-sae-geot-da!",
-        "descKo": "'얘야, 그러다 날 새겠다!'라는 뜻의 구수한 전라도 사투리로, 1루 견제를 거듭하는 투수를 향해 밤새겠다고 위트 있게 재촉하는 챔피언스필드의 명물 구호예요.",
-        "noteEn": "Jeolla dialect meaning 'Hey kid, night\\'s gonna turn to day!' (i.e., 'We\\'ll be here all night at this rate!').",
         "youtubeUrl": "https://www.youtube.com/watch?v=6khJykNgUBg&t=23s"
       }
     ]
@@ -381,31 +339,21 @@
     },
     "phrases": [
       {
-        "ko": "안녕하십니까! 환영합니다!",
-        "meaningEn": "Hello! Warmest welcome!",
-        "descKo": "예의 바르고 신뢰감 넘치는 정통 서울 표준어 인사입니다.",
-        "romaja": "Annyeonghasimnikka! Hwan-yeonghamnida!",
-        "noteEn": "Formal, upright Seoul greeting representing the classic founding corporate club."
+        "ko": "안녕하십니까?",
+        "meaningEn": "Hello (formal)"
       },
       {
-        "ko": "식사 맛있게 하셨습니까?",
-        "meaningEn": "Did you enjoy your meal? (Seoul formal)",
-        "descKo": "비즈니스와 일상에서 상대의 컨디션을 정중하게 챙기는 격식 있는 표준어 식사 인사예요.",
-        "romaja": "Siksa mas-itge hasyeos-seumnikka?",
-        "noteEn": "Courteous, dignified central Seoul dining inquiry."
+        "ko": "밥은?",
+        "meaningEn": "Did you have a meal?"
       },
       {
-        "ko": "오늘 칼퇴하고 잠실로 직행이다!",
-        "meaningEn": "Clocking out right on time today and heading straight to Jamsil!",
-        "descKo": "퇴근 종이 울리자마자 잠실야구장 직관을 위해 지하철 2호선으로 달려가는 서울 직장인 야구팬들의 열정적인 유행어예요.",
-        "romaja": "Oneul kal-twaehago jamsil-ro jikhaeng-ida!",
-        "noteEn": "Iconic Seoul office worker baseball culture expression — rushing to Jamsil for game night."
+        "ko": "퇴근 하고 싶어요",
+        "meaningEn": "I want to leave work",
+        "youtubeUrl": "https://youtu.be/FGq7BbmyOd8?si=7-1supXnwyKan7Ys&t=21"
       },
       {
-        "ko": "야! 야! 야! (Ya! Ya! Ya!)",
+        "ko": "야! 야! 야!",
         "meaningEn": "Ya! Ya! Ya!",
-        "descKo": "상대 투수를 향해 빠르고 절도 있는 스타카토 리듬으로 '야! 야! 야!' 외치는 잠실 1루 두산 베어스 팬들의 일사불란하고 날카로운 견제 구호예요.",
-        "noteEn": "Fast, rhythmic staccato shouts directed at the pitcher.",
         "youtubeUrl": "https://www.youtube.com/watch?v=6khJykNgUBg&t=72s"
       }
     ]
@@ -463,31 +411,20 @@
     },
     "phrases": [
       {
-        "ko": "안녕합니꺼! 어데 가십니까?",
-        "meaningEn": "Hello! Where are you heading today?",
-        "descKo": "마산 바닷가 특유의 씩씩하고 활달한 억양이 돋보이는 경남 남해안 첫인사예요.",
-        "romaja": "Annyeonghamnikkeo! Eode gasimnikka?",
-        "noteEn": "Hearty, bold southern maritime Gyeongsang dialect greeting."
+        "ko": "왔능교? [왔↘ 능↗ 교↘]",
+        "meaningEn": "You arrived?"
       },
       {
-        "ko": "밥 뭇나? (아구찜 묵었나?)",
-        "meaningEn": "Have you eaten? (Did you have some spicy Agujjim?)",
-        "descKo": "마산 어시장과 골목길에서 이웃 간에 건네는 소박하고 끈끈한 식사 안부 인사예요.",
-        "romaja": "Bap munna? (Agujjim mugeonna?)",
-        "noteEn": "Classic coastal Gyeongsang question referencing the hometown delicacy Masan Agujjim."
+        "ko": "밥 먹었능교? [밥↘ 먹↘ 었↗ 능↗ 교↘]",
+        "meaningEn": "Have you eaten?"
       },
       {
-        "ko": "마산 야구 살아있네!",
-        "meaningEn": "Masan baseball is alive and kickin'!",
-        "descKo": "한국 프로야구 초창기부터 전국 최고의 야구 열기를 자랑했던 야도(野都) 마산의 자부심을 드러내는 표현이에요.",
-        "romaja": "Masan yagu sara-inne!",
-        "noteEn": "Proud phrase celebrating the legendary, fiery baseball heritage of historic Masan."
+        "ko": "단디 해라 [단↘ 디↗ 해↘ 라↘]",
+        "meaningEn": "Do it properly"
       },
       {
-        "ko": "쫌! (Jjom!)",
-        "meaningEn": "Jjom! (Just stop it!)",
-        "descKo": "'제발 그만 좀 해라!'라는 뜻의 경상도 사투리로, '쫌! 쫌! 쫌-쫌-쫌!' 스타카토 리듬에 맞춰 1루 견제 투수를 매섭게 압박하는 창원NC파크의 견제 구호예요.",
-        "noteEn": "Gyeongsang dialect for 'Just stop it!' or 'Give it a rest!' Chanted rhythmically: Jjom! Jjom! Jjom-jjom-jjom!",
+        "ko": "쫌!",
+        "meaningEn": "Just stop it!",
         "youtubeUrl": "https://www.youtube.com/watch?v=6khJykNgUBg&t=58s"
       }
     ]
@@ -545,31 +482,21 @@
     },
     "phrases": [
       {
-        "ko": "안녕하세요유~ 반가워유~",
-        "meaningEn": "Hello there~ Wonderful to meet you~",
-        "descKo": "말끝을 부드럽게 늘어뜨리며 상대의 긴장을 풀어주는 충청도 고유의 나긋나긋한 인사예요.",
-        "romaja": "Annyeonghaseyoyu~ Bangaweoyu~",
-        "noteEn": "Gentle, stretched '-yu' ending of central Chungcheong dialect."
+        "ko": "안녕하시유",
+        "meaningEn": "Hello there~ Wonderful to meet you~"
       },
       {
-        "ko": "진지 잡수셨슈? (밥 먹었슈?)",
-        "meaningEn": "Have you had your meal yet? (Chungcheong dialect)",
-        "descKo": "느긋하고 따스한 온정이 담긴 충청도 특유의 대표적인 식사 여부 질문이에요.",
-        "romaja": "Jinji jabsusyeossyu? (Bap meogeossyu?)",
-        "noteEn": "Relaxed, affectionate Chungcheong question showing natural hospitality."
+        "ko": "밥 먹었슈?",
+        "meaningEn": "Have you had your meal yet?"
       },
       {
-        "ko": "괜찮아유~ 다 잘 될 거유",
-        "meaningEn": "It's all right~ Everything will turn out fine",
-        "descKo": "어떤 위기 속에서도 조급해하지 않고 묵묵히 응원하는 보살 팬들과 충청인들의 초연한 낙천주의를 상징하는 말이에요.",
-        "romaja": "Gwaenchana-yu~ Da jal doel geoyu",
-        "noteEn": "The quintessential philosophy of Chungcheong life: relaxed patience and unflappable optimism."
+        "ko": "괜찮아유~",
+        "meaningEn": "It's all right~",
+        "youtubeUrl": "https://youtu.be/fkoMPG2-284?si=AvlYMO883dmZuLkK&t=17"
       },
       {
-        "ko": "뭐여! ... 뭐하는겨! (Mwo-yeo! ... Mwo-haneun-gyeo!)",
-        "meaningEn": "Mwo-yeo! ... Mwo-haneun-gyeo!",
-        "descKo": "느긋하고 구수한 충청도 사투리 특유의 느린 억양으로 '뭐여! ... 뭐하는겨!'라며 상대 투수를 유쾌하게 당황시키는 이글스파크의 명물 견제 구호예요.",
-        "noteEn": "Chungcheong dialect drawl meaning 'What\\'s this? ... What do you think you\\'re doing?'",
+        "ko": "뭐여! ... 뭐하는겨!",
+        "meaningEn": "What! What on earth are you doing?!\"",
         "youtubeUrl": "https://www.youtube.com/watch?v=6khJykNgUBg&t=16s"
       }
     ]
@@ -627,31 +554,20 @@
     },
     "phrases": [
       {
-        "ko": "안녕하십니꺼! 어서 오이소!",
-        "meaningEn": "Hello! Welcome to Busan!",
-        "descKo": "거친 바닷바람 속에서도 화통하고 뜨거운 에너지가 뿜어져 나오는 부산의 정통 인사예요.",
-        "romaja": "Annyeonghasimnikkeo! Eoseo oiso!",
-        "noteEn": "Passionate, resounding southeastern port dialect greeting."
+        "ko": "왔능예? [왔↘ 능↗ 예↘]",
+        "meaningEn": "Hello! Welcome to Busan!"
       },
       {
-        "ko": "밥 뭇나? (돼지국밥 한 그릇 말아묵자!)",
-        "meaningEn": "Have you eaten? (Let's grab a hot bowl of pork soup!)",
-        "descKo": "만나자마자 뚝배기 돼지국밥 한 그릇부터 비우러 가자는 부산 토박이들의 화끈한 식사 제안이에요.",
-        "romaja": "Bap munna? (Dwaejigukbap han geureut maramukja!)",
-        "noteEn": "Iconic Busan food greeting celebrating the city's legendary Dwaeji-gukbap."
+        "ko": "밥 뭇나? [밥↘ 뭇↗ 나↘]",
+        "meaningEn": "Have you eaten?"
       },
       {
-        "ko": "살아있네!",
-        "meaningEn": "Looking sharp! / It's alive! (Top notch / Full of swagger!)",
-        "descKo": "기세등등하고 멋들어진 상태나 뛰어난 기운을 칭찬할 때 쓰는 부산 최고의 시그니처 유행어예요.",
-        "romaja": "Sara-inne!",
-        "noteEn": "World-famous Busan expression indicating top tier quality, swagger, and vibrant spirit."
+        "ko": "와 그라노? [와↘ 그↗ 라↘ 노↘]",
+        "meaningEn": "Why are you being like that?"
       },
       {
-        "ko": "마! (Ma!)",
-        "meaningEn": "Ma! (Hey, you! / Punk!)",
-        "descKo": "KBO 견제 구호의 원조! '인마'의 부산 사투리로, 북소리와 카운트(하나, 둘, 셋)에 맞춰 사직구장이 떠나갈 듯 '마!' 하고 벼락처럼 외쳐요.",
-        "noteEn": "The originator of the tradition. Short for Busan dialect Inma (인마 - 'Hey, you!/Punk!'). Sung forcefully after a drum beat or count: (Hana, dul, set) Ma!",
+        "ko": "마! (이놈아 deriv)",
+        "meaningEn": "Hey, you! / Punk!",
         "youtubeUrl": "https://www.youtube.com/watch?v=6khJykNgUBg&t=0s"
       }
     ]
@@ -709,31 +625,20 @@
     },
     "phrases": [
       {
-        "ko": "안녕하십니까! 인천에 잘 오셨어유!",
-        "meaningEn": "Hello! Welcome to Incheon!",
-        "descKo": "개항기 이래 수많은 문화가 오가던 서해안 관문 도시 인천의 친절하고 활기찬 바닷가 첫인사예요.",
-        "romaja": "Annyeonghasimnikka! Incheone jal osyeosseoyu!",
-        "noteEn": "Welcoming maritime gateway greeting reflecting Incheon's historic open-port harbor."
+        "ko": "안녕하세요?",
+        "meaningEn": "Hello!"
       },
       {
-        "ko": "밥은 든든하게 잡쉈어? (짜장면 한 그릇 하셨어유?)",
-        "meaningEn": "Did you get a hearty meal? (Did you grab a bowl of Jjajangmyeon?)",
-        "descKo": "한국 짜장면의 발상지 차이나타운을 품은 인천만의 특색 있는 친근한 식사 안부예요.",
-        "romaja": "Babeun deundeunhage jabsweosseo? (Jjajangmyeon han geureut hasyeosseoyu?)",
-        "noteEn": "Hearty coastal dining inquiry celebrating Incheon Chinatown, the birthplace of Jjajangmyeon."
+        "ko": "밥 먹었냐?",
+        "meaningEn": "Have you eaten?"
       },
       {
-        "ko": "연안부두에서 시원한 바다 보고 가자!",
-        "meaningEn": "Let's head down to Yeonan Pier to catch the ocean breeze!",
-        "descKo": "랜더스 구장의 영원한 테마송 '연안부두'와 인천 앞바다의 낭만을 상징하는 대표 표현이에요.",
-        "romaja": "Yeonanbudueseo siweonhan bada bogo gaja!",
-        "noteEn": "Classic Incheon expression honoring Yeonan Pier and the sea breeze."
+        "ko": "동치 (동무 / 친구)",
+        "meaningEn": "Close buddy"
       },
       {
-        "ko": "와! ... 왜! (Wa! ... Wae!)",
-        "meaningEn": "Wa! ... Wae!",
-        "descKo": "투수가 견제구를 던질 때 일제히 '와~' 탄성을 내지른 뒤, '왜!' 하고 통쾌하게 되물으며 투수를 당황하게 만드는 랜더스필드의 재치 넘치는 견제 구호예요.",
-        "noteEn": "Fans shout 'Wa~' (mock awe) followed by a sharp 'Wae!' ('Why?!').",
+        "ko": "와! ... 왜!",
+        "meaningEn": "Ah! ... Why!",
         "youtubeUrl": "https://www.youtube.com/watch?v=6khJykNgUBg&t=80s"
       }
     ]
@@ -792,30 +697,19 @@
     "phrases": [
       {
         "ko": "안녕하세요! 어서오세요!",
-        "meaningEn": "Hello! Welcome!",
-        "descKo": "첨단 IT 벤처 허브 구로·가산 디지털단지와 맞닿은 현대적인 서울식 환영 인사예요.",
-        "romaja": "Annyeonghaseyo! Eoseo-oseyo!",
-        "noteEn": "Crisp, modern Seoul metropolitan greeting."
+        "meaningEn": "Hello! Welcome!"
       },
       {
-        "ko": "식사하셨어요? (따끈한 순댓국 드셨나요?)",
-        "meaningEn": "Have you eaten? (Did you have some warm sundae soup?)",
-        "descKo": "구로 시장과 골목 맛집에서 허기진 속을 든든하게 달래며 나누는 정겨운 식사 인사예요.",
-        "romaja": "Siksahasyeosseoyo? (Ddeakkeunhan sundae-guk deusyeonnayo?)",
-        "noteEn": "Friendly southwestern Seoul dining inquiry honoring local market food culture."
+        "ko": "식사하셨어요?",
+        "meaningEn": "Have you eaten?"
       },
       {
-        "ko": "비 와도 돔경기장이라 직관 끄떡없다!",
-        "meaningEn": "Even if it rains, it's a dome stadium so our game day is completely rain-proof!",
-        "descKo": "대한민국 유일의 날씨 걱정 없는 돔구장 고척스카이돔을 홈으로 둔 히어로즈 팬들의 남다른 자부심이에요.",
-        "romaja": "Bi wado domgyeonggijang-ira jikgwan kkeutteog-eopda!",
-        "noteEn": "Proud phrase celebrating Korea's only climate-controlled all-weather dome stadium."
+        "ko": "MBTI가 어떻게 되세요?",
+        "meaningEn": "What is your MBTI?"
       },
       {
         "ko": "뭐야!",
-        "meaningEn": "Mwo-ya! (What is that?!)",
-        "descKo": "가수 방실이의 인기 히트곡 '뭐야 뭐야' 멜로디에 맞춰 상대 투수의 견제를 경쾌하고 얄밉게 놀리는 고척 스카이돔의 시그니처 견제 구호예요.",
-        "noteEn": "Standard Seoul phrasing, sung to the melody of Bang Sil-yi’s pop song Mwoya Mwoya.",
+        "meaningEn": "What is that?!",
         "youtubeUrl": "https://www.youtube.com/watch?v=6khJykNgUBg&t=46s"
       }
     ]
@@ -874,30 +768,19 @@
     "phrases": [
       {
         "ko": "혼저옵서예!",
-        "meaningEn": "Welcome! Please come in! (Jeju dialect)",
-        "descKo": "제주도를 찾은 여행객을 두 팔 벌려 따뜻하게 맞이하는 유서 깊은 제주어 대표 인사예요.",
-        "romaja": "Honjeo-opseoye!",
-        "noteEn": "The most famous and beloved ancient greeting preserved on the volcanic island."
+        "meaningEn": "Please come in"
       },
       {
-        "ko": "밥 먹었수과?",
-        "meaningEn": "Have you eaten? (Jeju dialect)",
-        "descKo": "식사를 잘 챙겨 드셨는지 정중하고 다정하게 묻는 제주어 고유의 안부 표현이에요.",
-        "romaja": "Bap meogeossugwa?",
-        "noteEn": "Polite island inquiry featuring the unique '-sugwa' interrogative dialect suffix."
+        "ko": "밥 먹언?",
+        "meaningEn": "Did you eat?"
       },
       {
-        "ko": "맨도롱 또똣할 때 호로록 들입섭서!",
-        "meaningEn": "Please drink it up warmly while it is delightfully comforting and tepid!",
-        "descKo": "'따뜻하고 기분 좋게 훈훈할 때 맛있게 드시라'는 뜻의 가장 아름답고 시적인 제주 방언 명문장이에요.",
-        "romaja": "Maendorong ttottothal ddae hororok deuripseopseote!",
-        "noteEn": "The most celebrated poetic Jeju phrase meaning cozy, comforting warmth."
+        "ko": "무사 경했니?",
+        "meaningEn": "Why did you do that?"
       },
       {
-        "ko": "한라산 정복! (혼저옵서!)",
-        "meaningEn": "Conquered Hallasan! / Welcome! (Mountain Shout)",
-        "descKo": "해발 1,947m 백록담 정상에 올라 환호하며 외치는 벅찬 감동의 환호성이에요.",
-        "noteEn": "Triumphant mountain shout at the top of the Korean peninsula celebrating the ascent."
+        "ko": "한라산 정복!",
+        "meaningEn": "Conquered Hallasan!"
       }
     ]
   }

@@ -412,10 +412,11 @@
                 <div class="phrase-korean">
                   <span style="font-weight: 700; font-size: 1.05rem;">${phrase.ko}</span>
                 </div>
+                ${phrase.meaningEn ? `
                 <div class="phrase-meaning" style="margin-top: 4px;">
-                  <span class="lang-en">${phrase.meaningEn} — <strong>${phrase.noteEn}</strong></span>
-                  <span class="lang-ko">${phrase.descKo}</span>
+                  <span class="lang-en">${phrase.meaningEn}</span>
                 </div>
+                ` : ""}
                 ${phrase.youtubeUrl ? `
                   <div class="phrase-yt-badge" style="margin-top: 8px;">
                     <a href="${phrase.youtubeUrl}" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 6px; font-size: 0.76rem; font-weight: 600; color: #dc2626; text-decoration: none; padding: 4px 10px; background: rgba(220, 38, 38, 0.07); border: 1px solid rgba(220, 38, 38, 0.22); border-radius: 6px; transition: background 0.15s, transform 0.15s;">
