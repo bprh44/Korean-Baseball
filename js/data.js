@@ -362,7 +362,7 @@ const KBO_DATA = {
         },
         "phrases": [
           {
-            "ko": "왔는교? [왔↗ 는↗ 교↘]",
+            "ko": "왔나? [왔↗ 나↘]",
             "meaningEn": "Did you come?"
           },
           {
@@ -694,7 +694,7 @@ const KBO_DATA = {
         "civicAnchorKo": "• 소유 모기업: 한화그룹\n• 창립 및 모태: 1952년 김종희 창업주가 부산에서 설립한 '한국화약주식회사'에 뿌리\n• 핵심 주력산업: 첨단 우주항공 및 K-방산 무기체계(한화에어로스페이스, 한화오션, 한화시스템), 친환경 태양광 에너지(한화큐셀), 첨단 화학소재, 금융·보험(한화생명)\n• 자산 및 기업가치: 공정자산 약 112조 5,000억 원 (대한민국 재계 순위 7위 대기업 집단)",
         "photos": [
           {
-            "src": "https://i.namu.wiki/i/E2IVLGtjCEfyEHls8areoH-iueziZSIWGkh2HLTCJPah2bOV_OSeZIyD0u5vQ18EORNMe1NIn3-QgEEs3-aZifXlIgXNG3aeB5O18RLl_n1gUu-KzCefMcrjs_EQ22VQojblYvAbhzBLDUEuC52hfw.webp",
+            "src": "https://wimg.mk.co.kr/news/cms/202507/11/20250711_01110127000001_L00.jpg",
             "labelEn": "Hanwha Life Eagles Park",
             "labelKo": "대전 한화생명볼파크"
           },
