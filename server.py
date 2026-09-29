@@ -107,8 +107,14 @@ class KBORequestHandler(http.server.SimpleHTTPRequestHandler):
         self.end_headers()
 
 def run(port=PORT):
-    server_address = ("", port)
-    httpd = http.server.ThreadingHTTPServer(server_address, KBORequestHandler)
+    try:
+        server_address = ("", port)
+        httpd = http.server.ThreadingHTTPServer(server_address, KBORequestHandler)
+    except OSError:
+        print(f"Port {port} is in use, falling back to 8080...")
+        port = 8080
+        server_address = ("", port)
+        httpd = http.server.ThreadingHTTPServer(server_address, KBORequestHandler)
     print(f"==================================================")
     print(f"⚾ KBO Journey Server with Auto-Save running!")
     print(f"🌐 App:   http://localhost:{port}/")

@@ -839,16 +839,6 @@ main.editorial-panel::-webkit-scrollbar-thumb {
   color: var(--accent-navy);
 }
 
-.anthem-origin {
-  font-size: 0.74rem;
-  color: var(--ink-muted);
-}
-
-.anthem-note {
-  font-size: 0.82rem;
-  color: var(--ink-secondary);
-  line-height: 1.5;
-}
 
 .anthem-player {
   width: 100%;

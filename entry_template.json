@@ -59,11 +59,7 @@
   "anthem": {
     "titleEn": "Song Title (English)",
     "titleKo": "노래 / 응원가 제목 (한국어)",
-    "originEn": "Original artist / background context",
-    "originKo": "노래를 부른 가수와 쉬운 설명",
-    "noteEn": "When and how the stadium crowd sings this together.",
-    "noteKo": "야구장에서 다 함께 노래를 부르는 방법 설명",
-    "youtubeId": "YOUTUBE_VIDEO_ID_HERE",
+    "youtubeId": "YOUTUBE_VIDEO_ID_OR_URL_HERE",
     "timestamp": 10
   }
 }

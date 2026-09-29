@@ -6,12 +6,13 @@
 
 ## 🧭 Project Philosophy
 
-This is an **interactive travel and storytelling magazine** rather than a sports statistics dashboard. It celebrates:
-1. **The 8 Cities & Distinct Neighborhoods**: From the hillside roads of Busan to the unhurried bakeries of Daejeon, the tech-worker alleys of Guro, and the historic fortress gates of Suwon.
-2. **The Quiet Thread of Baseball**: 10 KBO clubs and ballparks act as the anchor points connecting the physical journey across the Korean peninsula.
-3. **Bilingual Editorial Voice**: Instant seamless switching between English personal memoirs and Korean literary translations.
-4. **Cartography & Transit**: A warm paper map styled with the high-speed KTX railway spine.
-5. **Sounds & Dialects**: Interactive "Hear the City" regional speech cards and signature stadium anthem singalongs.
+**KBO — A Way Into Korea** is an interactive travel and cultural storytelling magazine rather than a sports statistics dashboard:
+1. **The Cities & Distinct Neighborhoods**: From the hillside roads of Busan to the unhurried bakeries of Daejeon, the tech-worker alleys of Guro, and the historic fortress gates of Suwon.
+2. **The Quiet Thread of Baseball**: 10 KBO clubs and ballparks act as physical and emotional anchor points across the Korean peninsula (plus Jeju Island Hallasan).
+3. **Instant Bilingual Voice**: Real-time switching between English personal memoirs and Korean literary translations (`data-lang`).
+4. **Precision Cartography & Rail**: A warm parchment map featuring surveyor-accurate OpenStreetMap KTX high-speed rail track geometry with 0.0m junction gaps.
+5. **Sounds, Dialects & Stadium Cheers**: High-quality speech synthesis for regional expressions and chorus-synced embedded stadium anthems with pickoff chant deep links.
+6. **Zero External Build Step**: Pure HTML5, Vanilla CSS3, and ES6 JavaScript.
 
 ---
 
@@ -21,100 +22,90 @@ This is an **interactive travel and storytelling magazine** rather than a sports
 Korean Baseball/
 ├── .gitignore              # Git ignore rules for OS, credentials, and local logs
 ├── index.html              # Main magazine interface (split-screen map & editorial panel)
+├── admin.html              # Administrative visual content editor with live preview & auto-save
 ├── PRD_SDD.md              # 📄 Unified Product Requirements & System Design Specification
-├── README.md               # User guide & customization walkthrough
+├── README.md               # User guide & curation walkthrough
+├── data.json               # Canonical JSON data store for all 11 chapters
+├── entry_template.json     # Standardized JSON schema for adding new chapters
+├── server.py               # Python HTTP server with auto-save API & strict referrer policy
+├── server.ps1              # Native PowerShell HTTP server with auto-save API
+├── start_server.bat        # One-click Windows launcher (starts server & opens browser)
 ├── css/
-│   └── style.css           # Warm paper aesthetic, typography scale, responsive split-view, KTX lines
+│   └── style.css           # Warm paper aesthetic, typography scale, responsive layout
 ├── js/
 │   ├── railways.js         # 🚆 Precision OpenStreetMap KTX high-speed rail track geometry
-│   ├── data.js             # 🌟 Decoupled bilingual data store (stories, photos, anthems, dialects)
+│   ├── data.js             # 🌟 Decoupled bilingual data store (11 chapters, stations, anthems)
 │   └── app.js              # Leaflet cartography engine, SpeechSynthesis, lightbox, hash routing
 └── images/
-    ├── README.txt          # Photo placement conventions (Place, Street, Food)
-    └── logos/              # ⚾ Official 2026 KBO club emblems (emblem_*.png)
+    ├── logos/              # ⚾ Official 2026 KBO club emblems (emblem_*.png)
+    └── cities/             # 📷 11 Chapter image drop folders (1_stadium.jpg, 2_landmark.jpg, 3_dish.jpg)
 ```
-
----
-
-## 🛠️ How to Customize Your Travel Journal
-
-The website was built with **strict data decoupling**. You never need to touch `index.html` or `style.css` to update your stories or add personal photos.
-
-### 1. Adding Your Own Photographs
-Each entry has a **Photo Triptych** consisting of 3 photos:
-* `(1)` **Place / Landscape**: The skyline, harbor, mountain, or landmark.
-* `(2)` **Street / People**: Everyday alleyways, markets, evening neon.
-* `(3)` **Food / Culture**: Regional cuisine, local drinks, market delicacies.
-
-To use your own photos:
-1. Save your photos into the corresponding folder inside `images/` (e.g. `images/busan/landscape.jpg`, `images/busan/market.jpg`, `images/busan/dwaejigukbap.jpg`).
-2. Open [`js/data.js`](file:///d:/Vibe/Korean%20Baseball/js/data.js) and update the `src` paths and captions:
-```javascript
-photos: [
-  {
-    src: "images/busan/landscape.jpg",
-    labelEn: "Place · Sanbok-doro Hillside Road at Twilight",
-    labelKo: "장소 · 영도 산복도로에서 바라본 해질녘 부산항"
-  },
-  {
-    src: "images/busan/market.jpg",
-    labelEn: "Street · Jagalchi Fishmongers & Evening Stalls",
-    labelKo: "거리 · 자갈치 어시장 골목의 저녁 풍경"
-  },
-  {
-    src: "images/busan/dwaejigukbap.jpg",
-    labelEn: "Food · Steaming Pork Rice Soup in Nampo-dong",
-    labelKo: "음식 · 남포동 골목의 뜨끈한 돼지국밥"
-  }
-]
-```
-
----
-
-### 2. Updating Your Personal Stories
-In [`js/data.js`](file:///d:/Vibe/Korean%20Baseball/js/data.js), locate any entry (e.g. `"daejeon-hanwha"`) and edit `storyEn` and `storyKo`:
-
-```javascript
-storyEn: "Your personal 3-4 sentence memoir of what you discovered in this city...",
-storyKo: "한국어 번역 또는 한국어로 남긴 개인적인 여행 기록..."
-```
-
----
-
-### 3. Customizing Stadium Anthems & YouTube Timestamps
-To change a stadium rally song or update the starting point:
-```javascript
-anthem: {
-  titleEn: "Busan Seagulls (Busan Galmaegi)",
-  titleKo: "부산 갈매기",
-  originEn: "Moon Sung-jae 1982 classic · Anthem of Busan",
-  originKo: "문성재 원곡 · 부산 시민의 애국가",
-  noteEn: "Singalong starts as night falls over the stadium...",
-  noteKo: "7회 말 끝남과 동시에 온 사직구장을 흔드는 영혼가...",
-  youtubeId: "r2Yn-M7K-d4",  // YouTube Video ID
-  timestamp: 15               // Seconds to skip directly into the chorus
-}
-```
-
----
-
-### 4. Customizing Dialect Phrases ("Hear the City")
-Edit the 3 phrases per city (Greeting, "Have you eaten?", Local signature expression):
-```javascript
-phrases: [
-  {
-    ko: "마, 부산 아이가!",
-    romaja: "Ma, Busan aiga!",
-    meaningEn: "Hey, this is Busan after all!",
-    descKo: "사직 관중석과 포장마차 어디서나 울려 퍼지는 자부심",
-    noteEn: "The iconic Busan exclamation of local pride."
-  }
-]
-```
-The play button (▶) automatically speaks the phrase using high-quality Korean speech synthesis with regional tone pacing.
 
 ---
 
 ## 🚀 How to Run Locally
 
-You can open [`index.html`](file:///d:/Vibe/Korean%20Baseball/index.html) directly in any modern web browser, or serve it using any lightweight local server (such as VS Code Live Server or Python `python -m http.server 8000`).
+### Recommended: One-Click Launcher (`start_server.bat`)
+Double-click `start_server.bat` in the project root. It will:
+1. Detect Python (or fallback to native PowerShell).
+2. Start the local HTTP server at `http://localhost:8000`.
+3. Set `Referrer-Policy: strict-origin-when-cross-origin` to ensure YouTube embeds play without restriction (preventing YouTube Error 153).
+4. Launch `http://localhost:8000/admin.html` and `http://localhost:8000/` in your default browser.
+
+```cmd
+start_server.bat
+```
+
+### Manual Command Line
+```bash
+# Python:
+python server.py
+
+# Or PowerShell:
+powershell -ExecutionPolicy Bypass -File server.ps1
+```
+
+> [!NOTE]
+> Opening `index.html` directly via `file:///` works for mapping and speech synthesis, but YouTube blocks embedded video playback on `file://` URIs with Error 153. Running via `start_server.bat` or `http://localhost:8000` is recommended for the complete multimedia experience.
+
+---
+
+## 🛠️ How to Customize Your Travel Journal
+
+### Method A: Interactive Admin Dashboard (`admin.html`)
+Open `http://localhost:8000/admin.html` while the server is running:
+- **Visual Form Editor**: Edit city names, civic/chaebol history bullets, ballpark details, colors, and coordinates.
+- **Smart YouTube Ingestion**: Simply paste any YouTube URL (or 11-char ID); the editor automatically extracts video IDs and timestamps (e.g., `?t=30s`, `?start=90`).
+- **Live Video & SVG Previews**: Real-time iframe preview and club emblem badge rendering.
+- **Auto-Save & File Sync**: Click **Save Changes** (or press `Ctrl+S`). The server saves directly to `data.json` and updates `js/data.js` automatically.
+
+---
+
+### Method B: Drop-In Photography Replacement
+Each of the 11 city chapters has a dedicated folder inside `images/cities/`:
+* `1_stadium.jpg` (or `1_peak.jpg` for Jeju): Ballpark / Landmark Anchor.
+* `2_landmark.jpg`: Iconic Regional Landmark or Cityscape.
+* `3_dish.jpg`: Regional Signature Food or Market Specialty.
+
+Replace any file inside `images/cities/<entry_id>/` with your own JPG photograph using the same file name, and the app will immediately display your photo!
+
+---
+
+### Method C: Dialects & Stadium Cheers
+Each chapter features 4 curated dialect expressions and chants:
+1. **Greeting 사투리** (e.g., *"마, 밥 묵었나?"*)
+2. **"Have you eaten?"** regional inquiry
+3. **Iconic regional catchphrase / idiom**
+4. **Signature ballpark cheer / pickoff chant** with a direct YouTube button jumping to the exact audio moment.
+
+Clicking the speech button (▶) speaks the Korean phrase with authentic intonation via the browser's Web SpeechSynthesis API.
+
+---
+
+## ⌨️ Keyboard Shortcuts
+
+| Shortcut | Action |
+|---|---|
+| `L` | Toggle language between Korean (한국어) and English |
+| `ArrowLeft` / `ArrowRight` | Cycle through previous / next city chapter in standings order |
+| `Escape` | Close the high-resolution photo lightbox modal |

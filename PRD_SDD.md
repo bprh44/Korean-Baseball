@@ -2,11 +2,11 @@
 ## Project: KBO — A Way Into Korea (한국으로 들어가는 길)
 
 > **Document Type:** Unified Product Requirements & System Design Specification  
-> **Status:** APPROVED & ACTIVE  
-> **Version:** 2.2.0  
-> **Target Environment:** Modern Web Browsers (Chrome, Edge, Safari, Firefox), Vanilla JavaScript (ES6+), Vanilla CSS3, HTML5  
+> **Status:** APPROVED & ACTIVE (PRODUCTION RELEASE)  
+> **Version:** 2.3.0  
+> **Target Environment:** Modern Web Browsers (Chrome, Edge, Safari, Firefox), Vanilla JavaScript (ES6+), Vanilla CSS3, HTML5, Python 3 / PowerShell 5.1+  
 > **Primary Location:** `d:/Vibe/Korean Baseball/`  
-> **Last Updated:** 2026-09-14  
+> **Last Updated:** 2026-09-30  
 
 ---
 
@@ -38,8 +38,9 @@
 2. **Strict Data-Presentation Decoupling**: 100% of bilingual content, photo paths, YouTube timestamps, dialect phrases, civic anchors, and team metadata reside in a standalone data store (`js/data.js` and `data.json`).
 3. **Instant Zero-Latency Bilingual Engine**: Real-time language switching (English ⇄ Korean) driven by root `data-lang` attributes without page reload or DOM re-rendering.
 4. **Editorial "Warm Paper" Aesthetic**: Editorial typography (Noto Serif KR + Noto Sans KR), subdued parchment tones (`#f8f6f0`, `#f1ede3`), crimson and navy accents, and rich tactile micro-interactions.
-5. **Multisensory Immersion**: Audio synthesis for authentic regional dialect phrases and pickoff chants via the Web SpeechSynthesis API and embedded chorus-synced stadium anthems.
+5. **Multisensory Immersion**: Audio synthesis for authentic regional dialect phrases via the Web SpeechSynthesis API and embedded chorus-synced stadium anthems with pickoff chant deep links.
 6. **Local Asset Self-Sufficiency**: Fully offline-capable local asset architecture with structured drop folders for all 11 city chapters and club emblems.
+7. **Zero-Configuration Local Development**: Built-in Python/PowerShell auto-save daemons with strict referrer policy headers enabling embedded YouTube media playback and real-time content authoring.
 
 ---
 
@@ -49,11 +50,14 @@
 d:/Vibe/Korean Baseball/
 ├── .gitignore                      # Git exclusion rules (credentials, OS, logs)
 ├── index.html                      # Main application shell & bilingual markup hierarchy
-├── admin.html                      # Administrative content editing & curation dashboard
+├── admin.html                      # Administrative content editing & curation dashboard with live preview
 ├── PRD_SDD.md                      # Unified Product Requirements & System Design Document
-├── README.md                       # User guide & content editing instructions
+├── README.md                       # User guide, curation walkthrough & local server runbook
 ├── data.json                       # Canonical JSON store for all 11 chapters
 ├── entry_template.json             # Schema template for adding new chapters
+├── server.py                       # Python HTTP server with auto-save API & strict referrer policy
+├── server.ps1                      # Native PowerShell HTTP server with auto-save API
+├── start_server.bat                # One-click Windows launcher (detects runtime & opens browser)
 ├── css/
 │   └── style.css                   # Design system, tokens, split-viewport, responsive layout
 ├── js/
@@ -98,13 +102,15 @@ d:/Vibe/Korean Baseball/
 | **FR-02** | **Map Viewport** | Interactive map rendered on left viewport (desktop 1.15fr). Must lock bounds to South Korea (`KOREA_BOUNDS`) with `maxBoundsViscosity: 1.0` so user cannot pan outside the country. | Leaflet.js with Carto Positron basemap tiles (`light_nolabels` + `light_only_labels`). Dynamic `minZoom` calculation on resize. |
 | **FR-03** | **KTX Rail Overlay** | Display surveyor-accurate KTX high-speed rail lines, conventional spine, and Gyeongjeon branch as multi-segment polylines with crisp white track beds. | OpenStreetMap geometric segments in `KTX_OSM_TRACKS` rendered via dual `L.polyline` (white halo + color track line). |
 | **FR-04** | **Ballpark Markers** | Display clickable pins for all 10 KBO ballparks plus the Jeju Hallasan landmark pin. Pins show team emblem badges or mountain symbols. | Leaflet `L.divIcon` with circular `.marker-pin` enclosing `.marker-emblem-icon` or emoji symbol. |
-| **FR-05** | **Standings Ribbon** | Top horizontal scrollable strip displaying all 10 clubs in standings order with emblem, team name, and city (format: `logo | team name | city`), plus Hallasan anchor. | Dynamically injected `<button class="club-chip">` with keyboard navigation and active state styling. |
+| **FR-05** | **Standings Ribbon** | Top horizontal scrollable strip displaying all 10 clubs in standings order with emblem, team name, and city (format: `logo \| team name \| city`), plus Hallasan anchor. | Dynamically injected `<button class="club-chip">` with keyboard navigation and active state styling. |
 | **FR-06** | **Editorial Journal** | Right viewport (0.85fr) rendering the active chapter: Eyebrow, City Title (Hanja tag & emblem), Ballpark Anchor Card (with parsed corporate/civic badges), 3-Photo Triptych, 4-Item Dialect Cards with YouTube pickoff links, and Stadium Anthem. | Semantic HTML generation in `app.js:renderEditorial()` reading strictly from `KBO_DATA.entries[id]`. |
-| **FR-07** | **Photo Lightbox** | Clicking any photo in the 3-photo triptych opens a high-resolution, darkened modal lightbox with caption. | Modal `#lightbox-modal` with click-to-close, close button (`&times;`), and `Escape` key listener. |
-| **FR-08** | **Stadium Anthem** | Embedded YouTube player configured with `youtube-nocookie.com`, custom start timestamp (jumping directly to the chorus), and rally notes. | Dynamic `<iframe>` injection with `start=${anthem.timestamp}` and zero related video pollution. |
-| **FR-09** | **Hear the City & Pickoff Chants** | 3 dialect & phrase cards per chapter (Greeting, "Have you eaten?", Local catchphrase / Pickoff chant). KBO clubs feature deep-linked YouTube video timestamps jumping directly to the club's iconic check-throw chant (Lotte `0:00`, LG `0:07`, Hanwha `0:16`, KIA `0:23`, Samsung `0:31`, Kiwoom `0:46`, NC `0:58`, Doosan `1:12`, SSG `1:20`, KT `1:25`). | Dynamic YouTube URL parameter `&t=...s` with auto-calculated `(m:ss)` time badges in the UI. |
+| **FR-07** | **Photo Lightbox** | Clicking any photo in the 3-photo triptych opens a high-resolution, darkened modal lightbox with caption. Photo cards have `user-select: none` to prevent accidental drag during click. | Modal `#lightbox-modal` with click-to-close, close button (`&times;`), and `Escape` key listener. |
+| **FR-08** | **Stadium Anthem & Smart Video Parser** | Embedded YouTube player with robust URL/ID extraction, chorus timestamp seek (`start=${anthem.timestamp}`), `referrerpolicy="strict-origin-when-cross-origin"`, and local `file://` protocol diagnostic notice (Error 153 defense). | Dynamic `extractYouTubeInfo` parser handling raw IDs, watch URLs, youtu.be, shorts, and embed iframes. |
+| **FR-09** | **Hear the City & Pickoff Chants** | 4 dialect cards per chapter (1: Greeting, 2: "Have you eaten?", 3: Regional expression, 4: Stadium cheer / pickoff chant with deep-linked YouTube button). English and Korean are simultaneously visible in this section for dual-language learning. | Web SpeechSynthesis API for Korean speech synthesis; CSS `.audio-section .lang-en, .audio-section .lang-ko { display: inline !important; }`. |
 | **FR-10** | **Deep Linking & Keys** | URL hash syncing (`#busan-lotte`, `#suwon-kt`, `#jeju-hallasan`), browser history navigation, and keyboard shortcuts (`ArrowLeft`/`ArrowRight` to cycle teams, `L` to toggle language, `Esc` to close modal). | `window.location.hash`, `popstate` listener, and global `keydown` event dispatcher. |
 | **FR-11** | **Local Image Drops** | Drop-in photo replacement via local folders (`images/cities/<entry_id>/`). When files are replaced, the app serves them directly without code modifications. | Local relative image URLs (`images/cities/...`) resolving directly via standard static web server. |
+| **FR-12** | **Auto-Save Server Daemon** | Local web server (`server.py` or `server.ps1`) providing static asset serving and an atomic `/api/save` endpoint that updates `data.json` and syncs `js/data.js`. | Native Python `http.server` or PowerShell `HttpListener` with `strict-origin-when-cross-origin` and port 8000 $\rightarrow$ 8080 fallback. |
+| **FR-13** | **Interactive Admin Dashboard** | Full-featured administrative GUI (`admin.html`) for editing city info, civic anchors, photos, dialect phrases, anthems, and JSON, featuring live YouTube parsing and SVG badge preview. | Client-side reactive form with real-time DOM/SVG/iframe feedback and asynchronous fetch to `/api/save`. |
 
 ---
 
@@ -164,6 +170,19 @@ interface PhotoItem {
   labelEn: string;              // Bilingual English caption
   labelKo: string;              // Bilingual Korean caption
   sourceUrl?: string;           // Direct citation / attribution URL for image credit
+}
+
+interface DialectPhrase {
+  ko: string;                   // Korean expression or dialect cheer text
+  meaningEn: string;            // English meaning and contextual translation
+  youtubeUrl?: string;          // Direct YouTube link with &t= timestamp for stadium cheer / pickoff chant
+}
+
+interface AnthemItem {
+  titleEn: string;              // English anthem title
+  titleKo: string;              // Korean anthem title
+  youtubeId: string;            // 11-char YouTube video ID (or sanitized video URL)
+  timestamp: number;            // Seconds offset to jump directly into the chorus
 }
 ```
 
@@ -306,13 +325,37 @@ with urllib.request.urlopen(req) as resp:
 # Ways 0 to 72 form the contiguous Samnangjin -> Masan line.
 ```
 
-### 7.4 Running Locally
-```bash
-# Run using any static HTTP server from project root:
-cd "d:/Vibe/Korean Baseball"
-python -m http.server 8000
-# Open http://localhost:8000
+### 7.4 Running Locally & Development Daemons
+
+#### Option A: One-Click Windows Launcher (`start_server.bat`)
+The recommended way to launch the full environment on Windows:
+```cmd
+start_server.bat
 ```
+* Automatically detects whether `python` or `py` is present on `PATH`.
+* If Python is absent, automatically invokes native PowerShell (`server.ps1`).
+* Spawns `http://localhost:8000/admin.html` and `http://localhost:8000/` in the default browser.
+
+#### Option B: Python Server with Auto-Save Daemon (`server.py`)
+```bash
+python server.py
+```
+* **Endpoints**:
+  * `GET /`: Serves static application bundle.
+  * `GET /api/status`: Heartbeat status probe returning server state.
+  * `POST /api/save`: Atomically serializes incoming JSON into `data.json` and updates the `entries` object within `js/data.js`.
+* **Headers**: Sends `Cache-Control: no-cache`, `Access-Control-Allow-*`, and `Referrer-Policy: strict-origin-when-cross-origin`.
+* **Port Conflict Handling**: Gracefully attempts port `8000`, falling back to `8080` if occupied.
+
+#### Option C: Native PowerShell Server (`server.ps1`)
+```powershell
+powershell -ExecutionPolicy Bypass -File server.ps1
+```
+* Zero runtime dependency fallback using `.NET System.Net.HttpListener`.
+* Mirrors the exact `/api/save` atomic write logic and header configuration as `server.py`.
+
+#### Crucial Note on YouTube Embeds (Error 153 Defense)
+When opening `index.html` via the `file:///` protocol, modern browsers omit referrer headers, triggering YouTube Error 153 / video restriction. Serving the project via `start_server.bat` or `http://localhost:8000` sets `Referrer-Policy: strict-origin-when-cross-origin` and guarantees full embedded video and chorus playback. If accessed via `file://`, the UI displays a clean diagnostic notice with a direct YouTube link.
 
 ---
 
@@ -323,6 +366,13 @@ python -m http.server 8000
 - [x] **20 Aligned Stations**: Every station node is centered precisely on its railway track centerline.
 - [x] **11 Offline-Ready Drop Folders**: Complete with localized `README.md` and active starter images.
 - [x] **Complete Image Citations & Attribution Logs**: Fully documented Unsplash source IDs and licenses across all 11 city `README.md` files with structured tables for logging user-replaced photos.
+- [x] **Smart YouTube Link Extractor**: Robust regex parser accepting full URLs, shorts, youtu.be, embed codes, and raw 11-char IDs, with auto-detected `?t=`/`?start=` timestamp parsing.
+- [x] **Dual-Language Dialect & Chant Cards**: Always displays both Korean text and English translation simultaneously (`.audio-section .lang-en, .audio-section .lang-ko`) for seamless language study.
+- [x] **Pickoff & Cheer Deep Links**: Stadium chant cards include deep-linked YouTube badges with auto-calculated duration tags.
+- [x] **Native Auto-Save Daemons**: Both `server.py` and `server.ps1` provide instant `/api/save` synchronization between `admin.html`, `data.json`, and `js/data.js`.
+- [x] **Port Conflict Resilience**: Both server implementations auto-fallback to port `8080` if `8000` is bound.
+- [x] **Tactile Micro-Interactions**: `user-select: none` and drag suppression on photo cards for clean lightbox zoom.
 - [x] **Dynamic Script Cache-Busting**: `index.html` loads scripts with `?t=Date.now()` to prevent stale browser caching.
 - [x] **Geographic Enclosure**: Locked to South Korea bounds (`[33.0, 124.5]` to `[38.7, 131.0]`).
 - [x] **Bilingual Completeness**: 100% of all UI strings, civic facts, highlights, anthems, and dialects exist in both English and Korean.
+
