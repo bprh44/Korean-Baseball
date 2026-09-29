@@ -280,14 +280,14 @@ const KBO_DATA = {
           }
         ],
         "anthem": {
-          "titleEn": "Magical kt wiz (We Are the Wiz)",
-          "titleKo": "승리의 마법사 / 마법의 성",
+          "titleEn": "We love Suwon KT",
+          "titleKo": "사랑한다 수원 KT",
           "originEn": "kt wiz Championship Theme",
           "originKo": "KT 위즈 승리의 노래",
           "noteEn": "Sung with red-and-black light batons swinging in rhythm against the fortress sky.",
           "noteKo": "야구장에서 빨간색 응원봉을 흔들면서 다 같이 노래해요.",
-          "youtubeId": "l89TqRzK_jM",
-          "timestamp": 10
+          "youtubeId": "haPVqguhBAM",
+          "timestamp": 99
         },
         "phrases": [
           {
@@ -352,13 +352,13 @@ const KBO_DATA = {
         ],
         "anthem": {
           "titleEn": "El Dorado",
-          "titleKo": "엘도라도 (El Dorado)",
+          "titleKo": "엘도라도",
           "originEn": "Goombay Dance Band classic · Soul of Lions",
           "originKo": "삼성 라이온즈 대표 응원가 · 엘도라도",
           "noteEn": "Sung at the start of the 8th inning with arms crossed overhead, swaying like a blue ocean.",
           "noteKo": "8회에 온 관중이 두 팔을 올리고 파란 바다처럼 흔들며 불러요.",
-          "youtubeId": "5jGq5v_V6W0",
-          "timestamp": 10
+          "youtubeId": "M-Ur4RDP7p4",
+          "timestamp": 17
         },
         "phrases": [
           {
@@ -370,7 +370,7 @@ const KBO_DATA = {
             "meaningEn": "Have you eaten?"
           },
           {
-            "ko": "니 와카노 [니 와↗ 카↗ 노↘]",
+            "ko": "와카노 [와↗ 카↗ 노↘]",
             "meaningEn": "Why are you being like that?"
           },
           {
@@ -422,14 +422,14 @@ const KBO_DATA = {
           }
         ],
         "anthem": {
-          "titleEn": "Seoul’s LG Twins (Seoul Hymn)",
-          "titleKo": "서울의 찬가 / 사랑한다 LG",
+          "titleEn": "Forever LG",
+          "titleKo": "무적 LG",
           "originEn": "Patty Kim classic reimagined · Jamsil Signature",
           "originKo": "패티김 원곡 노래 · 서울의 찬가",
           "noteEn": "Sung passionately during late-inning rallies as twilight settles over the Olympic stadium complex.",
           "noteKo": "https://youtu.be/BhwoJFjkAf8?si=cNbUCn3J-drs6AL3&t=1461",
-          "youtubeId": "https://youtu.be/BhwoJFjkAf8?si=cNbUCn3J-drs6AL3&t=1461",
-          "timestamp": 0
+          "youtubeId": "zoQ264XFY0I",
+          "timestamp": 1155
         },
         "phrases": [
           {
@@ -493,14 +493,14 @@ const KBO_DATA = {
           }
         ],
         "anthem": {
-          "titleEn": "Southbound Train (Namhaeng Yeolcha)",
-          "titleKo": "남행열차",
+          "titleEn": "Shout it out, the strongest Kia",
+          "titleKo": "외쳐라 최강 기아",
           "originEn": "Kim Soo-hee classic · Immortal Tiger Anthem",
           "originKo": "김수희 원곡 노래 · 남행열차",
           "noteEn": "The unmistakable brass melody triggers an explosive singalong on the 3rd base concourse.",
           "noteKo": "비 내리는 호남선 노래에 맞춰 신나게 춤추며 불러요.",
-          "youtubeId": "rVv3V8wZ5R0",
-          "timestamp": 12
+          "youtubeId": "-yDl24fIocw",
+          "timestamp": 43
         },
         "phrases": [
           {
@@ -567,14 +567,14 @@ const KBO_DATA = {
           }
         ],
         "anthem": {
-          "titleEn": "Song of the Bears (Hustle Doo)",
-          "titleKo": "승리의 두산 / 베어스 찬가",
+          "titleEn": "APT",
+          "titleKo": "아파트",
           "originEn": "Original Doosan rally anthem",
           "originKo": "두산 베어스 승리의 노래",
           "noteEn": "Echoes through the 1st base side with rhythmic towel waves and collective clapping.",
           "noteKo": "1루 관중석에서 하얀 수건을 흔들며 다 같이 박수를 쳐요.",
-          "youtubeId": "Wv0c_v0V0_U",
-          "timestamp": 5
+          "youtubeId": "9L-_CpT53qE",
+          "timestamp": 4
         },
         "phrases": [
           {
@@ -639,14 +639,14 @@ const KBO_DATA = {
           }
         ],
         "anthem": {
-          "titleEn": "Come Back to Masan Port (Dorawayo Masan-hang-e)",
-          "titleKo": "돌아와요 마산항에",
+          "titleEn": "For NC",
+          "titleKo": "NC를 위하여",
           "originEn": "Cho Yong-pil classic adapted · Masan Baseball Soul",
           "originKo": "조용필 원곡 노래 · 돌아와요 마산항에",
           "noteEn": "Carries the rugged, briny sea spray and blue-collar longing of the southern coast.",
           "noteKo": "마산 바다의 정취를 느끼며 팬들이 함께 부르는 노래예요.",
-          "youtubeId": "b3B09V7N_B8",
-          "timestamp": 10
+          "youtubeId": "Q8hzQHM1-nc",
+          "timestamp": 2073
         },
         "phrases": [
           {
@@ -710,14 +710,14 @@ const KBO_DATA = {
           }
         ],
         "anthem": {
-          "titleEn": "I Am Happy (Naneun Haengbokhamnida)",
-          "titleKo": "나는 행복합니다",
+          "titleEn": "Forever Champ",
+          "titleKo": "영원한 챔프",
           "originEn": "Hanwha Eagles Signature Anthem",
           "originKo": "한화 이글스 대표 응원가 · 나는 행복합니다",
           "noteEn": "Sung with beaming smiles regardless of whether the Eagles are winning or trailing by ten runs.",
           "noteKo": "팀이 이기거나 져도 주황색 손수건을 흔들며 행복하게 불러요.",
-          "youtubeId": "zC0T9FvR8Qc",
-          "timestamp": 10
+          "youtubeId": "hLBVpxHpxq0",
+          "timestamp": 101
         },
         "phrases": [
           {
@@ -782,18 +782,18 @@ const KBO_DATA = {
           }
         ],
         "anthem": {
-          "titleEn": "Busan Seagulls (Busan Galmaegi)",
-          "titleKo": "부산 갈매기",
+          "titleEn": "Busan Seagull",
+          "titleKo": "부산갈매기 ",
           "originEn": "Moon Sung-jae 1982 classic · Anthem of Busan",
           "originKo": "문성재 원곡 노래 · 부산 갈매기",
           "noteEn": "The undisputed supreme anthem of Korean sports, echoing across the harbor when night falls on Sajik.",
           "noteKo": "7회에 주황색 봉지를 머리에 쓰고 온 관중이 합창해요.",
-          "youtubeId": "r2Yn-M7K-d4",
-          "timestamp": 15
+          "youtubeId": "-CLzJsuoka0",
+          "timestamp": 20
         },
         "phrases": [
           {
-            "ko": "왔능예? [왔↘ 능↗ 예↘]",
+            "ko": "왔으나? [왔↘ 으↗ 나↘]",
             "meaningEn": "Hello! Welcome to Busan!"
           },
           {
@@ -801,7 +801,7 @@ const KBO_DATA = {
             "meaningEn": "Have you eaten?"
           },
           {
-            "ko": "와 그라노? [와↘ 그↗ 라↘ 노↘]",
+            "ko": "와 그라노? [와↘ 그↘ 라↗ 노↘]",
             "meaningEn": "Why are you being like that?"
           },
           {
@@ -853,14 +853,14 @@ const KBO_DATA = {
           }
         ],
         "anthem": {
-          "titleEn": "Yeonan Pier (Yeonan Bodu)",
-          "titleKo": "연안부두",
+          "titleEn": "It Can Be Done",
+          "titleKo": "되고",
           "originEn": "Kim Trio 1979 classic · Anthem of Incheon",
           "originKo": "김트리오 원곡 노래 · 연안부두",
           "noteEn": "When the 8th inning arrives, the entire stadium sings together holding red flashlights aloft.",
           "noteKo": "8회에 랜더스필드의 붉은 불빛을 켜고 파도타기를 하며 불러요.",
-          "youtubeId": "D8eGk-eD4rQ",
-          "timestamp": 8
+          "youtubeId": "NjXFMz7Q-ns",
+          "timestamp": 4
         },
         "phrases": [
           {
@@ -924,14 +924,14 @@ const KBO_DATA = {
           }
         ],
         "anthem": {
-          "titleEn": "Heroes Anthem (Dream on Heroes)",
-          "titleKo": "영웅출정가 / 꿈이 있기에",
+          "titleEn": "To the End of the Sky",
+          "titleKo": "하늘 끝까지",
           "originEn": "Kiwoom Heroes Official Theme",
           "originKo": "키움 히어로즈 응원가 · 영웅출정가",
           "noteEn": "Features a modern rock rhythm echoing off the acoustic dome ceiling.",
           "noteKo": "신나는 록 음악 소리에 맞춰 돔구장이 울리도록 힘차게 불러요.",
-          "youtubeId": "vBqJd8Z0q8g",
-          "timestamp": 15
+          "youtubeId": "lTJpy1_BNGs",
+          "timestamp": 1862
         },
         "phrases": [
           {
@@ -995,14 +995,14 @@ const KBO_DATA = {
           }
         ],
         "anthem": {
-          "titleEn": "Jeju Island Blue Night (Jeju-do Pureun Bam)",
-          "titleKo": "제주도 푸른 밤",
+          "titleEn": "WBSC Premier 12",
+          "titleKo": "WBSC Premier 12",
           "originEn": "Choi Sung-won 1988 classic · Jeju Tourism Official",
           "originKo": "최성원 1988년 명곡 · 제주특별자치도 공식",
           "noteEn": "The timeless, beloved melody inviting weary souls to leave the city and fly to the starlit tangerine groves of Jeju.",
           "noteKo": "떠나요 둘이서 모든 걸 훌훌 털어버리고! 대한민국 국민 모두가 사랑하는 낭만 가득한 제주의 대표 힐링 명곡이에요.",
-          "youtubeId": "QkX_XQ5-6bA",
-          "timestamp": 0
+          "youtubeId": "8nDH0Dg8peM",
+          "timestamp": 1
         },
         "phrases": [
           {

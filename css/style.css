@@ -718,6 +718,8 @@ main.editorial-panel::-webkit-scrollbar-thumb {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 0.8rem;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .photo-card {
@@ -729,6 +731,8 @@ main.editorial-panel::-webkit-scrollbar-thumb {
   overflow: hidden;
   cursor: zoom-in;
   transition: transform var(--trans-fast), box-shadow var(--trans-fast);
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .photo-card:hover {
@@ -742,6 +746,9 @@ main.editorial-panel::-webkit-scrollbar-thumb {
   object-fit: cover;
   filter: contrast(96%) brightness(98%);
   transition: transform 0.4s var(--ease-out);
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-user-drag: none;
 }
 
 .photo-card:hover img {
@@ -865,6 +872,12 @@ main.editorial-panel::-webkit-scrollbar-thumb {
   display: flex;
   flex-direction: column;
   gap: 0.9rem;
+}
+
+/* Always show both English and Korean within the Local Expressions section */
+.audio-section .lang-en,
+.audio-section .lang-ko {
+  display: inline !important;
 }
 
 .phrase-grid {

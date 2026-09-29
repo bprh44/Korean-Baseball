@@ -398,8 +398,8 @@
       <!-- Local Expressions & Pickoff Chants (Regional Dialect, Dining, Idiom, Cheer) -->
       <section class="audio-section">
         <div class="meta-eyebrow">
-          <span class="lang-en">Local Expressions &amp; Stadium Chants</span>
-          <span class="lang-ko">지역 방언 인사 &amp; 시그니처 응원</span>
+          <span>Local Dialects &amp; Stadium Chants</span>
+          <span style="font-weight: 600; opacity: 0.85;">· 지역 방언 &amp; 응원가</span>
         </div>
 
         <div class="phrase-grid">
@@ -414,15 +414,14 @@
                 </div>
                 ${phrase.meaningEn ? `
                 <div class="phrase-meaning" style="margin-top: 4px;">
-                  <span class="lang-en">${phrase.meaningEn}</span>
+                  <span>${phrase.meaningEn}</span>
                 </div>
                 ` : ""}
                 ${phrase.youtubeUrl ? `
                   <div class="phrase-yt-badge" style="margin-top: 8px;">
                     <a href="${phrase.youtubeUrl}" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 6px; font-size: 0.76rem; font-weight: 600; color: #dc2626; text-decoration: none; padding: 4px 10px; background: rgba(220, 38, 38, 0.07); border: 1px solid rgba(220, 38, 38, 0.22); border-radius: 6px; transition: background 0.15s, transform 0.15s;">
                       <span>▶️</span>
-                      <span class="lang-en">Listen on YouTube${timeTag}</span>
-                      <span class="lang-ko">유튜브에서 견제 응원 듣기${timeTag}</span>
+                      <span>Listen on YouTube (견제 응원 듣기)${timeTag}</span>
                     </a>
                   </div>
                 ` : ""}
@@ -447,25 +446,66 @@
               <span class="lang-ko">${data.anthem.titleKo}</span>
             </div>
           </div>
-          <span class="anthem-origin">
-            <span class="lang-en">${data.anthem.originEn}</span>
-            <span class="lang-ko">${data.anthem.originKo}</span>
-          </span>
         </div>
 
-        <p class="anthem-note">
-          <span class="lang-en">${data.anthem.noteEn}</span>
-          <span class="lang-ko">${data.anthem.noteKo}</span>
-        </p>
-
         <div class="anthem-player">
-          <iframe 
-            src="https://www.youtube-nocookie.com/embed/${data.anthem.youtubeId}?start=${data.anthem.timestamp || 0}&rel=0" 
-            title="${data.anthem.titleKo}" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-            allowfullscreen
-            loading="lazy">
-          </iframe>
+          ${(() => {
+            let str = String(data.anthem.youtubeId || '').trim();
+            const iframeMatch = str.match(/<iframe[^>]*\ssrc=["']([^"']+)["']/i);
+            if (iframeMatch) str = iframeMatch[1];
+            str = str.replace(/&amp;/g, '&');
+
+            let ytId = '';
+            let ytTimestamp = data.anthem.timestamp || 0;
+            const tMatch = str.match(/[?&](?:start|t)=([0-9mhseconds]+)/i);
+            if (tMatch) {
+              const rawT = tMatch[1];
+              if (/^\d+$/.test(rawT)) {
+                ytTimestamp = parseInt(rawT, 10);
+              } else {
+                let total = 0;
+                const h = rawT.match(/(\d+)h/i);
+                const m = rawT.match(/(\d+)m/i);
+                const s = rawT.match(/(\d+)s/i);
+                if (h) total += parseInt(h[1], 10) * 3600;
+                if (m) total += parseInt(m[1], 10) * 60;
+                if (s) total += parseInt(s[1], 10);
+                if (total > 0) ytTimestamp = total;
+              }
+            }
+
+            const urlMatch = str.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+?&v=|shorts\/))([\w-]{11})/);
+            if (urlMatch) {
+              ytId = urlMatch[1];
+            } else if (/^[\w-]{11}$/.test(str)) {
+              ytId = str;
+            } else {
+              const fallback = str.match(/[\w-]{11}/);
+              if (fallback) ytId = fallback[0];
+            }
+
+            const originParam = window.location.protocol.startsWith('http') ? `&origin=${encodeURIComponent(window.location.origin)}` : '';
+            const isFile = window.location.protocol === 'file:';
+
+            return `
+            <iframe 
+              width="100%" 
+              height="100%" 
+              src="https://www.youtube.com/embed/${ytId}?start=${ytTimestamp}&rel=0${originParam}" 
+              title="${data.anthem.titleKo || 'YouTube video player'}" 
+              frameborder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+              referrerpolicy="strict-origin-when-cross-origin" 
+              allowfullscreen>
+            </iframe>
+            ${isFile ? `
+            <div style="margin-top: 8px; font-size: 0.74rem; color: #b45309; background: #fef3c7; border: 1px solid #fcd34d; border-radius: 4px; padding: 6px 10px; display: flex; align-items: center; justify-content: space-between; gap: 8px;">
+              <span>⚠️ YouTube blocks embeds on <code>file://</code> (Error 153). Run <code>start_server.bat</code> and visit <strong>http://localhost:8000</strong></span>
+              <a href="https://www.youtube.com/watch?v=${ytId}${ytTimestamp ? '&t=' + ytTimestamp : ''}" target="_blank" rel="noopener noreferrer" style="color: #dc2626; font-weight: 600; text-decoration: underline; white-space: nowrap;">Watch on YouTube ↗</a>
+            </div>
+            ` : ""}
+            `;
+          })()}
         </div>
       </section>
       ` : ""}
