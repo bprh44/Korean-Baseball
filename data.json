@@ -1,12 +1,9 @@
 {
   "suwon-kt": {
     "id": "suwon-kt",
-    "rank": 1,
     "primaryColor": "#222222",
     "secondaryColor": "#EC1C24",
     "emblemImg": "images/logos/emblem_KT.png",
-    "logoSvg": "<svg width=\"20\" height=\"20\" viewBox=\"0 0 32 32\"><rect width=\"32\" height=\"32\" rx=\"7\" fill=\"#222222\"/><text x=\"16\" y=\"22\" font-family=\"Arial Black, Impact, sans-serif\" font-size=\"15\" font-weight=\"900\" text-anchor=\"middle\" fill=\"#EC1C24\" letter-spacing=\"-0.5\">kt</text></svg>",
-    "cityKey": "suwon",
     "cityNameEn": "Suwon",
     "cityNameKo": "수원",
     "shortCityEn": "Suwon",
@@ -43,10 +40,6 @@
     "anthem": {
       "titleEn": "We love Suwon KT",
       "titleKo": "사랑한다 수원 KT",
-      "originEn": "kt wiz Championship Theme",
-      "originKo": "KT 위즈 승리의 노래",
-      "noteEn": "Sung with red-and-black light batons swinging in rhythm against the fortress sky.",
-      "noteKo": "야구장에서 빨간색 응원봉을 흔들면서 다 같이 노래해요.",
       "youtubeId": "haPVqguhBAM",
       "timestamp": 99
     },
@@ -72,12 +65,9 @@
   },
   "daegu-samsung": {
     "id": "daegu-samsung",
-    "rank": 2,
     "primaryColor": "#074CA1",
     "secondaryColor": "#5C768D",
     "emblemImg": "images/logos/emblem_SS.png",
-    "logoSvg": "<svg width=\"20\" height=\"20\" viewBox=\"0 0 32 32\"><rect width=\"32\" height=\"32\" rx=\"7\" fill=\"#074CA1\"/><text x=\"16\" y=\"22\" font-family=\"Arial Black, Impact, sans-serif\" font-size=\"15\" font-weight=\"900\" text-anchor=\"middle\" fill=\"#FFFFFF\" letter-spacing=\"-1\">SL</text></svg>",
-    "cityKey": "daegu",
     "cityNameEn": "Daegu",
     "cityNameKo": "대구",
     "shortCityEn": "Daegu",
@@ -114,10 +104,6 @@
     "anthem": {
       "titleEn": "El Dorado",
       "titleKo": "엘도라도",
-      "originEn": "Goombay Dance Band classic · Soul of Lions",
-      "originKo": "삼성 라이온즈 대표 응원가 · 엘도라도",
-      "noteEn": "Sung at the start of the 8th inning with arms crossed overhead, swaying like a blue ocean.",
-      "noteKo": "8회에 온 관중이 두 팔을 올리고 파란 바다처럼 흔들며 불러요.",
       "youtubeId": "M-Ur4RDP7p4",
       "timestamp": 17
     },
@@ -143,17 +129,14 @@
   },
   "seoul-jamsil-lg": {
     "id": "seoul-jamsil-lg",
-    "rank": 3,
     "primaryColor": "#C30037",
     "secondaryColor": "#222222",
     "emblemImg": "images/logos/emblem_LG.png",
-    "logoSvg": "<svg width=\"20\" height=\"20\" viewBox=\"0 0 32 32\"><rect width=\"32\" height=\"32\" rx=\"7\" fill=\"#C30037\"/><circle cx=\"16\" cy=\"16\" r=\"11\" fill=\"#222222\"/><text x=\"16\" y=\"21\" font-family=\"Arial Black, Impact, sans-serif\" font-size=\"13\" font-weight=\"900\" text-anchor=\"middle\" fill=\"#FFFFFF\">LG</text></svg>",
-    "cityKey": "seoul",
     "cityNameEn": "Seoul (Jamsil)",
     "cityNameKo": "서울 (잠실)",
     "shortCityEn": "Seoul (Jamsil)",
     "shortCityKo": "서울 잠실",
-    "cityHanja": "首爾",
+    "cityHanja": "서울",
     "teamNameEn": "LG Twins",
     "teamNameKo": "LG 트윈스",
     "stadiumEn": "Jamsil Baseball Stadium",
@@ -185,10 +168,6 @@
     "anthem": {
       "titleEn": "Forever LG",
       "titleKo": "무적 LG",
-      "originEn": "Patty Kim classic reimagined · Jamsil Signature",
-      "originKo": "패티김 원곡 노래 · 서울의 찬가",
-      "noteEn": "Sung passionately during late-inning rallies as twilight settles over the Olympic stadium complex.",
-      "noteKo": "https://youtu.be/BhwoJFjkAf8?si=cNbUCn3J-drs6AL3&t=1461",
       "youtubeId": "zoQ264XFY0I",
       "timestamp": 1155
     },
@@ -214,12 +193,9 @@
   },
   "gwangju-kia": {
     "id": "gwangju-kia",
-    "rank": 4,
     "primaryColor": "#C70125",
     "secondaryColor": "#1B252C",
     "emblemImg": "images/logos/emblem_HT.png",
-    "logoSvg": "<svg width=\"20\" height=\"20\" viewBox=\"0 0 32 32\"><rect width=\"32\" height=\"32\" rx=\"7\" fill=\"#C70125\"/><text x=\"16\" y=\"23\" font-family=\"Arial Black, Impact, sans-serif\" font-size=\"18\" font-weight=\"900\" text-anchor=\"middle\" fill=\"#FFFFFF\">T</text></svg>",
-    "cityKey": "gwangju",
     "cityNameEn": "Gwangju",
     "cityNameKo": "광주",
     "shortCityEn": "Gwangju",
@@ -256,10 +232,6 @@
     "anthem": {
       "titleEn": "Shout it out, the strongest Kia",
       "titleKo": "외쳐라 최강 기아",
-      "originEn": "Kim Soo-hee classic · Immortal Tiger Anthem",
-      "originKo": "김수희 원곡 노래 · 남행열차",
-      "noteEn": "The unmistakable brass melody triggers an explosive singalong on the 3rd base concourse.",
-      "noteKo": "비 내리는 호남선 노래에 맞춰 신나게 춤추며 불러요.",
       "youtubeId": "-yDl24fIocw",
       "timestamp": 43
     },
@@ -288,17 +260,14 @@
   },
   "seoul-jamsil-doosan": {
     "id": "seoul-jamsil-doosan",
-    "rank": 5,
     "primaryColor": "#131230",
     "secondaryColor": "#ED1C24",
     "emblemImg": "images/logos/emblem_OB.png",
-    "logoSvg": "<svg width=\"20\" height=\"20\" viewBox=\"0 0 32 32\"><rect width=\"32\" height=\"32\" rx=\"7\" fill=\"#131230\"/><text x=\"16\" y=\"23\" font-family=\"Arial Black, sans-serif\" font-size=\"18\" font-weight=\"900\" text-anchor=\"middle\" fill=\"#ED1C24\">D</text></svg>",
-    "cityKey": "seoul",
     "cityNameEn": "Seoul (Jamsil)",
     "cityNameKo": "서울 (잠실)",
     "shortCityEn": "Seoul (Jamsil)",
     "shortCityKo": "서울 잠실",
-    "cityHanja": "首爾",
+    "cityHanja": "서울",
     "teamNameEn": "Doosan Bears",
     "teamNameKo": "두산 베어스",
     "stadiumEn": "Jamsil Baseball Stadium",
@@ -330,10 +299,6 @@
     "anthem": {
       "titleEn": "APT",
       "titleKo": "아파트",
-      "originEn": "Original Doosan rally anthem",
-      "originKo": "두산 베어스 승리의 노래",
-      "noteEn": "Echoes through the 1st base side with rhythmic towel waves and collective clapping.",
-      "noteKo": "1루 관중석에서 하얀 수건을 흔들며 다 같이 박수를 쳐요.",
       "youtubeId": "9L-_CpT53qE",
       "timestamp": 4
     },
@@ -360,12 +325,9 @@
   },
   "changwon-nc": {
     "id": "changwon-nc",
-    "rank": 6,
     "primaryColor": "#071D49",
     "secondaryColor": "#B49258",
     "emblemImg": "images/logos/emblem_NC.png",
-    "logoSvg": "<svg width=\"20\" height=\"20\" viewBox=\"0 0 32 32\"><rect width=\"32\" height=\"32\" rx=\"7\" fill=\"#071D49\"/><text x=\"16\" y=\"22\" font-family=\"Arial Black, Impact, sans-serif\" font-size=\"14\" font-weight=\"900\" text-anchor=\"middle\" fill=\"#B49258\" letter-spacing=\"-0.5\">NC</text></svg>",
-    "cityKey": "changwon",
     "cityNameEn": "Changwon",
     "cityNameKo": "창원",
     "shortCityEn": "Changwon",
@@ -402,10 +364,6 @@
     "anthem": {
       "titleEn": "For NC",
       "titleKo": "NC를 위하여",
-      "originEn": "Cho Yong-pil classic adapted · Masan Baseball Soul",
-      "originKo": "조용필 원곡 노래 · 돌아와요 마산항에",
-      "noteEn": "Carries the rugged, briny sea spray and blue-collar longing of the southern coast.",
-      "noteKo": "마산 바다의 정취를 느끼며 팬들이 함께 부르는 노래예요.",
       "youtubeId": "Q8hzQHM1-nc",
       "timestamp": 2073
     },
@@ -431,12 +389,9 @@
   },
   "daejeon-hanwha": {
     "id": "daejeon-hanwha",
-    "rank": 7,
     "primaryColor": "#F37321",
     "secondaryColor": "#2B2B2B",
     "emblemImg": "images/logos/emblem_HH.png",
-    "logoSvg": "<svg width=\"20\" height=\"20\" viewBox=\"0 0 32 32\"><rect width=\"32\" height=\"32\" rx=\"7\" fill=\"#F37321\"/><text x=\"16\" y=\"23\" font-family=\"Arial Black, Impact, sans-serif\" font-size=\"18\" font-weight=\"900\" text-anchor=\"middle\" fill=\"#2B2B2B\">E</text></svg>",
-    "cityKey": "daejeon",
     "cityNameEn": "Daejeon",
     "cityNameKo": "대전",
     "shortCityEn": "Daejeon",
@@ -473,10 +428,6 @@
     "anthem": {
       "titleEn": "Forever Champ",
       "titleKo": "영원한 챔프",
-      "originEn": "Hanwha Eagles Signature Anthem",
-      "originKo": "한화 이글스 대표 응원가 · 나는 행복합니다",
-      "noteEn": "Sung with beaming smiles regardless of whether the Eagles are winning or trailing by ten runs.",
-      "noteKo": "팀이 이기거나 져도 주황색 손수건을 흔들며 행복하게 불러요.",
       "youtubeId": "hLBVpxHpxq0",
       "timestamp": 101
     },
@@ -503,12 +454,9 @@
   },
   "busan-lotte": {
     "id": "busan-lotte",
-    "rank": 8,
     "primaryColor": "#002955",
     "secondaryColor": "#D00F31",
     "emblemImg": "images/logos/emblem_LT.png",
-    "logoSvg": "<svg width=\"20\" height=\"20\" viewBox=\"0 0 32 32\"><rect width=\"32\" height=\"32\" rx=\"7\" fill=\"#002955\"/><text x=\"16\" y=\"23\" font-family=\"Georgia, serif\" font-size=\"19\" font-weight=\"900\" text-anchor=\"middle\" fill=\"#D00F31\" font-style=\"italic\">G</text></svg>",
-    "cityKey": "busan",
     "cityNameEn": "Busan",
     "cityNameKo": "부산",
     "shortCityEn": "Busan",
@@ -545,10 +493,6 @@
     "anthem": {
       "titleEn": "Busan Seagull",
       "titleKo": "부산갈매기 ",
-      "originEn": "Moon Sung-jae 1982 classic · Anthem of Busan",
-      "originKo": "문성재 원곡 노래 · 부산 갈매기",
-      "noteEn": "The undisputed supreme anthem of Korean sports, echoing across the harbor when night falls on Sajik.",
-      "noteKo": "7회에 주황색 봉지를 머리에 쓰고 온 관중이 합창해요.",
       "youtubeId": "-CLzJsuoka0",
       "timestamp": 20
     },
@@ -574,12 +518,9 @@
   },
   "incheon-ssg": {
     "id": "incheon-ssg",
-    "rank": 9,
     "primaryColor": "#CE0E2D",
     "secondaryColor": "#917042",
     "emblemImg": "images/logos/emblem_SK.png",
-    "logoSvg": "<svg width=\"20\" height=\"20\" viewBox=\"0 0 32 32\"><rect width=\"32\" height=\"32\" rx=\"7\" fill=\"#CE0E2D\"/><text x=\"16\" y=\"23\" font-family=\"Arial Black, Impact, sans-serif\" font-size=\"17\" font-weight=\"900\" text-anchor=\"middle\" fill=\"#FFFFFF\">L</text><polygon points=\"16,4 17.5,8.5 22,8.5 18.5,11 20,15.5 16,12.5 12,15.5 13.5,11 10,8.5 14.5,8.5\" fill=\"#E6C898\"/></svg>",
-    "cityKey": "incheon",
     "cityNameEn": "Incheon",
     "cityNameKo": "인천",
     "shortCityEn": "Incheon",
@@ -616,10 +557,6 @@
     "anthem": {
       "titleEn": "It Can Be Done",
       "titleKo": "되고",
-      "originEn": "Kim Trio 1979 classic · Anthem of Incheon",
-      "originKo": "김트리오 원곡 노래 · 연안부두",
-      "noteEn": "When the 8th inning arrives, the entire stadium sings together holding red flashlights aloft.",
-      "noteKo": "8회에 랜더스필드의 붉은 불빛을 켜고 파도타기를 하며 불러요.",
       "youtubeId": "NjXFMz7Q-ns",
       "timestamp": 4
     },
@@ -645,17 +582,14 @@
   },
   "seoul-gocheok-kiwoom": {
     "id": "seoul-gocheok-kiwoom",
-    "rank": 10,
     "primaryColor": "#570514",
     "secondaryColor": "#937042",
     "emblemImg": "images/logos/emblem_WO.png",
-    "logoSvg": "<svg width=\"20\" height=\"20\" viewBox=\"0 0 32 32\"><rect width=\"32\" height=\"32\" rx=\"7\" fill=\"#570514\"/><text x=\"16\" y=\"23\" font-family=\"Arial Black, Impact, sans-serif\" font-size=\"18\" font-weight=\"900\" text-anchor=\"middle\" fill=\"#FFFFFF\">H</text></svg>",
-    "cityKey": "seoul",
     "cityNameEn": "Seoul (Gocheok Dome)",
     "cityNameKo": "서울 ( 고척스카이 돔)",
     "shortCityEn": "Seoul (Gocheok)",
     "shortCityKo": "서울 고척",
-    "cityHanja": "首爾",
+    "cityHanja": "서울",
     "teamNameEn": "Kiwoom Heroes",
     "teamNameKo": "키움 히어로즈",
     "stadiumEn": "Gocheok Sky Dome",
@@ -687,10 +621,6 @@
     "anthem": {
       "titleEn": "To the End of the Sky",
       "titleKo": "하늘 끝까지",
-      "originEn": "Kiwoom Heroes Official Theme",
-      "originKo": "키움 히어로즈 응원가 · 영웅출정가",
-      "noteEn": "Features a modern rock rhythm echoing off the acoustic dome ceiling.",
-      "noteKo": "신나는 록 음악 소리에 맞춰 돔구장이 울리도록 힘차게 불러요.",
       "youtubeId": "lTJpy1_BNGs",
       "timestamp": 1862
     },
@@ -716,12 +646,9 @@
   },
   "jeju-hallasan": {
     "id": "jeju-hallasan",
-    "rank": 99,
     "primaryColor": "#2d6a4f",
     "secondaryColor": "#74c69d",
     "emblemImg": "",
-    "logoSvg": "<svg width=\"20\" height=\"20\" viewBox=\"0 0 32 32\"><rect width=\"32\" height=\"32\" rx=\"7\" fill=\"#2d6a4f\"/><polygon points=\"16,6 26,24 6,24\" fill=\"#74c69d\"/><polygon points=\"16,6 20,13 12,13\" fill=\"#FFFFFF\"/><circle cx=\"24\" cy=\"8\" r=\"2\" fill=\"#FFAA00\"/></svg>",
-    "cityKey": "jeju",
     "cityNameEn": "Jeju Island",
     "cityNameKo": "제주",
     "shortCityEn": "Jeju",
@@ -758,10 +685,6 @@
     "anthem": {
       "titleEn": "WBSC Premier 12",
       "titleKo": "WBSC Premier 12",
-      "originEn": "Choi Sung-won 1988 classic · Jeju Tourism Official",
-      "originKo": "최성원 1988년 명곡 · 제주특별자치도 공식",
-      "noteEn": "The timeless, beloved melody inviting weary souls to leave the city and fly to the starlit tangerine groves of Jeju.",
-      "noteKo": "떠나요 둘이서 모든 걸 훌훌 털어버리고! 대한민국 국민 모두가 사랑하는 낭만 가득한 제주의 대표 힐링 명곡이에요.",
       "youtubeId": "8nDH0Dg8peM",
       "timestamp": 1
     },

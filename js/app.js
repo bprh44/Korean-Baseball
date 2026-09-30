@@ -273,7 +273,7 @@
         ? `<span style="font-size: 15px; margin-right: 2px;">⛰️</span>`
         : (item.emblemImg
             ? `<img src="${item.emblemImg}" alt="${item.teamNameEn}" class="chip-emblem-img" loading="lazy" />`
-            : (item.logoSvg || ""));
+            : "");
       const shortCityEn = item.shortCityEn || item.cityNameEn.split(" ")[0];
       const shortCityKo = item.shortCityKo || item.cityNameKo.split(" ")[0];
 

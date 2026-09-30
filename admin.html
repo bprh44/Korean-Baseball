@@ -329,15 +329,11 @@
       <div class="tab-panel" id="panel-basic">
         <div class="section-card">
           <div class="section-title">Identity</div>
-          <div class="form-row cols-2">
+          <div class="form-row cols-1">
             <div class="field">
               <label class="field-label">Entry ID (slug)</label>
               <input type="text" id="f-id" placeholder="city-team-slug" oninput="syncField('id')" />
               <span class="field-hint">Unique key in the JSON object</span>
-            </div>
-            <div class="field">
-              <label class="field-label">Rank <span class="lang-tag">1–10</span></label>
-              <input type="number" id="f-rank" min="1" max="10" oninput="syncField('rank',true)" />
             </div>
           </div>
           <div class="form-row cols-2">
@@ -354,11 +350,7 @@
 
         <div class="section-card">
           <div class="section-title">City</div>
-          <div class="form-row cols-3">
-            <div class="field">
-              <label class="field-label">City Key</label>
-              <input type="text" id="f-cityKey" placeholder="suwon" oninput="syncField('cityKey')" />
-            </div>
+          <div class="form-row cols-2">
             <div class="field">
               <label class="field-label">City Name <span class="lang-tag">EN</span></label>
               <input type="text" id="f-cityNameEn" oninput="syncField('cityNameEn')" />
@@ -451,17 +443,6 @@
               <label class="field-label">Emblem Image Path</label>
               <input type="text" id="f-emblemImg" placeholder="images/logos/emblem_KT.png" oninput="syncField('emblemImg')" />
             </div>
-          </div>
-          <div class="form-row cols-1">
-            <div class="field">
-              <label class="field-label">Logo SVG (raw HTML)</label>
-              <textarea id="f-logoSvg" class="tall" placeholder="&lt;svg ...&gt;...&lt;/svg&gt;" oninput="syncField('logoSvg');updateSvgPreview()"></textarea>
-              <span class="field-hint">Inline SVG used as the map pin</span>
-            </div>
-          </div>
-          <div style="display:flex;align-items:center;gap:12px;margin-top:6px;">
-            <div id="svg-preview-box" style="width:44px;height:44px;display:flex;align-items:center;justify-content:center;background:var(--bg-input);border:1px solid var(--border);border-radius:8px;"></div>
-            <span style="font-size:12px;color:var(--text-muted);">SVG pin preview</span>
           </div>
         </div>
       </div><!-- /panel-colors -->
@@ -632,11 +613,16 @@ function renderSidebar() {
   const q = document.getElementById('search-input').value.toLowerCase();
   const list = document.getElementById('sidebar-list');
   list.innerHTML = '';
+  const order = (typeof KBO_DATA !== 'undefined' && KBO_DATA.rankingOrder) ? KBO_DATA.rankingOrder : [];
   const entries = Object.entries(data)
     .filter(([id, t]) => !q || id.toLowerCase().includes(q)
       || (t.teamNameEn||'').toLowerCase().includes(q)
       || (t.shortCityEn||'').toLowerCase().includes(q))
-    .sort((a,b) => (a[1].rank||99)-(b[1].rank||99));
+    .sort((a,b) => {
+      const ia = order.indexOf(a[0]);
+      const ib = order.indexOf(b[0]);
+      return (ia === -1 ? 99 : ia) - (ib === -1 ? 99 : ib);
+    });
   if (!entries.length) {
     list.innerHTML = '<div style="text-align:center;color:var(--text-muted);font-size:13px;padding:20px 0;">No teams found</div>';
     return;
@@ -675,10 +661,8 @@ function populateForm() {
   const sv = (id, val) => { const el = document.getElementById(id); if(el) el.value = (val !== undefined && val !== null) ? val : ''; };
 
   sv('f-id', t.id || currentId);
-  sv('f-rank', t.rank);
   sv('f-teamNameEn', t.teamNameEn);
   sv('f-teamNameKo', t.teamNameKo);
-  sv('f-cityKey', t.cityKey);
   sv('f-cityNameEn', t.cityNameEn);
   sv('f-cityNameKo', t.cityNameKo);
   sv('f-shortCityEn', t.shortCityEn);
@@ -697,8 +681,6 @@ function populateForm() {
   updateColorSwatches();
 
   sv('f-emblemImg', t.emblemImg);
-  sv('f-logoSvg', t.logoSvg);
-  updateSvgPreview();
 
   sv('f-civicAnchorEn', t.civicAnchorEn);
   sv('f-civicAnchorKo', t.civicAnchorKo);
@@ -743,7 +725,7 @@ function syncField(key, asNumber=false) {
     return;
   }
   data[currentId][key] = val;
-  if (['rank','teamNameEn','shortCityEn','primaryColor'].includes(key)) renderSidebar();
+  if (['teamNameEn','shortCityEn','primaryColor'].includes(key)) renderSidebar();
   updateJsonPreview();
 }
 
@@ -887,9 +869,7 @@ function updateYtPreview() {
   }
 }
 
-function updateSvgPreview() {
-  document.getElementById('svg-preview-box').innerHTML = document.getElementById('f-logoSvg').value;
-}
+function updateSvgPreview() {}
 
 // ─── PHOTOS ───────────────────────────────────
 function renderPhotos() {
@@ -944,9 +924,6 @@ function cleanPhrasesData() {
   Object.values(data).forEach(team => {
     if (team && Array.isArray(team.phrases)) {
       team.phrases.forEach(ph => {
-        delete ph.romaja;
-        delete ph.descKo;
-        delete ph.noteEn;
         if (ph.ko) {
           ph.ko = ph.ko.replace(/\s*\([A-Za-z\-!?,. '’]+\)/, '');
         }
@@ -968,9 +945,6 @@ function renderPhrases() {
     '4️⃣ Stadium Cheer / Pickoff Chant (야구장 시그니처 구호)'
   ];
   phrases.forEach((ph,i) => {
-    delete ph.romaja;
-    delete ph.descKo;
-    delete ph.noteEn;
     if (ph.ko) {
       ph.ko = ph.ko.replace(/\s*\([A-Za-z\-!?,. '’]+\)/, '');
     }
