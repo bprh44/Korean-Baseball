@@ -922,8 +922,8 @@ const KBO_DATA = {
           }
         ],
         "anthem": {
-          "titleEn": "WBSC Premier 12",
-          "titleKo": "WBSC Premier 12",
+          "titleEn": "2026 orea-Yonsei Games",
+          "titleKo": "2026 정기 고연전",
           "youtubeId": "Q23Y9xpSP3o",
           "timestamp": 38
         },
